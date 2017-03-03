@@ -1,0 +1,37 @@
+<?php
+
+namespace AppBundle\Controller;
+
+use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
+use Symfony\Bundle\FrameworkBundle\Controller\Controller;
+use Symfony\Component\HttpFoundation\Request;
+
+class DefaultController extends Controller
+{
+    /**
+     * @Route("/", name="homepage")
+     */
+    public function indexAction(Request $request)
+    {
+        // replace this example code with whatever you need
+        return $this->render('default/index.html.twig', [
+            'base_dir' => realpath($this->getParameter('kernel.root_dir').'/..').DIRECTORY_SEPARATOR,
+        ]);
+    }
+
+    /**
+     * @Route("/hello", name="hello_world")
+     */
+    public function helloAction()
+    {
+        return $this->render('AppBundle:Default:hello.html.twig');
+    }
+    /**
+     * @Route("/page", name="page")
+     */
+    public function pageAction(){
+        $var1="Floflo bibi";
+        $array=array("jour" =>"Vendredi", "mois" =>"Février");
+        return $this->render('AppBundle:Default:page.html.twig',array('maVariable'=>$var1,'array'=>$array));
+    }
+}
