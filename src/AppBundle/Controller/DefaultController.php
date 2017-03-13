@@ -15,12 +15,5 @@ class DefaultController extends Controller
     {
         return $this->render('AppBundle:Default:hello.html.twig');
     }
-    /**
-     * @Route("/page", name="page")
-     */
-    public function pageAction(){
-        $var1="Floflo bibi";
-        $array=array("jour" =>"Vendredi", "mois" =>"Février");
-        return $this->render('AppBundle:Default:page.html.twig',array('maVariable'=>$var1,'array'=>$array));
-    }
+
 }

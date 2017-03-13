@@ -1,2 +1,26 @@
-<h1>Hello world</h1>
-<a href="{{ path("page") }}">Page</a>
+<link rel="stylesheet" type="text/css" href="{{ asset('assets/css/styles.css') }}">
+<script src=" {{asset('assets/js/main.js') }}"></script>
+<nav id="menu">
+    <ul>
+        <li><a href="{{ path('homepage') }}">Site du jeu</a></li>
+
+        {% if is_granted("IS_AUTHENTICATED_REMEMBERED") %}
+            <li>
+                <a href="{{ path('fos_user_profile_show') }}">{{ 'layout.logged_in_as'|trans({'%username%': app.user.username}, 'FOSUserBundle') }} |</a>
+                <a href="{{ path('fos_user_security_logout') }}">
+                    {{ 'layout.logout'|trans({}, 'FOSUserBundle') }}</a>
+            </li>
+
+        {% else %}
+            <li><a href="{{ path('fos_user_security_login') }}">{{ 'layout.login'|trans({}, 'FOSUserBundle') }}</a>
+            </li>
+            <li><a href="{{ path('fos_user_registration_register')}}">S'inscrire</a></li>
+        {% endif %}
+
+    </ul>
+</nav>
+
+<p><a>TAKE 5</a></p>
+<div id="waveback" style="transform: matrix(1, 0, 0, 2, 0, 0);"><div class="top"></div><div class="bottom"></div></div>
+<canvas id="wave" width="1723" ,="" height="377" style="width: 1723px; height: 377.333px; transform: matrix(1, 0, 0, 1, 0, 377.5);"></canvas>
+<h1>Jeu en cours de construction ! Stay Tuned</h1>
