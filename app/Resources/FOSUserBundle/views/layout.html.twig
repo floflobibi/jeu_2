@@ -2,30 +2,38 @@
 <html>
     <head>
         <meta charset="UTF-8" />
+        <link rel="stylesheet" type="text/css" href="{{ asset('assets/css/styles.css') }}">
     </head>
     <body>
-        <div>
-            <nav id="menu">
-                <ul>
-                    <li><a href="{{ path('homepage') }}">Site du jeu</a></li>
+    <div class="container">
+        <input type="checkbox" id="navcheck" role="button" title="menu">
+        <label for="navcheck" aria-hidden="true" title="menu">
+        <span class="burger">
+          <span class="bar">
+            <span class="visuallyhidden">Menu</span>
+            </span>
+        </span>
+        </label>
 
-                    {% if is_granted("IS_AUTHENTICATED_REMEMBERED") %}
-                    <li>
-                        <a href="{{ path('fos_user_profile_show') }}">{{ 'layout.logged_in_as'|trans({'%username%': app.user.username}, 'FOSUserBundle') }} |</a>
-                        <a href="{{ path('fos_user_security_logout') }}">
-                                {{ 'layout.logout'|trans({}, 'FOSUserBundle') }}</a>
-                    </li>
+        <nav id="menu">
+            <a href="{{ path('homepage') }}">Le jeu</a>
+            {% if is_granted("IS_AUTHENTICATED_REMEMBERED") %}
 
-                    {% else %}
-                        <li><a href="{{ path('fos_user_security_login') }}">{{ 'layout.login'|trans({}, 'FOSUserBundle') }}</a>
-                        </li>
-                        <li><a href="{{ path('fos_user_registration_register')}}">S'inscrire</a></li>
-                    {% endif %}
+                <a href="{{ path('fos_user_profile_show') }}">{{ 'layout.logged_in_as'|trans({'%username%': app.user.username}, 'FOSUserBundle') }} |</a>
+                <a href="{{ path('fos_user_security_logout') }}">
+                    {{ 'layout.logout'|trans({}, 'FOSUserBundle') }}</a>
+            {% else %}
+                <a href="{{ path('fos_user_security_login') }}">{{ 'layout.login'|trans({}, 'FOSUserBundle') }}</a>
+                <a href="{{ path('fos_user_registration_register')}}">S'inscrire</a>
+            {% endif %}
+            <a href="#">Classement</a>
+            <a href="#">Playlist</a>
+        </nav>
 
-                </ul>
-            </nav>
-        </div>
+        <img class="logo" src="{{asset('assets/img/logo.png') }}"></div>
+    </div>
 
+    <div id="formulaire_layout">
         {% if app.request.hasPreviousSession %}
             {% for type, messages in app.session.flashbag.all() %}
                 {% for message in messages %}
@@ -40,5 +48,7 @@
             {% block fos_user_content %}
             {% endblock fos_user_content %}
         </div>
+    </div>
+
     </body>
 </html>

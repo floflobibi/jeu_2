@@ -1,9 +1,9 @@
-ph@font-face {
+@font-face {
     font-family: Avenir;
-    src: url('av.otf') format("opentype");
+    src: url("AV.otf") format("opentype");
 }
 
-p{
+.title{
     font-family: "Avenir";
     font-size: 150px;
     letter-spacing: 0.3vw;
@@ -19,6 +19,14 @@ p{
     z-index: 2;
 }
 
+.logo{
+    z-index: 1;
+    position: absolute;
+    float: right;
+    right: 10%;
+    top: 4%;
+}
+/*
 h1{
     letter-spacing: 5pt;
     font-family: "Avenir";
@@ -35,14 +43,13 @@ h1{
     left: 50%;
     transform: translate(-50%, 200%);
 }
-
+*/
 body {
-    background-color: white;
+    background-color: #eaede6;
     overflow: hidden;
     position:relative;
     touch-action:none;
     -webkit-user-drag:none;
-    text-transform:uppercase;
     text-rendering:optimizeLegibility;
 }
 
@@ -82,7 +89,6 @@ body,html
     background-color:#33476a;
     -webkit-font-smoothing:antialiased;
     -moz-osx-font-smoothing:grayscale;
-    font-size:1rem;
     overflow:hidden;
     font-weight:bold;
     width:100vw;
@@ -124,6 +130,9 @@ body
     bottom:0;
     background-color:#2f2f2f}
 
+#waveback_2{
+    margin-top:100px;
+}
 canvas
 {
     position:fixed}
@@ -137,22 +146,503 @@ canvas
     height:100%;
     z-index:999;
     display:none}
-#menu {
-    width: 100%;
-    height: 50px;
-    background-color: white;
-    color: #1d1d1d;
-    position: fixed;
-    z-index:10;
-}
-nav ul li {
-    display: inline-block;
-    text-align: center;
-    margin-left: auto;
-    margin-right: auto;
-    padding: 15px;
+
+/* Welcome to Compass.
+ * In this file you should write your main styles. (or centralize your imports)
+ * Import this file using the following HTML or equivalent:
+ * <link href="/stylesheets/screen.css" media="screen, projection" rel="stylesheet" type="text/css" /> */
+@import "https://fonts.googleapis.com/css?family=Ubuntu:400,700";
+/* line 5, ../../../../../Ruby23-x64/lib/ruby/gems/2.3.0/gems/compass-core-1.0.3/stylesheets/compass/reset/_utilities.scss */
+html, body, div, span, applet, object, iframe,
+h1, h2, h3, h4, h5, h6, p, blockquote, pre,
+a, abbr, acronym, address, big, cite, code,
+del, dfn, em, img, ins, kbd, q, s, samp,
+small, strike, strong, sub, sup, tt, var,
+b, u, i, center,
+dl, dt, dd, ol, ul, li,
+fieldset, form, label, legend,
+table, caption, tbody, tfoot, thead, tr, th, td,
+article, aside, canvas, details, embed,
+figure, figcaption, footer, header, hgroup,
+menu, nav, output, ruby, section, summary,
+time, mark, audio, video {
+    margin: 0;
+    padding: 0;
+    border: 0;
+    font: inherit;
+    font-size: 100%;
+    vertical-align: baseline;
 }
 
-nav {
-    text-align: center;
+/* line 22, ../../../../../Ruby23-x64/lib/ruby/gems/2.3.0/gems/compass-core-1.0.3/stylesheets/compass/reset/_utilities.scss */
+html {
+    line-height: 1;
 }
+
+/* line 24, ../../../../../Ruby23-x64/lib/ruby/gems/2.3.0/gems/compass-core-1.0.3/stylesheets/compass/reset/_utilities.scss */
+ol, ul {
+    list-style: none;
+}
+
+/* line 26, ../../../../../Ruby23-x64/lib/ruby/gems/2.3.0/gems/compass-core-1.0.3/stylesheets/compass/reset/_utilities.scss */
+table {
+    border-collapse: collapse;
+    border-spacing: 0;
+}
+
+/* line 28, ../../../../../Ruby23-x64/lib/ruby/gems/2.3.0/gems/compass-core-1.0.3/stylesheets/compass/reset/_utilities.scss */
+caption, th, td {
+    text-align: left;
+    font-weight: normal;
+    vertical-align: middle;
+}
+
+/* line 30, ../../../../../Ruby23-x64/lib/ruby/gems/2.3.0/gems/compass-core-1.0.3/stylesheets/compass/reset/_utilities.scss */
+q, blockquote {
+    quotes: none;
+}
+/* line 103, ../../../../../Ruby23-x64/lib/ruby/gems/2.3.0/gems/compass-core-1.0.3/stylesheets/compass/reset/_utilities.scss */
+q:before, q:after, blockquote:before, blockquote:after {
+    content: "";
+    content: none;
+}
+
+/* line 32, ../../../../../Ruby23-x64/lib/ruby/gems/2.3.0/gems/compass-core-1.0.3/stylesheets/compass/reset/_utilities.scss */
+a img {
+    border: none;
+}
+
+/* line 116, ../../../../../Ruby23-x64/lib/ruby/gems/2.3.0/gems/compass-core-1.0.3/stylesheets/compass/reset/_utilities.scss */
+article, aside, details, figcaption, figure, footer, header, hgroup, main, menu, nav, section, summary {
+    display: block;
+}
+
+/* line 1, ../sass/base.scss */
+* {
+    -moz-box-sizing: border-box;
+    -webkit-box-sizing: border-box;
+    box-sizing: border-box;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+}
+
+/* line 6, ../sass/base.scss */
+html {
+    font-size: 62.5%;
+}
+
+/* line 6, ../sass/hamburger.scss */
+input {
+    position: fixed;
+    opacity: 0;
+}
+
+/* line 11, ../sass/hamburger.scss */
+label {
+    position: absolute;
+    margin: 0;
+    padding: 0;
+    border: none;
+    outline: none;
+    background: none;
+    cursor: pointer;
+}
+/* line 19, ../sass/hamburger.scss */
+label::before {
+    position: fixed;
+    z-index: 1;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: rgba(107, 107, 107, 0.6);
+    content: '';
+    opacity: 0;
+    pointer-events: none;
+    transition: opacity 0.5s cubic-bezier(0.19, 1, 0.22, 1);
+}
+/* line 32, ../sass/hamburger.scss */
+label .burger {
+    position: fixed;
+    top: 4%;
+    left:10%;
+    z-index: 3;
+    width: 2em;
+    height: 2em;
+    margin: 0;
+    padding: 0;
+    transition: opacity 0.5s cubic-bezier(0.19, 1, 0.22, 1);
+}
+/* line 42, ../sass/hamburger.scss */
+label .burger::before,
+label .burger .bar, label .burger::after {
+    position: absolute;
+    left: 0;
+    display: block;
+    width: 100%;
+    height: 12%;
+    background: white;
+    content: '';
+    transition: all 0.5s cubic-bezier(0.19, 1, 0.22, 1);
+}
+/* line 54, ../sass/hamburger.scss */
+label .burger .bar {
+    top: 44%;
+    background-color: #000;
+}
+/* line 58, ../sass/hamburger.scss */
+label .burger::before {
+    top: 0;
+    transform-origin: top left;
+    background-color: #000;
+}
+/* line 63, ../sass/hamburger.scss */
+label .burger::after {
+    bottom: 0;
+    transform-origin: bottom left;
+    background-color: #000;
+}
+
+/* line 71, ../sass/hamburger.scss */
+label .burger .bar {
+    background-color: #000;
+}
+
+/* line 77, ../sass/hamburger.scss */
+input:focus + label .burger,
+label:hover .burger {
+    opacity: .75;
+}
+
+/* line 82, ../sass/hamburger.scss */
+nav {
+    position: fixed;
+    top: 0;
+    left: 0;
+    bottom: 0;
+    z-index: 2;
+    display: flex;
+    flex-flow: column nowrap;
+    justify-content: center;
+    align-items: flex-start;
+    transform: translate3d(0, 0, 0);
+    /* material acceleration */
+    transform: translateX(-100%);
+    will-change: transform;
+    transition: transform 0.5s cubic-bezier(0.19, 1, 0.22, 1);
+}
+/* line 96, ../sass/hamburger.scss */
+nav::before {
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    z-index: -1;
+    width: 25em;
+    background: #fbbf0a;
+    content: '';
+    transform: skewX(15deg) translateX(-100%);
+    transform-origin: bottom left;
+    will-change: transform;
+    transition: transform 0.5s cubic-bezier(0.19, 1, 0.22, 1);
+}
+@media (min-width: 40em) {
+    /* line 96, ../sass/hamburger.scss */
+    nav::before {
+        width: 40em;
+    }
+}
+/* line 113, ../sass/hamburger.scss */
+nav a {
+    margin: .5em 0;
+    padding: .2em 2em;
+    font-size: 1.5em;
+    color: white;
+    text-decoration: none;
+    font-weight: 500;
+    transform: translateX(-100%);
+    transition: color .15s, transform .5s;
+    transition-timing-function: cubic-bezier(0.19, 1, 0.22, 1);
+}
+/* line 124, ../sass/hamburger.scss */
+nav a:nth-child(1) {
+    transition-delay: 0s, 100ms;
+}
+/* line 124, ../sass/hamburger.scss */
+nav a:nth-child(2) {
+    transition-delay: 0s, 150ms;
+}
+/* line 124, ../sass/hamburger.scss */
+nav a:nth-child(3) {
+    transition-delay: 0s, 200ms;
+}
+/* line 124, ../sass/hamburger.scss */
+nav a:nth-child(4) {
+    transition-delay: 0s, 250ms;
+}
+/* line 124, ../sass/hamburger.scss */
+nav a:nth-child(5) {
+    transition-delay: 0s, 300ms;
+}
+/* line 124, ../sass/hamburger.scss */
+nav a:nth-child(6) {
+    transition-delay: 0s, 350ms;
+}
+/* line 126, ../sass/hamburger.scss */
+nav a:hover, nav a:focus {
+    color: black;
+}
+
+/* line 132, ../sass/hamburger.scss */
+main {
+    overflow: hidden;
+}
+/* line 134, ../sass/hamburger.scss */
+main .content {
+    transform: translate3d(0, 0, 0);
+    /* material acceleration */
+    will-change: transform, filter;
+    transition: all 0.5s cubic-bezier(0.19, 1, 0.22, 1);
+}
+
+/* line 143, ../sass/hamburger.scss */
+[id="navcheck"]:checked + label::before {
+    opacity: 1;
+    pointer-events: auto;
+}
+/* line 148, ../sass/hamburger.scss */
+[id="navcheck"]:checked + label .burger::before, [id="navcheck"]:checked + label .burger::after {
+    width: 141.42%;
+}
+/* line 152, ../sass/hamburger.scss */
+[id="navcheck"]:checked + label .burger::before {
+    transform: rotate(45deg) translateY(-50%);
+}
+/* line 155, ../sass/hamburger.scss */
+[id="navcheck"]:checked + label .burger::after {
+    transform: rotate(-45deg) translateY(50%);
+}
+/* line 158, ../sass/hamburger.scss */
+[id="navcheck"]:checked + label .burger .bar {
+    transform: scale(0.1);
+}
+/* line 163, ../sass/hamburger.scss */
+[id="navcheck"]:checked ~ nav {
+    transform: translateX(0);
+}
+/* line 165, ../sass/hamburger.scss */
+[id="navcheck"]:checked ~ nav::before {
+    transform: skewX(15deg) translateX(0);
+}
+/* line 168, ../sass/hamburger.scss */
+[id="navcheck"]:checked ~ nav a {
+    transform: translateX(0);
+}
+/* line 172, ../sass/hamburger.scss */
+[id="navcheck"]:checked ~ main .content {
+    transform: translateX(3em);
+    transform-origin: left center;
+    -webkit-filter: blur(2px);
+    filter: blur(2px);
+    /* quite laggy :S */
+}
+
+/* helper */
+/* line 181, ../sass/hamburger.scss */
+.visuallyhidden {
+    border: 0;
+    clip: rect(0 0 0 0);
+    height: 1px;
+    margin: -1px;
+    overflow: hidden;
+    padding: 0;
+    position: absolute;
+    width: 1px;
+}
+
+/* misc */
+/* line 3, ../sass/header.scss */
+body {
+    overflow-x: hidden;
+    background: #eaede6;
+    color: black;
+    font: 1em/1.4 "lato";
+}
+
+/* line 4, ../sass/header.scss */
+article {
+    width: 80%;
+    margin: 0 auto;
+    font-size: 1.3em;
+}
+@media (min-width: 60em) {
+    /* line 4, ../sass/header.scss */
+    article {
+        width: 50%;
+    }
+}
+
+/* line 5, ../sass/header.scss */
+h1 {
+    font: 2.5em/1.4 "roboto condensed";
+    font-weight: 700;
+}
+
+/* line 7, ../sass/header.scss */
+.container {
+    margin: 0 auto;
+    max-width: 100%;
+    max-height: 100%;
+}
+
+/* line 16, ../sass/header.scss */
+.button {
+    height: 50px;
+    color: #fff;
+    border-style: none;
+    width: 159px;
+    font-size: 18px;
+    opacity: 1;
+    position: relative;
+    padding: 0 80px 0 0;
+    display: inline;
+    clear: both;
+    border-radius: 20px;
+    background-color: white;
+    border: 2px solid black;
+}
+#formulaire {
+    text-align: center;
+    width: 400px;
+    background-color: #E0E0E0;
+    margin-right: auto;
+    margin-left: auto;
+    font-family: Avenir;
+}
+#titre_form {
+    margin-top: 20px;
+}
+label {
+    margin: 10px;
+}
+input {
+    margin-right: 0;
+}
+#contenu_fos_user_form div{
+    margin-top: 20px;
+
+}
+#contenu_fos_user_form{
+    background-color: aqua;
+    text-align :center;
+
+}
+#formulaire_layout{
+    background-color: #2f2f2f;
+    padding: 10px;
+    margin-top: 130px;
+    width: 600px;
+    margin-right: auto;
+    margin-left: auto;
+    font-size: 15px;
+    border-radius: 5%;
+
+}
+#formulaire_layout h2{
+    color: white;
+    text-align: center;
+    font-size: 20px;
+    font-family: Avenir;
+}
+#formulaire_layout h1{
+    color: #ffcc00;
+    text-align: center;
+    letter-spacing: 4px;
+    font-family: Avenir;
+}
+#formulaire_layout label{
+    position: initial;
+    display: block;
+}
+#formulaire_layout input{
+    opacity: 1;
+    position:initial;
+}
+#formulaire{
+    margin-top: 20px;
+    padding: 20px;
+}
+
+input[type="text"],
+input[type="email"],
+input[type="password"],
+textarea,
+textarea.form-control {
+    height: 50px;
+    margin: 0;
+    padding: 0 20px;
+    vertical-align: middle;
+    background: #f8f8f8;
+    border: 3px solid #ddd;
+    font-family: 'Roboto', sans-serif;
+    font-size: 16px;
+    font-weight: 300;
+    line-height: 50px;
+    color: #888;
+    -moz-border-radius: 4px; -webkit-border-radius: 4px; border-radius: 4px;
+    -moz-box-shadow: none; -webkit-box-shadow: none; box-shadow: none;
+    -o-transition: all .3s; -moz-transition: all .3s; -webkit-transition: all .3s; -ms-transition: all .3s; transition: all .3s;
+}
+
+textarea,
+textarea.form-control {
+    padding-top: 10px;
+    padding-bottom: 10px;
+    line-height: 30px;
+}
+
+input[type="text"]:focus,
+input[type="password"]:focus,
+textarea:focus,
+textarea.form-control:focus {
+    outline: 0;
+    background: #fff;
+    border: 3px solid #ccc;
+    -moz-box-shadow: none; -webkit-box-shadow: none; box-shadow: none;
+}
+
+input[type="text"]:-moz-placeholder, input[type="password"]:-moz-placeholder,
+textarea:-moz-placeholder, textarea.form-control:-moz-placeholder { color: #888; }
+
+input[type="text"]:-ms-input-placeholder, input[type="password"]:-ms-input-placeholder,
+textarea:-ms-input-placeholder, textarea.form-control:-ms-input-placeholder { color: #888; }
+
+input[type="text"]::-webkit-input-placeholder, input[type="password"]::-webkit-input-placeholder,
+textarea::-webkit-input-placeholder, textarea.form-control::-webkit-input-placeholder { color: #888; }
+
+input[type="submit"] {
+    cursor: pointer;
+    height: 50px;
+    margin: 10px;
+    padding: 0 20px;
+    vertical-align: middle;
+    background:#ffcc00;
+    border: 0;
+    font-family: 'Roboto', sans-serif;
+    font-size: 16px;
+    font-weight: 300;
+    line-height: 50px;
+    color: #fff;
+    -moz-border-radius: 4px; -webkit-border-radius: 4px; border-radius: 4px;
+    text-shadow: none;
+    -moz-box-shadow: none; -webkit-box-shadow: none; box-shadow: none;
+    -o-transition: all .3s; -moz-transition: all .3s; -webkit-transition: all .3s; -ms-transition: all .3s; transition: all .3s;
+}
+
+input[type="submit"]:hover { opacity: 0.6; color: #fff; }
+
+input[type="submit"]:active { outline: 0; opacity: 0.6; color: #fff; -moz-box-shadow: none; -webkit-box-shadow: none; box-shadow: none; }
+
+input[type="submit"]:focus { outline: 0; opacity: 0.6; background: #b69100; color: #fff; }
+
+input[type="submit"]:active:focus, input[type="submit"].active:focus { outline: 0; opacity: 0.6; background: #b69100; color: #fff; }
