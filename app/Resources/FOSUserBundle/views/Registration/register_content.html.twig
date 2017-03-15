@@ -1,12 +1,14 @@
 {% trans_default_domain 'FOSUserBundle' %}
 <h1>INSCRIPTION</h1>
 <h2 id="titre_form">Bonjour, veuillez vous inscrire.</h2>
-<div id="formulaire">
+<div id="profil">
     {{ form_start(form, {'method': 'post', 'action': path('fos_user_registration_register'), 'attr': {'class': 'fos_user_registration_register'}}) }}
     {{ form_widget(form) }}
     <div>
 
         <input type="submit" value="{{ 'registration.submit'|trans }}" />
+        <br>
+        <button><a href="{{ path('fos_user_security_login') }}">Déja inscrit?</a></button>
     </div>
     {{ form_end(form) }}
 </div>

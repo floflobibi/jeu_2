@@ -1,0 +1,31 @@
+<link rel="stylesheet" type="text/css" href="{{ asset('assets/css/styles.css') }}">
+<script src=" {{asset('assets/js/main.js') }}"></script>
+<div class="container">
+    <input type="checkbox" id="navcheck" role="button" title="menu">
+    <label for="navcheck" aria-hidden="true" title="menu">
+        <span class="burger">
+          <span class="bar">
+            <span class="visuallyhidden">Menu</span>
+            </span>
+        </span>
+    </label>
+
+    <nav id="menu">
+        <a href="{{ path('homepage') }}">Le jeu</a>
+        {% if is_granted("IS_AUTHENTICATED_REMEMBERED") %}
+
+            <a href="{{ path('fos_user_profile_show') }}">{{ 'layout.logged_in_as'|trans({'%username%': app.user.username}, 'FOSUserBundle') }} |</a>
+            <a href="{{ path('fos_user_security_logout') }}">
+                {{ 'layout.logout'|trans({}, 'FOSUserBundle') }}</a>
+        {% else %}
+            <a href="{{ path('fos_user_security_login') }}">{{ 'layout.login'|trans({}, 'FOSUserBundle') }}</a>
+            <a href="{{ path('fos_user_registration_register')}}">S'inscrire</a>
+        {% endif %}
+        <a href="{{ path('classement') }}">Classement</a>
+        <a href="{{ path('playlist') }}">Playlist</a>
+    </nav>
+    <p class="annonce">Notre sélection musicale sera bientôt disponible !</p>
+    <div id="waveback" style="transform: matrix(1, 0, 0, 2, 0, 0);"><div class="top"></div><div class="bottom"></div></div>
+    <canvas id="wave" width="1723" ,="" height="377" style="width: 1723px; height: 377.333px; transform: matrix(1, 0, 0, 1, 0, 377.5);"></canvas>
+    <img class="logo" src="{{asset('assets/img/logo.png') }}"></div>
+</div>

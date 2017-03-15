@@ -26,8 +26,8 @@
                 <a href="{{ path('fos_user_security_login') }}">{{ 'layout.login'|trans({}, 'FOSUserBundle') }}</a>
                 <a href="{{ path('fos_user_registration_register')}}">S'inscrire</a>
             {% endif %}
-            <a href="#">Classement</a>
-            <a href="#">Playlist</a>
+            <a href="{{ path('classement') }}">Classement</a>
+            <a href="{{ path('playlist') }}">Playlist</a>
         </nav>
 
         <img class="logo" src="{{asset('assets/img/logo.png') }}"></div>

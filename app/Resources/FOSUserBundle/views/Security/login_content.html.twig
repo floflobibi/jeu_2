@@ -5,7 +5,7 @@
 {% endif %}
 <h1>CONNEXION</h1>
 <h2 id="titre_form">Bonjour, veuillez vous connecter.</h2>
-<div id="formulaire">
+<div id="profil">
     <form action="{{ path("fos_user_security_check") }}" method="post">
         {% if csrf_token %}
             <input type="hidden" name="_csrf_token" value="{{ csrf_token }}" />
@@ -22,7 +22,11 @@
             <input type="checkbox" id="remember_me" name="_remember_me" value="on" />
             <label for="remember_me">{{ 'security.login.remember_me'|trans }}</label>
         </div>
-        <input type="submit" id="_submit" name="_submit" value="{{ 'security.login.submit'|trans }}" />
+        <input type="submit" id="_submit" name="_submit" value="{{ 'security.login.submit'|trans }}" /><br>
+        <button><a href="{{ path('fos_user_resetting_request') }}">Mot de passe oublié?</a></button>
+        <br>
+        <button><a href="{{ path('fos_user_security_logout') }}">Pas encore inscrit?</a></button>
+
     </form>
 </div>
 
