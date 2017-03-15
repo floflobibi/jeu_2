@@ -23,11 +23,11 @@
             <label for="remember_me">{{ 'security.login.remember_me'|trans }}</label>
         </div>
         <input type="submit" id="_submit" name="_submit" value="{{ 'security.login.submit'|trans }}" /><br>
-        <button><a href="{{ path('fos_user_resetting_request') }}">Mot de passe oublié?</a></button>
-        <br>
-        <button><a href="{{ path('fos_user_security_logout') }}">Pas encore inscrit?</a></button>
 
     </form>
+    <button><a href="{{ path('fos_user_resetting_request') }}">Mot de passe oublié?</a></button>
+    <br>
+    <button><a href="{{ path('fos_user_security_logout') }}">Pas encore inscrit?</a></button>
 </div>
 
 
