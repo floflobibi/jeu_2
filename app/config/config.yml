@@ -76,3 +76,7 @@ fos_user:
     from_email:
         address: "florine-bignon@orange.fr"
         sender_name: "Florine"
+
+easy_admin:
+  entities:
+      - AppBundle\Entity\User
