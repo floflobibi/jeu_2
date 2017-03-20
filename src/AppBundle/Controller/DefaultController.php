@@ -29,4 +29,11 @@ class DefaultController extends Controller
     {
         return $this->render('AppBundle:Default:playlist.html.twig');
     }
+    /**
+     * @Route("/plateau", name="plateau")
+     */
+    public function jeuAction()
+    {
+        return $this->render('AppBundle:Default:jeu.html.twig');
+    }
 }
