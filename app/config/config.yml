@@ -80,6 +80,10 @@ fos_user:
 easy_admin:
   entities:
       - AppBundle\Entity\User
+      - AppBundle\Entity\instruments
+      - AppBundle\Entity\partie
+      - AppBundle\Entity\situation_de_jeu
+      - AppBundle\Entity\jouer
   site_name: 'administration du jeu'
   design:
       assets :
