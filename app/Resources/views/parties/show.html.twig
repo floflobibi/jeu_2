@@ -1,0 +1,48 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+    <h1>Party</h1>
+
+    <table>
+        <tbody>
+        <tr>
+            <th>Id</th>
+            <td>{{ party.id }}</td>
+        </tr>
+        <tr>
+            <th>Debut</th>
+            <td>{% if party.debut %}{{ party.debut|date('Y-m-d H:i:s') }}{% endif %}</td>
+        </tr>
+        <tr>
+            <th>Fin</th>
+            <td>{% if party.fin %}{{ party.fin|date('Y-m-d H:i:s') }}{% endif %}</td>
+        </tr>
+        <tr>
+            <th>Pointj1</th>
+            <td>{{ party.pointJ1 }}</td>
+        </tr>
+        <tr>
+            <th>Pointj2</th>
+            <td>{{ party.pointJ2 }}</td>
+        </tr>
+        <tr>
+            <th>Tourde</th>
+            <td>{{ party.tourde }}</td>
+        </tr>
+        </tbody>
+    </table>
+
+    <ul>
+        <li>
+            <a href="{{ path('admin_parties_index') }}">Back to the list</a>
+        </li>
+        <li>
+            <a href="{{ path('admin_parties_edit', { 'id': party.id }) }}">Edit</a>
+        </li>
+        <li>
+            {{ form_start(delete_form) }}
+            <input type="submit" value="Delete">
+            {{ form_end(delete_form) }}
+        </li>
+    </ul>
+{% endblock %}

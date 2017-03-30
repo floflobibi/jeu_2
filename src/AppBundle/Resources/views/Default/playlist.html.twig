@@ -13,7 +13,7 @@
     <nav id="menu">
         <a href="{{ path('homepage') }}">Le jeu</a>
         {% if is_granted("IS_AUTHENTICATED_REMEMBERED") %}
-
+            <a href="{{ path('joueur_homepage') }}">Mon espace joueur</a>
             <a href="{{ path('fos_user_profile_show') }}">{{ 'layout.logged_in_as'|trans({'%username%': app.user.username}, 'FOSUserBundle') }} |</a>
             <a href="{{ path('fos_user_security_logout') }}">
                 {{ 'layout.logout'|trans({}, 'FOSUserBundle') }}</a>

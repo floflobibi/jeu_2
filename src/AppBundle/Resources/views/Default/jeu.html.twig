@@ -13,7 +13,7 @@
     <nav id="menu">
         <a href="{{ path('plateau') }}">Le jeu</a>
         {% if is_granted("IS_AUTHENTICATED_REMEMBERED") %}
-
+            <a href="{{ path('joueur_homepage') }}">Mon espace joueur</a>
             <a href="{{ path('fos_user_profile_show') }}">{{ 'layout.logged_in_as'|trans({'%username%': app.user.username}, 'FOSUserBundle') }} |</a>
             <a href="{{ path('fos_user_security_logout') }}">
                 {{ 'layout.logout'|trans({}, 'FOSUserBundle') }}</a>
@@ -24,7 +24,6 @@
         <a href="{{ path('classement') }}">Classement</a>
         <a href="{{ path('playlist') }}">Playlist</a>
     </nav>
-    <div id="waveback" style="transform: matrix(1, 0, 0, 2, 0, 0);"><div class="top"></div><div class="bottom"></div></div>
-    <canvas id="wave" width="1723" ,="" height="377" style="width: 1723px; height: 377.333px; transform: matrix(1, 0, 0, 1, 0, 377.5);"></canvas>
     <img class="logo" src="{{asset('assets/img/logo.png') }}"></div>
+
 </div>

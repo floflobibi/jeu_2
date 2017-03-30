@@ -1,0 +1,116 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+    <h1>Partie entre {{ partie.joueur1.username }} et {{ partie.joueur2.username }}</h1>
+
+    <div>
+        <button type="submit" value="valid_action">Validez votre action</button>
+    </div>
+    <div>
+        <h2>Cartes du joueur 1</h2>
+        <ul>
+            {% for carte in plateau.mainJ1 %}
+                <li><input value="{{ cartes[carte].id }}" type="radio">{{ cartes[carte].categorie.libelle }} {{ cartes[carte].type }} {{ cartes[carte].valeur }}</li>
+            {% endfor %}
+        </ul>
+    </div>
+
+    <div>
+        <h2>Cartes du joueur 2</h2>
+        <ul>
+            {% for carte in plateau.mainJ2 %}
+                <li>{{ cartes[carte].categorie.libelle }} {{ cartes[carte].type }} {{ cartes[carte].valeur }}</li>
+            {% endfor %}
+        </ul>
+    </div>
+    <hr>
+    <div>
+        <h2>Cordes</h2>
+        <div>
+            <h3>Cartes posées par Joueur 1</h3>
+            <ul>
+                <input value="corde" type="radio">
+            </ul>
+        </div>
+        <div>
+            <h3>Cartes posées par Joueur 2</h3>
+
+        </div>
+        <div>
+            <h3>Défausse</h3>
+            <ul>
+                <input value="corde_defausse" type="radio">
+            </ul>
+
+        </div>
+    </div>
+    <div>
+        <h2>Clavier</h2>
+        <div>
+            <h3>Cartes posées par Joueur 1</h3>
+            <ul>
+                <input value="clavier" type="radio">
+            </ul>
+        </div>
+        <div>
+            <h3>Cartes posées par Joueur 2</h3>
+        </div>
+        <div>
+            <h3>Défausse</h3>
+        </div>
+    </div>
+    <div>
+        <h2>Bois</h2>
+        <div>
+            <h3>Cartes posées par Joueur 1</h3>
+            <ul>
+                <input value="bois" type="radio">
+            </ul>
+        </div>
+        <div>
+            <h3>Cartes posées par Joueur 2</h3>
+        </div>
+        <div>
+            <h3>Défausse</h3>
+        </div>
+    </div>
+    <div>
+        <h2>Cuivre</h2>
+        <div>
+            <h3>Cartes posées par Joueur 1</h3>
+            <ul>
+                <input value="corde" type="radio">
+            </ul>
+        </div>
+        <div>
+            <h3>Cartes posées par Joueur 2</h3>
+        </div>
+        <div>
+            <h3>Défausse</h3>
+        </div>
+    </div>
+    <div>
+        <h2>Percussion</h2>
+        <div>
+            <h3>Cartes posées par Joueur 1</h3>
+            <ul>
+                <input value="percussion" type="radio">
+            </ul>
+        </div>
+        <div>
+            <h3>Cartes posées par Joueur 2</h3>
+        </div>
+        <div>
+            <h3>Défausse</h3>
+        </div>
+    </div>
+    <hr>
+    <div>
+        <h2>Pioche</h2>
+        <div>
+            <button type="submit">Récupérer votre carte</button>
+        </div>
+    </div>
+
+
+{% endblock %}
