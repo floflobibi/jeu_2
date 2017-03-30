@@ -7,3 +7,22 @@ services:
 #    service_name:
 #        class: AppBundle\Directory\ClassName
 #        arguments: ["@another_service_name", "plain_value", "%parameter_name%"]
+
+easy_admin:
+    entities:
+        User:
+            class: AppBundle\Entity\User
+            form:
+                fields:
+
+                    - username
+                    - email
+                    - { property: 'Password', type: 'text', type_options: { required: false } }
+
+                    - { property: 'roles', type: 'choice', type_options: { multiple: true, choices: { 'ROLE_USER': 'ROLE_USER', 'ROLE_ADMIN': 'ROLE_ADMIN' } } }
+            show:
+                fields:
+                    - username
+                    - email
+                    - roles
+                    - password
