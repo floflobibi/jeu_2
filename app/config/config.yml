@@ -88,3 +88,10 @@ easy_admin:
       assets :
           css:
               - 'assets/css/admin.css'
+      menu :
+          - { label: 'Retour sur le site', url:'http://149.91.83.82/jeu/'}
+          - { entity: 'User', icon: 'user'}
+          - { entity: 'Cartes', icon: 'user'}
+          - { entity: 'Categories', icon: 'user'}
+          - { entity: 'Parties', icon: 'user'}
+          - { entity: 'Situation', icon: 'user'}
