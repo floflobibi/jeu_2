@@ -43,7 +43,7 @@ class JoueurController extends Controller
         $user = $this->getUser();
         // récupérer tous les joueurs existants
         $joueurs = $this->getDoctrine()->getRepository('AppBundle:User')->findAll();
-        return $this->render("joueur/addPartie.html.twig", ['user' => $user, 'joueurs' => $joueurs]);
+        return $this->render("joueur/addpartie.html.twig", ['user' => $user, 'joueurs' => $joueurs]);
     }
     /**
      * @param User $id
