@@ -14,11 +14,9 @@ easy_admin:
             class: AppBundle\Entity\User
             form:
                 fields:
-
                     - username
                     - email
                     - { property: 'Password', type: 'text', type_options: { required: false } }
-
                     - { property: 'roles', type: 'choice', type_options: { multiple: true, choices: { 'ROLE_USER': 'ROLE_USER', 'ROLE_ADMIN': 'ROLE_ADMIN' } } }
             show:
                 fields:

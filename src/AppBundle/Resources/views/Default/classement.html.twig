@@ -21,6 +21,9 @@
             <a href="{{ path('fos_user_security_login') }}">{{ 'layout.login'|trans({}, 'FOSUserBundle') }}</a>
             <a href="{{ path('fos_user_registration_register')}}">S'inscrire</a>
         {% endif %}
+        {% if is_granted('ROLE_ADMIN') %}
+            <a href="{{ path('admin') }}">Administration</a>
+        {% endif %}
         <a href="{{ path('classement') }}">Classement</a>
         <a href="{{ path('playlist') }}">Playlist</a>
     </nav>
