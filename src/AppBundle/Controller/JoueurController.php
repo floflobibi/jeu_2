@@ -52,14 +52,7 @@ class JoueurController extends Controller
     public function creerPartieAction(User $joueur)
     {
         $user = $this->getUser();
-        $partie = new Parties();
-        $partie->setJoueur1($user);
-        $partie->setJoueur2($joueur);
-        $em = $this->getDoctrine()->getManager();
-        $em->persist($partie);
-        $em->flush();
         $situation = new Situation();
-        $situation->setPartie($partie);
         // récupérer les cartes
         $cartes = $this->getDoctrine()->getRepository('AppBundle:Cartes')->findAll();
         //on mélange les cartes
@@ -82,9 +75,21 @@ class JoueurController extends Controller
             $t[] = $cartes[$i]->getId();
         }
         $situation->setPioche(json_encode($t));
+
+        $em = $this->getDoctrine()->getManager();
+
         $em->persist($situation);
         $em->flush();
-        return $this->render('joueur/partie.html.twig', ['partie' => $partie]);
+
+        $partie = new Parties();
+        $partie->setJoueur1($user);
+        $partie->setJoueur2($joueur);
+        $partie->setSituation($situation);
+
+        $em->persist($partie);
+        $em->flush();
+        return $this->redirectToRoute('afficher_partie', ['id' => $partie->getId()]);
+        //return $this->render('joueur/partie.html.twig', ['partie' => $partie]);
     }
 
     /**
@@ -95,15 +100,18 @@ class JoueurController extends Controller
     {
         $cartes = $this->getDoctrine()->getRepository('AppBundle:Cartes')->getAll();
         $user = $this->getUser();
+
         $situation = $id->getSituation();
         $plateau['mainJ1'] = json_decode($situation->getMainJ1());
         $plateau['mainJ2'] = json_decode($situation->getMainJ2());
         $plateau['pioche'] = json_decode($situation->getPioche());
+
+        $tour = $id->getTourde();
+
         //$plateau['cartesPoseesJ1'] = json_decode($situation->getCartesPoseesJ1());
         //$plateau['cartesPoseesJ2'] = json_decode($situation->getCartesPoseesJ2());
 
-
-        return $this->render(':joueur:afficherpartie.html.twig', ['cartes' => $cartes, 'partie' => $id, 'user' => $user, 'plateau' => $plateau]);
+        return $this->render(':joueur:afficherpartie.html.twig', ['cartes' => $cartes, 'partie' => $id, 'user' => $user, 'plateau' => $plateau, 'tour' => $tour]);
 
     }
 
