@@ -630,7 +630,9 @@ class JoueurController extends Controller
                     $dernière_carte_de_cette_categorie = $this -> derniereValeur($plateau['poseesj1_cat1']);
                     if ($plateau['pointj1_cat1'] == 0){
                         $plateau['pointj1_cat1'] -= 20;
+                        $plateau['pointj1_cat1'] += $valeur_carte_ajoutee;
                         $id->setPointJ1_cat1($plateau['pointj1_cat1']);
+                        $plateau['pointj1'] += $valeur_carte_ajoutee;
                         $plateau['pointj1'] -= 20;
                         $id->setPointJ1($plateau['pointj1']);
                         array_push( $plateau['poseesj1_cat1'],$cartecheck);
@@ -642,6 +644,7 @@ class JoueurController extends Controller
                         //Récupérer la valeur de cette dernière carte
                         $precedenteValeur = $cartes[$dernière_carte_de_cette_categorie]->getValeur();
                         //dump($precedenteValeur);
+                        $il_y_a_une_extra_dans_le_tas = true;
 
                         if ($precedenteValeur <= $valeur_carte_ajoutee){
                             if ($type_carte_ajoutee == 'extra'){
@@ -655,6 +658,14 @@ class JoueurController extends Controller
                             }
                             array_push( $plateau['poseesj1_cat1'],$cartecheck);
                             $nepaschangerlamain = true ;
+                            if($il_y_a_une_extra_dans_le_tas == true){
+                                //Compter combien il y en a dans le tas
+
+                                // Doublier les points de la categorie
+
+                                // Rajouter la différence dans pointj1
+
+                            }
                         }
                     }
 
@@ -665,8 +676,10 @@ class JoueurController extends Controller
                     $dernière_carte_de_cette_categorie = $this->derniereValeur($plateau['poseesj1_cat2']);
                     if ($plateau['pointj1_cat2'] == 0){
                         $plateau['pointj1_cat2'] -= 20;
+                        $plateau['pointj1_cat2'] += $valeur_carte_ajoutee;
                         $id->setPointJ1_cat2($plateau['pointj1_cat2']);
                         $plateau['pointj1'] -= 20;
+                        $plateau['pointj1'] += $valeur_carte_ajoutee;
                         $id->setPointJ1($plateau['pointj1']);
                         array_push( $plateau['poseesj1_cat2'],$cartecheck);
                         $nepaschangerlamain = true ;
@@ -702,8 +715,10 @@ class JoueurController extends Controller
                     $dernière_carte_de_cette_categorie = $this -> derniereValeur($plateau['poseesj1_cat3']);
                     if ($plateau['pointj1_cat3'] == 0){
                         $plateau['pointj1_cat3'] -= 20;
+                        $plateau['pointj1_cat3'] += $valeur_carte_ajoutee;
                         $id->setPointJ1_cat3($plateau['pointj1_cat3']);
                         $plateau['pointj1'] -= 20;
+                        $plateau['pointj1'] += $valeur_carte_ajoutee;
                         $id->setPointJ1($plateau['pointj1']);
                         array_push($plateau['poseesj1_cat3'], $cartecheck);
                         $nepaschangerlamain = true ;
@@ -736,8 +751,10 @@ class JoueurController extends Controller
                     $dernière_carte_de_cette_categorie = $this->derniereValeur($plateau['poseesj1_cat4']);
                     if ($plateau['pointj1_cat4'] == 0){
                         $plateau['pointj1_cat4'] -= 20;
+                        $plateau['pointj1_cat4'] += $valeur_carte_ajoutee;
                         $id->setPointJ1_cat4($plateau['pointj1_cat4']);
                         $plateau['pointj1'] -= 20;
+                        $plateau['pointj1'] += $valeur_carte_ajoutee;
                         $id->setPointJ1($plateau['pointj1']);
                         array_push( $plateau['poseesj1_cat4'],$cartecheck);
                         $nepaschangerlamain = true ;
@@ -772,8 +789,11 @@ class JoueurController extends Controller
 
                     if ($plateau['pointj1_cat5'] == 0){
                         $plateau['pointj1_cat5'] -= 20;
+                        $plateau['pointj1_cat5'] += $valeur_carte_ajoutee;
                         $id->setPointJ1_cat5($plateau['pointj1_cat5']);
                         $plateau['pointj1'] -= 20;
+                        $plateau['pointj1'] += $valeur_carte_ajoutee;
+
                         $id->setPointJ1($plateau['pointj1']);
                         array_push( $plateau['poseesj1_cat5'],$cartecheck);
                         $nepaschangerlamain = true ;
@@ -891,8 +911,10 @@ class JoueurController extends Controller
                     $dernière_carte_de_cette_categorie = $this -> derniereValeur($plateau['poseesj2_cat1']);
                     if ($plateau['pointj2_cat1'] == 0){
                         $plateau['pointj2_cat1'] -= 20;
+                        $plateau['pointj2_cat1'] += $valeur_carte_ajoutee;
                         $id->setPointJ2_cat1($plateau['pointj2_cat1']);
                         $plateau['pointj2'] -= 20;
+                        $plateau['pointj2'] += $valeur_carte_ajoutee;
                         $id->setPointJ2($plateau['pointj2']);
                         array_push( $plateau['poseesj2_cat1'],$cartecheck);
                         $nepaschangerlamain = true ;
@@ -926,8 +948,10 @@ class JoueurController extends Controller
                     $dernière_carte_de_cette_categorie = $this->derniereValeur($plateau['poseesj2_cat2']);
                     if ($plateau['pointj2_cat2'] == 0){
                         $plateau['pointj2_cat2'] -= 20;
+                        $plateau['pointj2_cat2'] += $valeur_carte_ajoutee;
                         $id->setPointJ2_cat2($plateau['pointj2_cat2']);
                         $plateau['pointj2'] -= 20;
+                        $plateau['pointj2'] += $valeur_carte_ajoutee;
                         $id->setPointJ2($plateau['pointj2']);
                         array_push( $plateau['poseesj2_cat2'],$cartecheck);
                         $nepaschangerlamain = true;
@@ -964,8 +988,10 @@ class JoueurController extends Controller
                     $dernière_carte_de_cette_categorie = $this -> derniereValeur($plateau['poseesj2_cat3']);
                     if ($plateau['pointj2_cat3'] == 0){
                         $plateau['pointj2_cat3'] -= 20;
+                        $plateau['pointj2_cat3'] += $valeur_carte_ajoutee;
                         $id->setPointJ2_cat3($plateau['pointj2_cat3']);
                         $plateau['pointj2'] -= 20;
+                        $plateau['pointj2'] += $valeur_carte_ajoutee;
                         $id->setPointJ2($plateau['pointj2']);
                         array_push($plateau['poseesj2_cat3'], $cartecheck);
                         $nepaschangerlamain = true;
@@ -1001,8 +1027,10 @@ class JoueurController extends Controller
                     $dernière_carte_de_cette_categorie = $this->derniereValeur($plateau['poseesj2_cat4']);
                     if ($plateau['pointj2_cat4'] == 0){
                         $plateau['pointj2_cat4'] -= 20;
+                        $plateau['pointj2_cat4'] += $valeur_carte_ajoutee;
                         $id->setPointJ2_cat4($plateau['pointj2_cat4']);
                         $plateau['pointj2'] -= 20;
+                        $plateau['pointj2'] += $valeur_carte_ajoutee;
                         $id->setPointJ2($plateau['pointj2']);
                         array_push( $plateau['poseesj2_cat4'],$cartecheck);
                         $nepaschangerlamain = true ;
@@ -1038,8 +1066,10 @@ class JoueurController extends Controller
 
                     if ($plateau['pointj2_cat5'] == 0){
                         $plateau['pointj2_cat5'] -= 20;
+                        $plateau['pointj2_cat5'] += $valeur_carte_ajoutee;
                         $id->setPointJ2_cat5($plateau['pointj2_cat5']);
                         $plateau['pointj2'] -= 20;
+                        $plateau['pointj2'] += $valeur_carte_ajoutee;
                         $id->setPointJ2($plateau['pointj2']);
                         array_push( $plateau['poseesj2_cat5'],$cartecheck);
                         $nepaschangerlamain = true ;

@@ -242,7 +242,7 @@
         <div>
     {% if tour==user.id and (nbcartesj1<8 or nbcartesj2<8) %}
         {% if nbcartespioche>0 %}
-            <a href="{{ path('piocher_partie', {id:partie.id}) }}">Récupérer votre carte</a>
+            <a href="{{ path('piocher_partie', {id:partie.id}) }}"><button>Récupérer depuis la pioche</button></a>
             <button type="submit" form="2" value="valid_action">Récuperez depuis la defausse</button>
         {% else %}
             <p>Fin du game</p>
