@@ -1089,11 +1089,18 @@ class JoueurController extends Controller
             //Les bails pour que ça marche
             $em->persist($situation);
             $em->flush();
+
+
             //UPDATE LA MAIN DU JOUEUR
+
             $mainj2 = array();
             $mainj2 = $plateau['mainJ2'];
-
-            $nouvellemainj2 = $this->supprimeCarteMain($mainj2,$cartecheck);
+            if ($nepaschangerlamain == false){
+                $nouvellemainj2 = $mainj2 ;
+            }
+            if ($nepaschangerlamain == true ){
+                $nouvellemainj2 = $this->supprimeCarteMain($mainj2,$cartecheck);
+            }
 
             $em = $this->getDoctrine()->getManager();
             $nouvellemainj2encode = json_encode($nouvellemainj2);

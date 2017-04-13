@@ -2,7 +2,6 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="102bd809-8df4-4e7e-8148-9d561e586a61" name="Default" comment="">
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/AppBundle/Controller/JoueurController.php" afterPath="$PROJECT_DIR$/src/AppBundle/Controller/JoueurController.php" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
@@ -35,8 +34,8 @@
       <file leaf-file-name="JoueurController.php" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/AppBundle/Controller/JoueurController.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="178">
-              <caret line="978" column="52" lean-forward="false" selection-start-line="978" selection-start-column="52" selection-end-line="978" selection-end-column="52" />
+            <state relative-caret-position="510">
+              <caret line="1102" column="13" lean-forward="true" selection-start-line="1102" selection-start-column="13" selection-end-line="1102" selection-end-column="13" />
               <folding>
                 <element signature="e#956#1024#0#PHP" expanded="false" />
                 <element signature="e#1029#1343#0#PHP" expanded="false" />
@@ -120,10 +119,8 @@
                 <element signature="e#38224#40099#0#PHP" expanded="false" />
                 <element signature="e#40164#42040#0#PHP" expanded="false" />
                 <element signature="e#42105#43866#0#PHP" expanded="false" />
-                <element signature="e#43930#45806#0#PHP" expanded="false" />
-                <element signature="e#45871#47748#0#PHP" expanded="false" />
                 <element signature="e#47814#49205#0#PHP" expanded="false" />
-                <element signature="e#50775#51013#0#PHP" expanded="false" />
+                <element signature="e#50947#51185#0#PHP" expanded="false" />
               </folding>
             </state>
           </provider>
@@ -356,7 +353,7 @@
   </component>
   <component name="ProjectFrameBounds">
     <option name="x" value="-8" />
-    <option name="width" value="982" />
+    <option name="width" value="976" />
     <option name="height" value="1038" />
   </component>
   <component name="ProjectLevelVcsManager">
@@ -856,12 +853,12 @@
       <workItem from="1491462737104" duration="40649000" />
       <workItem from="1491655872759" duration="3404000" />
       <workItem from="1491825995373" duration="33375000" />
-      <workItem from="1491982873720" duration="11896000" />
+      <workItem from="1491982873720" duration="13258000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="224320000" />
+    <option name="totallyTimeSpent" value="225682000" />
   </component>
   <component name="TodoView">
     <todo-panel id="selected-file">
@@ -873,7 +870,7 @@
     </todo-panel>
   </component>
   <component name="ToolWindowManager">
-    <frame x="-8" y="0" width="982" height="1038" extended-state="1" />
+    <frame x="-8" y="0" width="976" height="1038" extended-state="0" />
     <editor active="true" />
     <layout>
       <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.061844863" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
@@ -935,7 +932,7 @@
         </line-breakpoint>
         <line-breakpoint enabled="true" type="php">
           <url>file://$PROJECT_DIR$/src/AppBundle/Controller/JoueurController.php</url>
-          <line>1105</line>
+          <line>1112</line>
           <option name="timeStamp" value="14" />
         </line-breakpoint>
       </breakpoints>
@@ -1306,8 +1303,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/AppBundle/Controller/JoueurController.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="178">
-          <caret line="978" column="52" lean-forward="false" selection-start-line="978" selection-start-column="52" selection-end-line="978" selection-end-column="52" />
+        <state relative-caret-position="510">
+          <caret line="1102" column="13" lean-forward="true" selection-start-line="1102" selection-start-column="13" selection-end-line="1102" selection-end-column="13" />
           <folding>
             <element signature="e#956#1024#0#PHP" expanded="false" />
             <element signature="e#1029#1343#0#PHP" expanded="false" />
@@ -1391,10 +1388,8 @@
             <element signature="e#38224#40099#0#PHP" expanded="false" />
             <element signature="e#40164#42040#0#PHP" expanded="false" />
             <element signature="e#42105#43866#0#PHP" expanded="false" />
-            <element signature="e#43930#45806#0#PHP" expanded="false" />
-            <element signature="e#45871#47748#0#PHP" expanded="false" />
             <element signature="e#47814#49205#0#PHP" expanded="false" />
-            <element signature="e#50775#51013#0#PHP" expanded="false" />
+            <element signature="e#50947#51185#0#PHP" expanded="false" />
           </folding>
         </state>
       </provider>
