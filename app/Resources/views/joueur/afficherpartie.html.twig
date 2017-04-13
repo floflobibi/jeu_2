@@ -48,7 +48,7 @@
                     {% for carte in plateau.mainJ1 %}
 
                             <td>
-                                <input name="cartecheck" value="{{ cartes[carte].id }}" type="radio">
+                                <input name="cartecheck" value="{{ cartes[carte].id }}" required type="radio">
                             </td>
 
                     {% endfor %}
@@ -79,7 +79,7 @@
                         <td>Les placer</td>
                         {% for carte in plateau.mainJ2 %}
 
-                                <td><input name="cartecheck" value="{{ cartes[carte].id }}" type="radio"></td>
+                                <td><input name="cartecheck" value="{{ cartes[carte].id }}" required type="radio"></td>
 
                         {% endfor %}
                     </tr>
@@ -228,11 +228,11 @@
         <table border="solid">
         <tr>
                 <td>Récupérer Défausse</td>
-                <td><input name="defausse" value="1" type="radio"></td>
-                <td><input name="defausse" value="2" type="radio"></td>
-                <td><input name="defausse" value="3" type="radio"></td>
-                <td><input name="defausse" value="4" type="radio"></td>
-                <td><input name="defausse" value="5" type="radio"></td>
+                <td><input name="defausse" required value="1" type="radio"></td>
+                <td><input name="defausse" required value="2" type="radio"></td>
+                <td><input name="defausse" required value="3" type="radio"></td>
+                <td><input name="defausse" required value="4" type="radio"></td>
+                <td><input name="defausse" required value="5" type="radio"></td>
         </tr>
         </table>
     </form>

@@ -2,7 +2,7 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="102bd809-8df4-4e7e-8148-9d561e586a61" name="Default" comment="">
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/AppBundle/Controller/JoueurController.php" afterPath="$PROJECT_DIR$/src/AppBundle/Controller/JoueurController.php" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/Resources/views/joueur/afficherpartie.html.twig" afterPath="$PROJECT_DIR$/app/Resources/views/joueur/afficherpartie.html.twig" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="TRACKING_ENABLED" value="true" />
@@ -31,11 +31,11 @@
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="375">
-      <file leaf-file-name="JoueurController.php" pinned="false" current-in-tab="true">
+      <file leaf-file-name="JoueurController.php" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/AppBundle/Controller/JoueurController.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="551">
-              <caret line="358" column="41" lean-forward="false" selection-start-line="358" selection-start-column="41" selection-end-line="358" selection-end-column="41" />
+            <state relative-caret-position="483">
+              <caret line="327" column="35" lean-forward="true" selection-start-line="327" selection-start-column="35" selection-end-line="327" selection-end-column="35" />
               <folding>
                 <element signature="e#956#1024#0#PHP" expanded="false" />
                 <element signature="e#1029#1343#0#PHP" expanded="false" />
@@ -79,6 +79,10 @@
                 <element signature="e#14043#14258#0#PHP" expanded="false" />
                 <element signature="e#14303#14518#0#PHP" expanded="false" />
                 <element signature="e#14563#14778#0#PHP" expanded="false" />
+                <element signature="e#15599#15719#0#PHP" expanded="false" />
+                <element signature="e#15779#15899#0#PHP" expanded="false" />
+                <element signature="e#15959#16079#0#PHP" expanded="false" />
+                <element signature="e#16139#16259#0#PHP" expanded="false" />
                 <element signature="e#18597#18684#0#PHP" expanded="false" />
                 <element signature="e#18689#51309#0#PHP" expanded="false" />
                 <element signature="e#19098#19392#0#PHP" expanded="false" />
@@ -132,23 +136,23 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="afficherpartie.html.twig" pinned="false" current-in-tab="false">
+      <file leaf-file-name="afficherpartie.html.twig" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/app/Resources/views/joueur/afficherpartie.html.twig">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="440">
-              <caret line="23" column="0" lean-forward="false" selection-start-line="23" selection-start-column="0" selection-end-line="23" selection-end-column="0" />
+            <state relative-caret-position="-4">
+              <caret line="50" column="97" lean-forward="false" selection-start-line="50" selection-start-column="97" selection-end-line="50" selection-end-column="97" />
               <folding>
-                <element signature="e#4033#4261#0#HTML" expanded="false" />
-                <element signature="e#4274#4502#0#HTML" expanded="false" />
-                <element signature="e#4515#4741#0#HTML" expanded="false" />
-                <element signature="e#4754#5080#0#HTML" expanded="false" />
-                <element signature="e#4775#5062#0#Twig" expanded="false" />
-                <element signature="e#5093#5319#0#HTML" expanded="false" />
-                <element signature="e#5114#5301#0#Twig" expanded="false" />
-                <element signature="e#5343#5683#0#HTML" expanded="false" />
-                <element signature="e#5692#6031#0#HTML" expanded="false" />
-                <element signature="e#6040#7295#0#HTML" expanded="false" />
-                <element signature="e#7304#8527#0#HTML" expanded="false" />
+                <element signature="e#4051#4279#0#HTML" expanded="false" />
+                <element signature="e#4292#4520#0#HTML" expanded="false" />
+                <element signature="e#4533#4759#0#HTML" expanded="false" />
+                <element signature="e#4772#5098#0#HTML" expanded="false" />
+                <element signature="e#4793#5080#0#Twig" expanded="false" />
+                <element signature="e#5111#5337#0#HTML" expanded="false" />
+                <element signature="e#5132#5319#0#Twig" expanded="false" />
+                <element signature="e#5361#5701#0#HTML" expanded="false" />
+                <element signature="e#5710#6049#0#HTML" expanded="false" />
+                <element signature="e#6058#7313#0#HTML" expanded="false" />
+                <element signature="e#7322#8545#0#HTML" expanded="false" />
               </folding>
             </state>
           </provider>
@@ -304,8 +308,8 @@
         <option value="$PROJECT_DIR$/app/Resources/views/joueur/poser.html.twig" />
         <option value="$PROJECT_DIR$/app/Resources/views/joueur/defausser.html.twig" />
         <option value="$PROJECT_DIR$/src/AppBundle/Entity/Parties.php" />
-        <option value="$PROJECT_DIR$/app/Resources/views/joueur/afficherpartie.html.twig" />
         <option value="$PROJECT_DIR$/src/AppBundle/Controller/JoueurController.php" />
+        <option value="$PROJECT_DIR$/app/Resources/views/joueur/afficherpartie.html.twig" />
       </list>
     </option>
   </component>
@@ -860,12 +864,12 @@
       <workItem from="1491462737104" duration="40649000" />
       <workItem from="1491655872759" duration="3404000" />
       <workItem from="1491825995373" duration="33375000" />
-      <workItem from="1491982873720" duration="15541000" />
+      <workItem from="1491982873720" duration="16033000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="227965000" />
+    <option name="totallyTimeSpent" value="228457000" />
   </component>
   <component name="TodoView">
     <todo-panel id="selected-file">
@@ -1288,30 +1292,10 @@
         <state />
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/app/Resources/views/joueur/afficherpartie.html.twig">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="440">
-          <caret line="23" column="0" lean-forward="false" selection-start-line="23" selection-start-column="0" selection-end-line="23" selection-end-column="0" />
-          <folding>
-            <element signature="e#4033#4261#0#HTML" expanded="false" />
-            <element signature="e#4274#4502#0#HTML" expanded="false" />
-            <element signature="e#4515#4741#0#HTML" expanded="false" />
-            <element signature="e#4754#5080#0#HTML" expanded="false" />
-            <element signature="e#4775#5062#0#Twig" expanded="false" />
-            <element signature="e#5093#5319#0#HTML" expanded="false" />
-            <element signature="e#5114#5301#0#Twig" expanded="false" />
-            <element signature="e#5343#5683#0#HTML" expanded="false" />
-            <element signature="e#5692#6031#0#HTML" expanded="false" />
-            <element signature="e#6040#7295#0#HTML" expanded="false" />
-            <element signature="e#7304#8527#0#HTML" expanded="false" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/AppBundle/Controller/JoueurController.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="551">
-          <caret line="358" column="41" lean-forward="false" selection-start-line="358" selection-start-column="41" selection-end-line="358" selection-end-column="41" />
+        <state relative-caret-position="483">
+          <caret line="327" column="35" lean-forward="true" selection-start-line="327" selection-start-column="35" selection-end-line="327" selection-end-column="35" />
           <folding>
             <element signature="e#956#1024#0#PHP" expanded="false" />
             <element signature="e#1029#1343#0#PHP" expanded="false" />
@@ -1355,6 +1339,10 @@
             <element signature="e#14043#14258#0#PHP" expanded="false" />
             <element signature="e#14303#14518#0#PHP" expanded="false" />
             <element signature="e#14563#14778#0#PHP" expanded="false" />
+            <element signature="e#15599#15719#0#PHP" expanded="false" />
+            <element signature="e#15779#15899#0#PHP" expanded="false" />
+            <element signature="e#15959#16079#0#PHP" expanded="false" />
+            <element signature="e#16139#16259#0#PHP" expanded="false" />
             <element signature="e#18597#18684#0#PHP" expanded="false" />
             <element signature="e#18689#51309#0#PHP" expanded="false" />
             <element signature="e#19098#19392#0#PHP" expanded="false" />
@@ -1403,6 +1391,26 @@
             <element signature="e#42428#44189#0#PHP" expanded="false" />
             <element signature="e#48137#49573#0#PHP" expanded="false" />
             <element signature="e#51315#51553#0#PHP" expanded="false" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/Resources/views/joueur/afficherpartie.html.twig">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-4">
+          <caret line="50" column="97" lean-forward="false" selection-start-line="50" selection-start-column="97" selection-end-line="50" selection-end-column="97" />
+          <folding>
+            <element signature="e#4051#4279#0#HTML" expanded="false" />
+            <element signature="e#4292#4520#0#HTML" expanded="false" />
+            <element signature="e#4533#4759#0#HTML" expanded="false" />
+            <element signature="e#4772#5098#0#HTML" expanded="false" />
+            <element signature="e#4793#5080#0#Twig" expanded="false" />
+            <element signature="e#5111#5337#0#HTML" expanded="false" />
+            <element signature="e#5132#5319#0#Twig" expanded="false" />
+            <element signature="e#5361#5701#0#HTML" expanded="false" />
+            <element signature="e#5710#6049#0#HTML" expanded="false" />
+            <element signature="e#6058#7313#0#HTML" expanded="false" />
+            <element signature="e#7322#8545#0#HTML" expanded="false" />
           </folding>
         </state>
       </provider>
