@@ -45,9 +45,69 @@ class Parties
     /**
      * @var int
      *
+     * @ORM\Column(name="point_j1_cat1", type="integer")
+     */
+    private $pointJ1_cat1 = 0;
+    /**
+     * @var int
+     *
+     * @ORM\Column(name="point_j1_cat2", type="integer")
+     */
+    private $pointJ1_cat2 = 0;
+    /**
+     * @var int
+     *
+     * @ORM\Column(name="point_j1_cat3", type="integer")
+     */
+    private $pointJ1_cat3 = 0;
+    /**
+     * @var int
+     *
+     * @ORM\Column(name="point_j1_cat4", type="integer")
+     */
+    private $pointJ1_cat4 = 0;
+    /**
+     * @var int
+     *
+     * @ORM\Column(name="point_j1_cat5", type="integer")
+     */
+    private $pointJ1_cat5 = 0;
+    /**
+     * @var int
+     *
      * @ORM\Column(name="point_j2", type="integer")
      */
     private $pointJ2 = 0;
+    /**
+     * @var int
+     *
+     * @ORM\Column(name="point_j2_cat1", type="integer")
+     */
+    private $pointJ2_cat1 = 0;
+    /**
+     * @var int
+     *
+     * @ORM\Column(name="point_j2_cat2", type="integer")
+     */
+    private $pointJ2_cat2 = 0;
+    /**
+     * @var int
+     *
+     * @ORM\Column(name="point_j2_cat3", type="integer")
+     */
+    private $pointJ2_cat3 = 0;
+    /**
+     * @var int
+     *
+     * @ORM\Column(name="point_j2_cat4", type="integer")
+     */
+    private $pointJ2_cat4 = 0;
+    /**
+     * @var int
+     *
+     * @ORM\Column(name="point_j2_cat5", type="integer")
+     */
+    private $pointJ2_cat5 = 0;
     /**
      * @var int
      *
@@ -141,6 +201,229 @@ class Parties
     {
         return $this->pointJ1;
     }
+    /////////////////////////////////////////////////////////////
+    /**
+     * Set pointJ1_cat1
+     *
+     * @param integer $pointJ1_cat1
+     *
+     * @return Parties
+     */
+    public function setPointJ1_cat1($pointJ1_cat1)
+    {
+        $this->pointJ1_cat1 = $pointJ1_cat1;
+        return $this;
+    }
+    /**
+     * Get pointJ1_cat1
+     *
+     * @return int
+     */
+    public function getPointJ1_cat1()
+    {
+        return $this->pointJ1_cat1;
+    }
+    ///////////
+    /**
+     * Set pointJ1_cat2
+     *
+     * @param integer $pointJ1_cat2
+     *
+     * @return Parties
+     */
+    public function setPointJ1_cat2($pointJ1)
+    {
+        $this->pointJ1_cat2 = $pointJ1;
+        return $this;
+    }
+    /**
+     * Get pointJ1_cat2
+     *
+     * @return int
+     */
+    public function getPointJ1_cat2()
+    {
+        return $this->pointJ1_cat2;
+    }
+    //////////
+    /**
+     * Set pointJ1_cat3
+     *
+     * @param integer $pointJ1_cat3
+     *
+     * @return Parties
+     */
+    public function setPointJ1_cat3($pointJ1)
+    {
+        $this->pointJ1_cat3 = $pointJ1;
+        return $this;
+    }
+    /**
+     * Get pointJ1_cat3
+     *
+     * @return int
+     */
+    public function getPointJ1_cat3()
+    {
+        return $this->pointJ1_cat3;
+    }
+    //////////
+    /**
+     * Set pointJ1_cat4
+     *
+     * @param integer $pointJ1_cat4
+     *
+     * @return Parties
+     */
+    public function setPointJ1_cat4($pointJ1)
+    {
+        $this->pointJ1_cat4 = $pointJ1;
+        return $this;
+    }
+    /**
+     * Get pointJ1_cat4
+     *
+     * @return int
+     */
+    public function getPointJ1_cat4()
+    {
+        return $this->pointJ1_cat4;
+    }
+    //////////
+    /**
+     * Set pointJ1_cat5
+     *
+     * @param integer $pointJ1_cat5
+     *
+     * @return Parties
+     */
+    public function setPointJ1_cat5($pointJ1)
+    {
+        $this->pointJ1_cat5 = $pointJ1;
+        return $this;
+    }
+    /**
+     * Get pointJ1_cat5
+     *
+     * @return int
+     */
+    public function getPointJ1_cat5()
+    {
+        return $this->pointJ1_cat5;
+    }
+    //////////
+    /////////////////////////////////////////////////////////////
+    /**
+     * Set pointJ2_cat1
+     *
+     * @param integer $pointJ2_cat1
+     *
+     * @return Parties
+     */
+    public function setPointJ2_cat1($pointJ2)
+    {
+        $this->pointJ2_cat1 = $pointJ2;
+        return $this;
+    }
+    /**
+     * Get pointJ2_cat1
+     *
+     * @return int
+     */
+    public function getPointJ2_cat1()
+    {
+        return $this->pointJ2_cat1;
+    }
+    ///////////
+    /**
+     * Set pointJ2_cat2
+     *
+     * @param integer $pointJ2_cat2
+     *
+     * @return Parties
+     */
+    public function setPointJ2_cat2($pointJ2)
+    {
+        $this->pointJ2_cat2 = $pointJ2;
+        return $this;
+    }
+    /**
+     * Get pointJ2_cat2
+     *
+     * @return int
+     */
+    public function getPointJ2_cat2()
+    {
+        return $this->pointJ2_cat2;
+    }
+    //////////
+    /**
+     * Set pointJ2_cat3
+     *
+     * @param integer $pointJ2_cat3
+     *
+     * @return Parties
+     */
+    public function setPointJ2_cat3($pointJ1)
+    {
+        $this->pointJ2_cat3 = $pointJ1;
+        return $this;
+    }
+    /**
+     * Get pointJ2_cat3
+     *
+     * @return int
+     */
+    public function getPointJ2_cat3()
+    {
+        return $this->pointJ2_cat3;
+    }
+    //////////
+    /**
+     * Set pointJ2_cat4
+     *
+     * @param integer $pointJ2_cat4
+     *
+     * @return Parties
+     */
+    public function setPointJ2_cat4($pointJ1)
+    {
+        $this->pointJ2_cat4 = $pointJ1;
+        return $this;
+    }
+    /**
+     * Get pointJ2_cat4
+     *
+     * @return int
+     */
+    public function getPointJ2_cat4()
+    {
+        return $this->pointJ2_cat4;
+    }
+    //////////
+    /**
+     * Set pointJ2_cat5
+     *
+     * @param integer $pointJ2_cat5
+     *
+     * @return Parties
+     */
+    public function setPointJ2_cat5($pointJ1)
+    {
+        $this->pointJ2_cat5 = $pointJ1;
+        return $this;
+    }
+    /**
+     * Get pointJ2_cat5
+     *
+     * @return int
+     */
+    public function getPointJ2_cat5()
+    {
+        return $this->pointJ2_cat5;
+    }
+    //////////
+    /////////////////////////////////////////////////////////
     /**
      * Set pointJ2
      *

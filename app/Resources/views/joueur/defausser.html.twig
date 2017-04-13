@@ -1,0 +1,27 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+    <h1>Partie entre {{ partie.joueur1.username }} et {{ partie.joueur2.username }}</h1>
+    <h2>{{ user.id }} - {{ tour }}</h2>
+    {% if tour==user.id %}
+        <h2>A toi de jouer !</h2>
+    {% else %}
+        <h2>C'est au tour de votre adversaire</h2>
+    {% endif %}
+    <hr>
+
+    <a href="{{ path('afficher_partie', {id:partie.id}) }}">afficher la partie</a>
+
+    <hr>
+
+    <h2>Dump plateau</h2>
+    {{ dump(plateau) }}
+
+    <h2>Dump situation</h2>
+    {{ dump(situation) }}
+
+
+
+
+
+{% endblock %}
