@@ -284,8 +284,7 @@ class JoueurController extends Controller
         $user = $this->getUser();
 
         $situation = $id->getSituation();
-        $plateau['mainJ1'] = json_decode($situation->getMainJ1());
-        $plateau['mainJ2'] = json_decode($situation->getMainJ2());
+
 
         if (!empty($situation->getDefausse_cat1())){
             $defausse1 = $plateau['defausse_cat1'] = $situation->getDefausse_cat1();
@@ -376,6 +375,8 @@ class JoueurController extends Controller
         $idjoueur2=$joueur2->getId();
 
         if ($tour==$useractif and !empty($defausse_selectionnee)){
+            $plateau['mainJ1'] = json_decode($situation->getMainJ1());
+            $plateau['mainJ2'] = json_decode($situation->getMainJ2());
             if ($useractif==$idjoueur1){
 
                 $mainj1=$plateau['mainJ1'];
