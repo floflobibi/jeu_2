@@ -787,10 +787,12 @@ class JoueurController extends Controller
             }
             //Si defausse selectionnée
             if ($categorieecheck >5) {
+                $nepaschangerlamain = true ;
                 // Rajouter dans la catégorie 1
                 if( $categorie_carte_ajoutee == 1){
                     array_push( $plateau['defausse_cat1'],$cartecheck);
                     $situation->setDefausse_cat1($plateau['defausse_cat1']);
+
                 }
                 //Rajouter dans la catégorie 2
                 if ( $categorie_carte_ajoutee == 2)
@@ -1049,6 +1051,7 @@ class JoueurController extends Controller
             }
             //Si défausse selectionnée
             if ($categorieecheck >5) {
+                $nepaschangerlamain = true ;
                 // Rajouter dans la catégorie 1
                 if( $categorie_carte_ajoutee == 1){
                     array_push( $plateau['defausse_cat1'],$cartecheck);
