@@ -992,7 +992,7 @@ class JoueurController extends Controller
                         //Récupérer la valeur de cette dernière carte
                         $precedenteValeur = $cartes[$dernière_carte_de_cette_categorie]->getValeur();
                         //dump($precedenteValeur);
-                        if ($precedenteValeur >= $valeur_carte_ajoutee){
+                        if ($precedenteValeur <= $valeur_carte_ajoutee){
                             if ($type_carte_ajoutee == 'extra'){
                                 $plateau['pointj2_cat4'] *= 2;
                                 $id->setPointJ2_cat4($plateau['pointj2_cat4']);
@@ -1031,7 +1031,7 @@ class JoueurController extends Controller
                         $precedenteValeur = $cartes[$dernière_carte_de_cette_categorie]->getValeur();
                         //dump($precedenteValeur);
 
-                        if ($precedenteValeur >= $valeur_carte_ajoutee){
+                        if ($precedenteValeur <= $valeur_carte_ajoutee){
                             if ($type_carte_ajoutee == 'extra'){
                                 $plateau['pointj2_cat5'] *= 2;
                                 $id->setPointJ2_cat5($plateau['pointj2_cat5']);
