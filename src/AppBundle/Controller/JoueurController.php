@@ -327,29 +327,40 @@ class JoueurController extends Controller
 
         //Si defausse1 selectionnée
         if ($defausse_selectionnee == 1){
-           $element = array_pop($defausse1);
-           $nouvelledefausse = array_diff($defausse1,[$element]);
+            if (!empty($defausse1)){
+                $element = array_pop($defausse1);
+                $nouvelledefausse = array_diff($defausse1,[$element]);
+            }
         }
 
         //Si defausse2 selectionnée
         if ($defausse_selectionnee == 2){
-            $element = array_pop($defausse2);
-            $nouvelledefausse = array_diff($defausse2,[$element]);
+            if (!empty($defausse2)){
+                $element = array_pop($defausse2);
+                $nouvelledefausse = array_diff($defausse2,[$element]);
+            }
+
         }
         //Si defausse3 selectionnée
         if ($defausse_selectionnee == 3){
-            $element = array_pop($defausse3);
-            $nouvelledefausse = array_diff($defausse3,[$element]);
+            if (!empty($defausse3)){
+                $element = array_pop($defausse3);
+                $nouvelledefausse = array_diff($defausse3,[$element]);
+            }
         }
         //Si defausse4 selectionnée
         if ($defausse_selectionnee == 4){
-            $element = array_pop($defausse4);
-            $nouvelledefausse = array_diff($defausse4,[$element]);
+            if (!empty($defausse4)){
+                $element = array_pop($defausse4);
+                $nouvelledefausse = array_diff($defausse4,[$element]);
+            }
         }
         //Si defausse5 selectionnée
         if ($defausse_selectionnee == 5){
-            $element = array_pop($defausse5);
-            $nouvelledefausse = array_diff($defausse5,[$element]);
+            if (!empty($defausse5)){
+                $element = array_pop($defausse5);
+                $nouvelledefausse = array_diff($defausse5,[$element]);
+            }
         }
 
 
