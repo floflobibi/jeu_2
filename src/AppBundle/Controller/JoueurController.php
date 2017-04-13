@@ -375,7 +375,7 @@ class JoueurController extends Controller
         $joueur2=$id->getJoueur2();
         $idjoueur2=$joueur2->getId();
 
-        if ($tour==$useractif){
+        if ($tour==$useractif and !empty($defausse_selectionnee)){
             if ($useractif==$idjoueur1){
 
                 $mainj1=$plateau['mainJ1'];
