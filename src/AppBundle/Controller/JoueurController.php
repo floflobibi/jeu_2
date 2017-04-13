@@ -330,6 +330,8 @@ class JoueurController extends Controller
                 $element = array_pop($defausse1);
                 $nouvelledefausse = array_diff($defausse1,[$element]);
             }
+            $danslaDefausseSelectionnee = $defausse1;
+            dump($danslaDefausseSelectionnee);
         }
 
         //Si defausse2 selectionnée
@@ -338,6 +340,7 @@ class JoueurController extends Controller
                 $element = array_pop($defausse2);
                 $nouvelledefausse = array_diff($defausse2,[$element]);
             }
+            $danslaDefausseSelectionnee = $defausse2;
 
         }
         //Si defausse3 selectionnée
@@ -346,6 +349,7 @@ class JoueurController extends Controller
                 $element = array_pop($defausse3);
                 $nouvelledefausse = array_diff($defausse3,[$element]);
             }
+            $danslaDefausseSelectionnee = $defausse3;
         }
         //Si defausse4 selectionnée
         if ($defausse_selectionnee == 4){
@@ -353,6 +357,7 @@ class JoueurController extends Controller
                 $element = array_pop($defausse4);
                 $nouvelledefausse = array_diff($defausse4,[$element]);
             }
+            $danslaDefausseSelectionnee = $defausse4;
         }
         //Si defausse5 selectionnée
         if ($defausse_selectionnee == 5){
@@ -360,6 +365,7 @@ class JoueurController extends Controller
                 $element = array_pop($defausse5);
                 $nouvelledefausse = array_diff($defausse5,[$element]);
             }
+            $danslaDefausseSelectionnee = $defausse5;
         }
 
 
@@ -374,7 +380,8 @@ class JoueurController extends Controller
         $joueur2=$id->getJoueur2();
         $idjoueur2=$joueur2->getId();
 
-        if ($tour==$useractif and !empty($defausse_selectionnee)){
+
+        if ($tour==$useractif and !empty($danslaDefausseSelectionnee)){
             $plateau['mainJ1'] = json_decode($situation->getMainJ1());
             $plateau['mainJ2'] = json_decode($situation->getMainJ2());
             if ($useractif==$idjoueur1){
