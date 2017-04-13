@@ -766,8 +766,8 @@ class JoueurController extends Controller
                         dump($dernière_carte_de_cette_categorie);
                         //Récupérer la valeur de cette dernière carte
                         $precedenteValeur = $cartes[$dernière_carte_de_cette_categorie]->getValeur();
-                        dump($dernière_carte_de_cette_categorie);
-                        dump($plateau['poseesj1_cat5']);
+                        dump($precedenteValeur);
+                        dump($valeur_carte_ajoutee);
 
                         if ($precedenteValeur <= $valeur_carte_ajoutee){
                             if ($type_carte_ajoutee == 'extra'){
