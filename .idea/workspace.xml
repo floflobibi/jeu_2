@@ -2,9 +2,7 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="102bd809-8df4-4e7e-8148-9d561e586a61" name="Default" comment="">
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/Resources/views/joueur/findepartie.html.twig" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/AppBundle/Controller/JoueurController.php" afterPath="$PROJECT_DIR$/src/AppBundle/Controller/JoueurController.php" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/Resources/views/joueur/findepartie.html.twig" afterPath="$PROJECT_DIR$/app/Resources/views/joueur/findepartie.html.twig" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="TRACKING_ENABLED" value="true" />
@@ -33,19 +31,18 @@
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="375">
-      <file leaf-file-name="JoueurController.php" pinned="false" current-in-tab="true">
+      <file leaf-file-name="JoueurController.php" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/AppBundle/Controller/JoueurController.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="251">
-              <caret line="196" column="17" lean-forward="false" selection-start-line="196" selection-start-column="17" selection-end-line="196" selection-end-column="17" />
+            <state relative-caret-position="440">
+              <caret line="38" column="54" lean-forward="false" selection-start-line="38" selection-start-column="36" selection-end-line="38" selection-end-column="54" />
               <folding>
                 <element signature="e#570#720#0#PHP" expanded="false" />
                 <element signature="e#791#951#0#PHP" expanded="false" />
-                <element signature="e#956#1024#0#PHP" expanded="false" />
-                <element signature="e#1029#1343#0#PHP" expanded="false" />
                 <element signature="e#1348#1438#0#PHP" expanded="false" />
                 <element signature="e#1443#2919#0#PHP" expanded="false" />
                 <element signature="e#2924#3017#0#PHP" expanded="false" />
+                <element signature="e#3022#8856#0#PHP" expanded="false" />
                 <element signature="e#3520#3814#0#PHP" expanded="false" />
                 <element signature="e#3671#3814#0#PHP" expanded="false" />
                 <element signature="e#3823#4117#0#PHP" expanded="false" />
@@ -143,11 +140,11 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="findepartie.html.twig" pinned="false" current-in-tab="false">
+      <file leaf-file-name="findepartie.html.twig" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/app/Resources/views/joueur/findepartie.html.twig">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="88">
-              <caret line="4" column="38" lean-forward="false" selection-start-line="4" selection-start-column="38" selection-end-line="4" selection-end-column="38" />
+            <state relative-caret-position="220">
+              <caret line="10" column="72" lean-forward="false" selection-start-line="10" selection-start-column="72" selection-end-line="10" selection-end-column="72" />
               <folding />
             </state>
           </provider>
@@ -872,12 +869,12 @@
       <workItem from="1491655872759" duration="3404000" />
       <workItem from="1491825995373" duration="33375000" />
       <workItem from="1491982873720" duration="30385000" />
-      <workItem from="1492169716804" duration="7484000" />
+      <workItem from="1492169716804" duration="8055000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="250293000" />
+    <option name="totallyTimeSpent" value="250864000" />
   </component>
   <component name="TodoView">
     <todo-panel id="selected-file">
@@ -889,7 +886,7 @@
     </todo-panel>
   </component>
   <component name="ToolWindowManager">
-    <frame x="-8" y="0" width="976" height="1038" extended-state="1" />
+    <frame x="-8" y="0" width="976" height="1038" extended-state="0" />
     <editor active="true" />
     <layout>
       <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.2888889" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
@@ -1294,26 +1291,17 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/app/Resources/views/joueur/findepartie.html.twig">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="88">
-          <caret line="4" column="38" lean-forward="false" selection-start-line="4" selection-start-column="38" selection-end-line="4" selection-end-column="38" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/AppBundle/Controller/JoueurController.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="251">
-          <caret line="196" column="17" lean-forward="false" selection-start-line="196" selection-start-column="17" selection-end-line="196" selection-end-column="17" />
+        <state relative-caret-position="440">
+          <caret line="38" column="54" lean-forward="false" selection-start-line="38" selection-start-column="36" selection-end-line="38" selection-end-column="54" />
           <folding>
             <element signature="e#570#720#0#PHP" expanded="false" />
             <element signature="e#791#951#0#PHP" expanded="false" />
-            <element signature="e#956#1024#0#PHP" expanded="false" />
-            <element signature="e#1029#1343#0#PHP" expanded="false" />
             <element signature="e#1348#1438#0#PHP" expanded="false" />
             <element signature="e#1443#2919#0#PHP" expanded="false" />
             <element signature="e#2924#3017#0#PHP" expanded="false" />
+            <element signature="e#3022#8856#0#PHP" expanded="false" />
             <element signature="e#3520#3814#0#PHP" expanded="false" />
             <element signature="e#3671#3814#0#PHP" expanded="false" />
             <element signature="e#3823#4117#0#PHP" expanded="false" />
@@ -1407,6 +1395,14 @@
             <element signature="e#58101#58201#0#PHP" expanded="false" />
             <element signature="e#58207#58609#0#PHP" expanded="false" />
           </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/Resources/views/joueur/findepartie.html.twig">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="220">
+          <caret line="10" column="72" lean-forward="false" selection-start-line="10" selection-start-column="72" selection-end-line="10" selection-end-column="72" />
+          <folding />
         </state>
       </provider>
     </entry>
