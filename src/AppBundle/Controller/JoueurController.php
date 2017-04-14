@@ -205,8 +205,13 @@ class JoueurController extends Controller
         //Infos à noter
         $infosj1 = $situation->getInfosJ1();
         $infosj2 = $situation->getInfosJ2();
+        if (empty($plateau['pioche'])){
+            return $this->render(':joueur:findepartie.html.twig', ['cartes' => $cartes, 'partie' => $id, 'user' => $user, 'plateau' => $plateau]);
 
-        return $this->render(':joueur:afficherpartie.html.twig', ['infosj1' => $infosj1,'infosj2' => $infosj2,'nbcartesj1' => $nbcartesj1, 'nbcartesj2' => $nbcartesj2, 'nbcartespioche' => $nbcartespioche,'cartes' => $cartes, 'partie' => $id, 'user' => $user, 'plateau' => $plateau, 'tour' => $tour]);
+        }else{
+            return $this->render(':joueur:afficherpartie.html.twig', ['infosj1' => $infosj1,'infosj2' => $infosj2,'nbcartesj1' => $nbcartesj1, 'nbcartesj2' => $nbcartesj2, 'nbcartespioche' => $nbcartespioche,'cartes' => $cartes, 'partie' => $id, 'user' => $user, 'plateau' => $plateau, 'tour' => $tour]);
+
+        }
 
     }
     /**
