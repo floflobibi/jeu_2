@@ -27,6 +27,18 @@ class Situation
     private $id;
     ///////////////////////////
     /**
+     * @var int
+     *
+     * @ORM\Column(name="infosj1", type="integer", nullable=false)
+     */
+    private $infosj1;
+    /**
+     * @var int
+     *
+     * @ORM\Column(name="infosj2", type="integer", nullable=false)
+     */
+    private $infosj2;
+    /**
      * @var array
      *
      * @ORM\Column(name="defausse_cat1", type="array", nullable=true)
@@ -155,6 +167,48 @@ class Situation
     public function getId()
     {
         return $this->id;
+    }
+    /**
+     * Set infosj1
+     *
+     * @param integer $infosj1
+     *
+     * @return Situation
+     */
+    public function setInfosJ1($infosj1)
+    {
+        $this->infosj1 = $infosj1;
+        return $this;
+    }
+    /**
+     * Get infosj1
+     *
+     * @return int
+     */
+    public function getInfosJ1()
+    {
+        return $this->infosj1;
+    }
+    /**
+     * Set infosj2
+     *
+     * @param integer $infosj2
+     *
+     * @return Situation
+     */
+    public function setInfosJ2($infosj2)
+    {
+        $this->infosj2 = $infosj2;
+        return $this;
+    }
+    /**
+     * Get infosj2
+     *
+     * @return int
+     */
+    public function getInfosJ2()
+    {
+        return $this->infosj2;
     }
     /////////////////////////////////////////////////////////////
     /**

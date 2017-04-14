@@ -9,6 +9,30 @@
     <h2>C'est au tour de votre adversaire</h2>
     {% endif %}
     <div>
+        <hr>
+        <h3>Informations :</h3>
+    {% if partie.joueur1.id==user.id %}
+        {% if infosj1 == 1 %}
+            <p>Pas d'informations</p>
+        {% elseif infosj1 == 2 %}
+            <p>Vous ne pouvez pas placer une carte dans une catégorie si la valeur de la précédente est supérieur à celle que vous essayez de poser.</p>
+        {% elseif infosj1 == 3 %}
+            <p>Il n'y aucune carte dans cette défausse. Choissez une autre défausse ou la pioche.</p>
+        {% elseif infosj1 == 4 %}
+        {% endif %}
+    {% endif %}
+
+        {% if partie.joueur2.id==user.id %}
+            {% if infosj2 == 1 %}
+                <p>Pas d'informations</p>
+            {% elseif infosj2 == 2 %}
+                <p>Vous ne pouvez pas placer une carte dans une catégorie si la valeur de la précédente est supérieur à celle que vous essayez de poser.</p>
+            {% elseif infosj2 == 3 %}
+                <p>Il n'y aucune carte dans cette défausse. Choissez une autre défausse ou la pioche.</p>
+            {% elseif infosj2 == 4 %}
+            {% endif %}
+        {% endif %}
+        <hr>
 
 
         {% if tour==user.id and (nbcartesj1<8 or nbcartesj2<8) %}

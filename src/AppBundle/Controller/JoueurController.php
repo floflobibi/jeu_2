@@ -75,6 +75,9 @@ class JoueurController extends Controller
             $t[] = $cartes[$i]->getId();
         }
         $situation->setPioche(json_encode($t));
+        $infos = 1;
+        $situation->setInfosJ1($infos);
+        $situation->setInfosJ2($infos);
 
 
         $em = $this->getDoctrine()->getManager();
@@ -199,7 +202,11 @@ class JoueurController extends Controller
         //Compter les cartes de la pioche
         $nbcartespioche= count($plateau['pioche']);
 
-        return $this->render(':joueur:afficherpartie.html.twig', ['nbcartesj1' => $nbcartesj1, 'nbcartesj2' => $nbcartesj2, 'nbcartespioche' => $nbcartespioche,'cartes' => $cartes, 'partie' => $id, 'user' => $user, 'plateau' => $plateau, 'tour' => $tour]);
+        //Infos à noter
+        $infosj1 = $situation->getInfosJ1();
+        $infosj2 = $situation->getInfosJ2();
+
+        return $this->render(':joueur:afficherpartie.html.twig', ['infosj1' => $infosj1,'infosj2' => $infosj2,'nbcartesj1' => $nbcartesj1, 'nbcartesj2' => $nbcartesj2, 'nbcartespioche' => $nbcartespioche,'cartes' => $cartes, 'partie' => $id, 'user' => $user, 'plateau' => $plateau, 'tour' => $tour]);
 
     }
     /**
@@ -318,29 +325,37 @@ class JoueurController extends Controller
         }
 
         $tour = $id->getTourde();
+        $infos = 1;
 
 
         //Récupérer la carte sélectionnée
         $defausse_selectionnee = $request->get('defausse')*1;
-        var_dump($defausse_selectionnee);
+        $defausseNonVide = false;
 
         //Si defausse1 selectionnée
         if ($defausse_selectionnee == 1){
             if (!empty($defausse1)){
                 $element = array_pop($defausse1);
                 $nouvelledefausse = array_diff($defausse1,[$element]);
+                $defausseNonVide = true;
             }
-            $danslaDefausseSelectionnee = $defausse1;
-            dump($danslaDefausseSelectionnee);
+            else{
+                $infos = 3;
+            }
+
         }
 
         //Si defausse2 selectionnée
+
         if ($defausse_selectionnee == 2){
             if (!empty($defausse2)){
                 $element = array_pop($defausse2);
                 $nouvelledefausse = array_diff($defausse2,[$element]);
+                $defausseNonVide = true;
+            }else{
+                $infos = 3;
             }
-            $danslaDefausseSelectionnee = $defausse2;
+
 
         }
         //Si defausse3 selectionnée
@@ -348,26 +363,35 @@ class JoueurController extends Controller
             if (!empty($defausse3)){
                 $element = array_pop($defausse3);
                 $nouvelledefausse = array_diff($defausse3,[$element]);
+                $defausseNonVide = true;
+            }else{
+                $infos = 3;
             }
-            $danslaDefausseSelectionnee = $defausse3;
         }
         //Si defausse4 selectionnée
         if ($defausse_selectionnee == 4){
             if (!empty($defausse4)){
                 $element = array_pop($defausse4);
                 $nouvelledefausse = array_diff($defausse4,[$element]);
+                $defausseNonVide = true;
+            }else{
+                $infos = 3;
             }
-            $danslaDefausseSelectionnee = $defausse4;
+
         }
         //Si defausse5 selectionnée
         if ($defausse_selectionnee == 5){
             if (!empty($defausse5)){
                 $element = array_pop($defausse5);
                 $nouvelledefausse = array_diff($defausse5,[$element]);
+                $defausseNonVide = true;
+            }else{
+                $infos = 3;
             }
-            $danslaDefausseSelectionnee = $defausse5;
+
         }
 
+        //ce dump fonctionne :dump($defausseNonVide);
 
         // Id joueur actif
         $useractif=$user->getId();
@@ -381,7 +405,7 @@ class JoueurController extends Controller
         $idjoueur2=$joueur2->getId();
 
 
-        if ($tour==$useractif and !empty($danslaDefausseSelectionnee)){
+        if ($tour==$useractif and $defausseNonVide == true){
             $plateau['mainJ1'] = json_decode($situation->getMainJ1());
             $plateau['mainJ2'] = json_decode($situation->getMainJ2());
             if ($useractif==$idjoueur1){
@@ -463,6 +487,20 @@ class JoueurController extends Controller
                 $em->flush();
             }
         }
+
+        if ($useractif==$idjoueur1){
+            $em = $this->getDoctrine()->getManager();
+            $situation->setInfosJ1($infos);
+            $em->persist($situation);
+            $em->flush();
+        }
+        if($useractif==$idjoueur2){
+        $em = $this->getDoctrine()->getManager();
+        $situation->setInfosJ2($infos);
+        $em->persist($situation);
+        $em->flush();
+    }
+
         $partie=$situation->getId();
         $idd=$id->getId();
 
@@ -575,7 +613,7 @@ class JoueurController extends Controller
         }
 ///////////////////////////////////////////////////////////////////
         $plateau['pointj1'] = $id->getPointJ1();
-        $plateau['pointj1_cat1'] = $id->getPointJ1_cat1();
+        $lolo = $plateau['pointj1_cat1'] = $id->getPointJ1_cat1();
         $plateau['pointj1_cat2'] = $id->getPointJ1_cat2();
         $plateau['pointj1_cat3'] = $id->getPointJ1_cat3();
         $plateau['pointj1_cat4'] = $id->getPointJ1_cat4();
@@ -588,6 +626,7 @@ class JoueurController extends Controller
         $plateau['pointj2_cat4'] = $id->getPointJ2_cat4();
         $plateau['pointj2_cat5'] = $id->getPointJ2_cat5();
 ///////////////////////////////////////////////////////////////////
+        $infos = 1;
 
         $tour = $id->getTourde();
 
@@ -614,6 +653,13 @@ class JoueurController extends Controller
 
         $nepaschangerlamain = false;
 
+        //$cbCartesExtra = $this->compterCartesExtraDejaPosees($plateau['mainJ1']);
+        //$multiplierPointsPar = $this->multiplierPar($cbCartesExtra);
+
+        $initialisation = 'tutu';
+        $valeur_carte_ajouteeApresMultiplication = 'toto';
+        $multiplierPointsPar = 'tata';
+
         $precedenteValeur = 1;
 
         if($useractif==$idjoueur1){
@@ -625,205 +671,215 @@ class JoueurController extends Controller
             //Si catégorie selectionnée
             if ($categorieecheck <6) {
                 // Rajouter dans la catégorie 1
+                //$multiplierPointsPar
 
                 if( $categorie_carte_ajoutee == 1){
+                    $cbCartesExtra = $this->compterCartesExtraDejaPosees($plateau['poseesj1_cat1']);
+                    $multiplierPointsPar = $this->multiplierPar($cbCartesExtra);
+                    $multiplierPointsPar *= 1;
                     $dernière_carte_de_cette_categorie = $this -> derniereValeur($plateau['poseesj1_cat1']);
-                    if ($plateau['pointj1_cat1'] == 0){
-                        $plateau['pointj1_cat1'] -= 20;
-                        $plateau['pointj1_cat1'] += $valeur_carte_ajoutee;
+                    $valeur_carte_ajouteeApresMultiplication = $valeur_carte_ajoutee*$multiplierPointsPar;
+                    if ($dernière_carte_de_cette_categorie == false){
+                        if ($type_carte_ajoutee == 'normal'){
+                            $initialisation = -20*$multiplierPointsPar;
+                            $initialisation += $valeur_carte_ajoutee;
+                        }
+                        if ($type_carte_ajoutee == 'extra'){
+                            $initialisation = -20*($multiplierPointsPar+1);
+                        }
+                        $plateau['pointj1_cat1'] += $initialisation;
+
                         $id->setPointJ1_cat1($plateau['pointj1_cat1']);
-                        $plateau['pointj1'] += $valeur_carte_ajoutee;
-                        $plateau['pointj1'] -= 20;
-                        $id->setPointJ1($plateau['pointj1']);
                         array_push( $plateau['poseesj1_cat1'],$cartecheck);
                         $nepaschangerlamain = true ;
                     }
                     if ($dernière_carte_de_cette_categorie != false){
-                        //Récupérer ID de la dernière carte
-                        dump($dernière_carte_de_cette_categorie);
                         //Récupérer la valeur de cette dernière carte
                         $precedenteValeur = $cartes[$dernière_carte_de_cette_categorie]->getValeur();
-                        //dump($precedenteValeur);
-                        $il_y_a_une_extra_dans_le_tas = true;
-
                         if ($precedenteValeur <= $valeur_carte_ajoutee){
-                            if ($type_carte_ajoutee == 'extra'){
-                                $plateau['pointj1_cat1'] *= 2;
-                                $id->setPointJ1_cat1($plateau['pointj1_cat1']);
+                            if ($type_carte_ajoutee == 'extra') {
+                                $plateau['pointj1_cat1'] = -20 * ($multiplierPointsPar + 1);
                             }else{
-                                $plateau['pointj1_cat1'] += $valeur_carte_ajoutee;
-                                $id->setPointJ1_cat1($plateau['pointj1_cat1']);
-                                $plateau['pointj1'] += $valeur_carte_ajoutee;
-                                $id->setPointJ1($plateau['pointj1']);
+                                $plateau['pointj1_cat1'] += $valeur_carte_ajouteeApresMultiplication;
                             }
+                            $id->setPointJ1_cat1($plateau['pointj1_cat1']);
                             array_push( $plateau['poseesj1_cat1'],$cartecheck);
                             $nepaschangerlamain = true ;
-                            if($il_y_a_une_extra_dans_le_tas == true){
-                                //Compter combien il y en a dans le tas
 
-                                // Doublier les points de la categorie
-
-                                // Rajouter la différence dans pointj1
-
-                            }
+                        }else{
+                            $infos = 2;
                         }
                     }
-
                 }
                 //Rajouter dans la catégorie 2
                 if ( $categorie_carte_ajoutee == 2)
                 {
+                    $cbCartesExtra = $this->compterCartesExtraDejaPosees($plateau['poseesj1_cat2']);
+                    $multiplierPointsPar = $this->multiplierPar($cbCartesExtra);
+                    $multiplierPointsPar *= 1;
                     $dernière_carte_de_cette_categorie = $this->derniereValeur($plateau['poseesj1_cat2']);
-                    if ($plateau['pointj1_cat2'] == 0){
-                        $plateau['pointj1_cat2'] -= 20;
-                        $plateau['pointj1_cat2'] += $valeur_carte_ajoutee;
+                    $valeur_carte_ajouteeApresMultiplication = $valeur_carte_ajoutee*$multiplierPointsPar;
+                    if ($dernière_carte_de_cette_categorie == false){
+                        if ($type_carte_ajoutee == 'normal'){
+                            $initialisation = -20*$multiplierPointsPar;
+                            $initialisation += $valeur_carte_ajoutee;
+                        }
+                        if ($type_carte_ajoutee == 'extra'){
+                            $initialisation = -20*($multiplierPointsPar+1);
+                        }
+                        $plateau['pointj1_cat2'] += $initialisation;
                         $id->setPointJ1_cat2($plateau['pointj1_cat2']);
-                        $plateau['pointj1'] -= 20;
-                        $plateau['pointj1'] += $valeur_carte_ajoutee;
-                        $id->setPointJ1($plateau['pointj1']);
                         array_push( $plateau['poseesj1_cat2'],$cartecheck);
                         $nepaschangerlamain = true ;
                     }
                     if ($dernière_carte_de_cette_categorie != false) {
-                        //Récupérer ID de la dernière carte
-                        //dump($dernière_carte_de_cette_categorie);
                         //Récupérer la valeur de cette dernière carte
                         $precedenteValeur = $cartes[$dernière_carte_de_cette_categorie]->getValeur();
-                        //dump($precedenteValeur);
-
                         if ($precedenteValeur <= $valeur_carte_ajoutee){
-
-                            if ($type_carte_ajoutee == 'extra'){
-                                $plateau['pointj1_cat2'] *= 2;
-                                $id->setPointJ1_cat2($plateau['pointj1_cat2']);
+                            if ($type_carte_ajoutee == 'extra') {
+                                $plateau['pointj1_cat2'] = -20 * ($multiplierPointsPar + 1);
                             }else{
-                                $plateau['pointj1_cat2'] += $valeur_carte_ajoutee;
-                                $id->setPointJ1_cat2($plateau['pointj1_cat2']);
-                                $plateau['pointj1'] += $valeur_carte_ajoutee;
-                                $id->setPointJ1($plateau['pointj1']);
+                                $plateau['pointj1_cat2'] += $valeur_carte_ajouteeApresMultiplication;
                             }
+                            $id->setPointJ1_cat2($plateau['pointj1_cat2']);
                             array_push( $plateau['poseesj1_cat2'],$cartecheck);
                             $nepaschangerlamain = true;
+                        }else{
+                            $infos = 2;
                         }
-
-
                     }
-
                 }
                 //Rajouter dans la catégorie 3
                 if ( $categorie_carte_ajoutee == 3){
+                    $cbCartesExtra = $this->compterCartesExtraDejaPosees($plateau['poseesj1_cat3']);
+                    $multiplierPointsPar = $this->multiplierPar($cbCartesExtra);
+                    $multiplierPointsPar *= 1;
                     $dernière_carte_de_cette_categorie = $this -> derniereValeur($plateau['poseesj1_cat3']);
-                    if ($plateau['pointj1_cat3'] == 0){
-                        $plateau['pointj1_cat3'] -= 20;
-                        $plateau['pointj1_cat3'] += $valeur_carte_ajoutee;
+                    $valeur_carte_ajouteeApresMultiplication = $valeur_carte_ajoutee*$multiplierPointsPar;
+
+                    if ($dernière_carte_de_cette_categorie == false){
+                        if ($type_carte_ajoutee == 'normal'){
+                            $initialisation = -20*$multiplierPointsPar;
+                            $initialisation += $valeur_carte_ajoutee;
+                        }
+                        if ($type_carte_ajoutee == 'extra'){
+                            $initialisation = -20*($multiplierPointsPar+1);
+                        }
+                        $plateau['pointj1_cat3'] += $initialisation;
+                        /////////////////////////////////////////////tutu
                         $id->setPointJ1_cat3($plateau['pointj1_cat3']);
-                        $plateau['pointj1'] -= 20;
-                        $plateau['pointj1'] += $valeur_carte_ajoutee;
-                        $id->setPointJ1($plateau['pointj1']);
                         array_push($plateau['poseesj1_cat3'], $cartecheck);
                         $nepaschangerlamain = true ;
                     }
                     if ($dernière_carte_de_cette_categorie != false){
-                        //Récupérer ID de la dernière carte
-                        dump($dernière_carte_de_cette_categorie);
                         //Récupérer la valeur de cette dernière carte
                         $precedenteValeur = $cartes[$dernière_carte_de_cette_categorie]->getValeur();
-                        //dump($precedenteValeur);
-                        if ($precedenteValeur <= $valeur_carte_ajoutee) {
-                            if ($type_carte_ajoutee == 'extra') {
-                                $plateau['pointj1_cat3'] *= 2;
+                            if ($precedenteValeur <= $valeur_carte_ajoutee) {
+                                if ($type_carte_ajoutee == 'extra') {
+                                    $plateau['pointj1_cat3'] = -20 * ($multiplierPointsPar + 1);
+                                }else{
+                                    $plateau['pointj1_cat3'] += $valeur_carte_ajouteeApresMultiplication;
+                                }
                                 $id->setPointJ1_cat3($plateau['pointj1_cat3']);
-                            } else {
-                                $plateau['pointj1_cat3'] += $valeur_carte_ajoutee;
-                                $id->setPointJ1_cat3($plateau['pointj1_cat3']);
-                                $plateau['pointj1'] += $valeur_carte_ajoutee;
-                                $id->setPointJ1($plateau['pointj1']);
+                                array_push($plateau['poseesj1_cat3'], $cartecheck);
+                                $nepaschangerlamain = true;
+                            }else{
+                                $infos = 2;
                             }
-                            array_push($plateau['poseesj1_cat3'], $cartecheck);
-                            $nepaschangerlamain = true;
-                        }
                     }
-
-
                 }
                 //Rajouter dans la catégorie4
-                if ( $categorie_carte_ajoutee == 4){
+                if ( $categorie_carte_ajoutee == 4) {
+                    $cbCartesExtra = $this->compterCartesExtraDejaPosees($plateau['poseesj1_cat4']);
+                    $multiplierPointsPar = $this->multiplierPar($cbCartesExtra);
+                    $multiplierPointsPar *= 1;
                     $dernière_carte_de_cette_categorie = $this->derniereValeur($plateau['poseesj1_cat4']);
-                    if ($plateau['pointj1_cat4'] == 0){
-                        $plateau['pointj1_cat4'] -= 20;
-                        $plateau['pointj1_cat4'] += $valeur_carte_ajoutee;
+                    $valeur_carte_ajouteeApresMultiplication = $valeur_carte_ajoutee*$multiplierPointsPar;
+
+                    if ($dernière_carte_de_cette_categorie == false) {
+                        if ($type_carte_ajoutee == 'normal'){
+                            $initialisation = -20*$multiplierPointsPar;
+                            $initialisation += $valeur_carte_ajoutee;
+                        }
+                        if ($type_carte_ajoutee == 'extra'){
+                            $initialisation = -20*($multiplierPointsPar+1);
+                        }
+                        $plateau['pointj1_cat4'] += $initialisation;
+                        /////////////////////////////////////////////tutu
                         $id->setPointJ1_cat4($plateau['pointj1_cat4']);
-                        $plateau['pointj1'] -= 20;
-                        $plateau['pointj1'] += $valeur_carte_ajoutee;
-                        $id->setPointJ1($plateau['pointj1']);
-                        array_push( $plateau['poseesj1_cat4'],$cartecheck);
-                        $nepaschangerlamain = true ;
+
+                        array_push($plateau['poseesj1_cat4'], $cartecheck);
+                        $nepaschangerlamain = true;
                     }
                     if ($dernière_carte_de_cette_categorie != false) {
-                        //Récupérer ID de la dernière carte
-                        dump($dernière_carte_de_cette_categorie);
                         //Récupérer la valeur de cette dernière carte
                         $precedenteValeur = $cartes[$dernière_carte_de_cette_categorie]->getValeur();
-                        //dump($precedenteValeur);
-                        if ($precedenteValeur <= $valeur_carte_ajoutee){
-                            if ($type_carte_ajoutee == 'extra'){
-                                $plateau['pointj1_cat4'] *= 2;
-                                $id->setPointJ1_cat4($plateau['pointj1_cat4']);
+                        if ($precedenteValeur <= $valeur_carte_ajoutee) {
+                            if ($type_carte_ajoutee == 'extra') {
+                                $plateau['pointj1_cat4'] = -20 * ($multiplierPointsPar + 1);
                             }else{
-                                $plateau['pointj1_cat4'] += $valeur_carte_ajoutee;
-                                $id->setPointJ1_cat4($plateau['pointj1_cat4']);
-                                $plateau['pointj1'] += $valeur_carte_ajoutee;
-                                $id->setPointJ1($plateau['pointj1']);
+                                $plateau['pointj1_cat4'] += $valeur_carte_ajouteeApresMultiplication;
                             }
-                            array_push( $plateau['poseesj1_cat4'],$cartecheck);
-                            $nepaschangerlamain = true ;
+                            $id->setPointJ1_cat4($plateau['pointj1_cat4']);
+                            array_push($plateau['poseesj1_cat4'], $cartecheck);
+                            $nepaschangerlamain = true;
+                        }else{
+                            $infos = 2;
                         }
-
                     }
-
-
                 }
                 //Rajouter dans la catégorie 5
-                if ( $categorie_carte_ajoutee == 5){
-                    $dernière_carte_de_cette_categorie = $this -> derniereValeur($plateau['poseesj1_cat5']);
+                if ( $categorie_carte_ajoutee == 5) {
+                    $cbCartesExtra = $this->compterCartesExtraDejaPosees($plateau['poseesj1_cat5']);
+                    $multiplierPointsPar = $this->multiplierPar($cbCartesExtra);
+                    $multiplierPointsPar *= 1;
+                    $dernière_carte_de_cette_categorie = $this->derniereValeur($plateau['poseesj1_cat5']);
+                    $valeur_carte_ajouteeApresMultiplication = $valeur_carte_ajoutee*$multiplierPointsPar;
+                    if ($dernière_carte_de_cette_categorie == false) {
+                        if ($type_carte_ajoutee == 'normal'){
+                            $initialisation = -20*$multiplierPointsPar;
+                            $initialisation += $valeur_carte_ajoutee;
 
-                    if ($plateau['pointj1_cat5'] == 0){
-                        $plateau['pointj1_cat5'] -= 20;
-                        $plateau['pointj1_cat5'] += $valeur_carte_ajoutee;
+                        }
+                        if ($type_carte_ajoutee == 'extra'){
+                            $initialisation = -20*($multiplierPointsPar+1);
+                        }                        $plateau['pointj1_cat5'] += $initialisation;
                         $id->setPointJ1_cat5($plateau['pointj1_cat5']);
-                        $plateau['pointj1'] -= 20;
-                        $plateau['pointj1'] += $valeur_carte_ajoutee;
 
-                        $id->setPointJ1($plateau['pointj1']);
-                        array_push( $plateau['poseesj1_cat5'],$cartecheck);
-                        $nepaschangerlamain = true ;
+                        array_push($plateau['poseesj1_cat5'], $cartecheck);
+                        $nepaschangerlamain = true;
 
                     }
-                    if ($dernière_carte_de_cette_categorie != false){
+                    if ($dernière_carte_de_cette_categorie != false) {
 
-                        //Récupérer ID de la dernière carte
-                        dump($dernière_carte_de_cette_categorie);
                         //Récupérer la valeur de cette dernière carte
                         $precedenteValeur = $cartes[$dernière_carte_de_cette_categorie]->getValeur();
-                        dump($precedenteValeur);
-                        dump($valeur_carte_ajoutee);
 
-                        if ($precedenteValeur <= $valeur_carte_ajoutee){
-                            if ($type_carte_ajoutee == 'extra'){
-                                $plateau['pointj1_cat5'] *= 2;
-                                $id->setPointJ1_cat5($plateau['pointj1_cat5']);
+                        if ($precedenteValeur <= $valeur_carte_ajoutee) {
+
+                            if ($type_carte_ajoutee == 'extra') {
+                                $plateau['pointj1_cat5'] = -20 * ($multiplierPointsPar + 1);
                             }else{
-                                $plateau['pointj1_cat5'] += $valeur_carte_ajoutee;
-                                $id->setPointJ1_cat5($plateau['pointj1_cat5']);
-                                $plateau['pointj1'] += $valeur_carte_ajoutee;
-                                $id->setPointJ1($plateau['pointj1']);
+                                $plateau['pointj1_cat5'] += $valeur_carte_ajouteeApresMultiplication;
                             }
-                            array_push( $plateau['poseesj1_cat5'],$cartecheck);
-                            $nepaschangerlamain = true ;
+                            $id->setPointJ1_cat5($plateau['pointj1_cat5']);
+                            array_push($plateau['poseesj1_cat5'], $cartecheck);
+                            $nepaschangerlamain = true;
+                        }else{
+                            $infos = 2;
                         }
                     }
                 }
             }
+
+            //UPDATE LES POINTS TOTAUX
+            $em = $this->getDoctrine()->getManager();
+            $pointstotaux = $plateau['pointj1_cat1'] + $plateau['pointj1_cat2'] + $plateau['pointj1_cat3'] + $plateau['pointj1_cat4'] + $plateau['pointj1_cat5'];
+            $id->setPointJ1($pointstotaux);
+            $em->persist($situation);
+            $em->flush();
+
+
             //Si defausse selectionnée
             if ($categorieecheck >5) {
                 $nepaschangerlamain = true ;
@@ -865,7 +921,7 @@ class JoueurController extends Controller
             //Récup l'id de la partie
             $partie=$situation->getId();
 
-
+            $situation->setInfosJ1($infos);
 
             //Les bails pour que ça marche
             $em->persist($situation);
@@ -893,6 +949,7 @@ class JoueurController extends Controller
 
         if($useractif==$idjoueur2){
             //DEBUT JOUEUR 2//
+            $multiplierPointsPar = 'test';
 
             //Les bails pour que ça marche
             $em = $this->getDoctrine()->getManager();
@@ -908,192 +965,198 @@ class JoueurController extends Controller
 
                 // Rajouter dans la catégorie 1
                 if( $categorie_carte_ajoutee == 1){
+                    $cbCartesExtra = $this->compterCartesExtraDejaPosees($plateau['poseesj2_cat1']);
+                    $multiplierPointsPar = $this->multiplierPar($cbCartesExtra);
+                    $multiplierPointsPar *= 1;
                     $dernière_carte_de_cette_categorie = $this -> derniereValeur($plateau['poseesj2_cat1']);
-                    if ($plateau['pointj2_cat1'] == 0){
-                        $plateau['pointj2_cat1'] -= 20;
-                        $plateau['pointj2_cat1'] += $valeur_carte_ajoutee;
+                    $valeur_carte_ajouteeApresMultiplication = $valeur_carte_ajoutee*$multiplierPointsPar;
+                    if ($dernière_carte_de_cette_categorie == false){
+                        if ($type_carte_ajoutee == 'normal'){
+                            $initialisation = -20*$multiplierPointsPar;
+                            $initialisation += $valeur_carte_ajoutee;
+                        }
+                        if ($type_carte_ajoutee == 'extra'){
+                            $initialisation = -20*($multiplierPointsPar+1);
+                        }
+                        $plateau['pointj2_cat1'] += $initialisation;
+
                         $id->setPointJ2_cat1($plateau['pointj2_cat1']);
-                        $plateau['pointj2'] -= 20;
-                        $plateau['pointj2'] += $valeur_carte_ajoutee;
-                        $id->setPointJ2($plateau['pointj2']);
                         array_push( $plateau['poseesj2_cat1'],$cartecheck);
                         $nepaschangerlamain = true ;
                     }
                     if ($dernière_carte_de_cette_categorie != false){
-                        //Récupérer ID de la dernière carte
-                        //dump($dernière_carte_de_cette_categorie);
                         //Récupérer la valeur de cette dernière carte
                         $precedenteValeur = $cartes[$dernière_carte_de_cette_categorie]->getValeur();
-                        //dump($precedenteValeur);
-
                         if ($precedenteValeur <= $valeur_carte_ajoutee){
-                            if ($type_carte_ajoutee == 'extra'){
-                                $plateau['pointj2_cat1'] *= 2;
-                                $id->setPointJ2_cat1($plateau['pointj2_cat1']);
+                            if ($type_carte_ajoutee == 'extra') {
+                                $plateau['pointj2_cat1'] = -20 * ($multiplierPointsPar + 1);
                             }else{
-                                $plateau['pointj2_cat1'] += $valeur_carte_ajoutee;
-                                $id->setPointJ2_cat1($plateau['pointj2_cat1']);
-                                $plateau['pointj2'] += $valeur_carte_ajoutee;
-                                $id->setPointJ2($plateau['pointj2']);
+                                $plateau['pointj2_cat1'] += $valeur_carte_ajouteeApresMultiplication;
                             }
+                            $id->setPointJ2_cat1($plateau['pointj2_cat1']);
                             array_push( $plateau['poseesj2_cat1'],$cartecheck);
                             $nepaschangerlamain = true ;
+                        }else{
+                            $infos = 2;
                         }
                     }
 
                 }
 
                 //Rajouter dans la catégorie 2
-                if ( $categorie_carte_ajoutee == 2){
+                if ( $categorie_carte_ajoutee == 2)
+                {
+                    $cbCartesExtra = $this->compterCartesExtraDejaPosees($plateau['poseesj2_cat2']);
+                    $multiplierPointsPar = $this->multiplierPar($cbCartesExtra);
+                    $multiplierPointsPar *= 1;
                     $dernière_carte_de_cette_categorie = $this->derniereValeur($plateau['poseesj2_cat2']);
-                    if ($plateau['pointj2_cat2'] == 0){
-                        $plateau['pointj2_cat2'] -= 20;
-                        $plateau['pointj2_cat2'] += $valeur_carte_ajoutee;
+                    $valeur_carte_ajouteeApresMultiplication = $valeur_carte_ajoutee*$multiplierPointsPar;
+                    if ($dernière_carte_de_cette_categorie == false){
+                        if ($type_carte_ajoutee == 'normal'){
+                            $initialisation = -20*$multiplierPointsPar;
+                            $initialisation += $valeur_carte_ajoutee;
+                        }
+                        if ($type_carte_ajoutee == 'extra'){
+                            $initialisation = -20*($multiplierPointsPar+1);
+                        }
+                        $plateau['pointj2_cat2'] += $initialisation;
                         $id->setPointJ2_cat2($plateau['pointj2_cat2']);
-                        $plateau['pointj2'] -= 20;
-                        $plateau['pointj2'] += $valeur_carte_ajoutee;
-                        $id->setPointJ2($plateau['pointj2']);
                         array_push( $plateau['poseesj2_cat2'],$cartecheck);
-                        $nepaschangerlamain = true;
+                        $nepaschangerlamain = true ;
                     }
                     if ($dernière_carte_de_cette_categorie != false) {
-                        //Récupérer ID de la dernière carte
-                        //dump($dernière_carte_de_cette_categorie);
                         //Récupérer la valeur de cette dernière carte
                         $precedenteValeur = $cartes[$dernière_carte_de_cette_categorie]->getValeur();
-                        //dump($precedenteValeur);
-
                         if ($precedenteValeur <= $valeur_carte_ajoutee){
-
-                            if ($type_carte_ajoutee == 'extra'){
-                                $plateau['pointj2_cat2'] *= 2;
-                                $id->setPointJ2_cat2($plateau['pointj2_cat2']);
+                            if ($type_carte_ajoutee == 'extra') {
+                                $plateau['pointj2_cat2'] = -20 * ($multiplierPointsPar + 1);
                             }else{
-                                $plateau['pointj2_cat2'] += $valeur_carte_ajoutee;
-                                $id->setPointJ2_cat2($plateau['pointj2_cat2']);
-                                $plateau['pointj2'] += $valeur_carte_ajoutee;
-                                $id->setPointJ2($plateau['pointj2']);
+                                $plateau['pointj2_cat2'] += $valeur_carte_ajouteeApresMultiplication;
                             }
+                            $id->setPointJ2_cat2($plateau['pointj2_cat2']);
                             array_push( $plateau['poseesj2_cat2'],$cartecheck);
                             $nepaschangerlamain = true;
+                        }else{
+                            $infos = 2;
                         }
-
-
                     }
-
                 }
 
                 //Rajouter dans la catégorie 3
                 if ( $categorie_carte_ajoutee == 3){
+                    $cbCartesExtra = $this->compterCartesExtraDejaPosees($plateau['poseesj2_cat3']);
+                    $multiplierPointsPar = $this->multiplierPar($cbCartesExtra);
+                    $multiplierPointsPar *= 1;
                     $dernière_carte_de_cette_categorie = $this -> derniereValeur($plateau['poseesj2_cat3']);
-                    if ($plateau['pointj2_cat3'] == 0){
-                        $plateau['pointj2_cat3'] -= 20;
-                        $plateau['pointj2_cat3'] += $valeur_carte_ajoutee;
+                    $valeur_carte_ajouteeApresMultiplication = $valeur_carte_ajoutee*$multiplierPointsPar;
+
+                    if ($dernière_carte_de_cette_categorie == false){
+                        if ($type_carte_ajoutee == 'normal'){
+                            $initialisation = -20*$multiplierPointsPar;
+                            $initialisation += $valeur_carte_ajoutee;
+                        }
+                        if ($type_carte_ajoutee == 'extra'){
+                            $initialisation = -20*($multiplierPointsPar+1);
+                        }
+                        $plateau['pointj2_cat3'] += $initialisation;
+
                         $id->setPointJ2_cat3($plateau['pointj2_cat3']);
-                        $plateau['pointj2'] -= 20;
-                        $plateau['pointj2'] += $valeur_carte_ajoutee;
-                        $id->setPointJ2($plateau['pointj2']);
                         array_push($plateau['poseesj2_cat3'], $cartecheck);
-                        $nepaschangerlamain = true;
-
-
+                        $nepaschangerlamain = true ;
                     }
                     if ($dernière_carte_de_cette_categorie != false){
-                        //Récupérer ID de la dernière carte
-
                         //Récupérer la valeur de cette dernière carte
                         $precedenteValeur = $cartes[$dernière_carte_de_cette_categorie]->getValeur();
-
                         if ($precedenteValeur <= $valeur_carte_ajoutee) {
                             if ($type_carte_ajoutee == 'extra') {
-                                $plateau['pointj2_cat3'] *= 2;
-                                $id->setPointJ2_cat3($plateau['pointj2_cat3']);
-                            } else {
-                                $plateau['pointj2_cat3'] += $valeur_carte_ajoutee;
-                                $id->setPointJ2_cat3($plateau['pointj2_cat3']);
-                                $plateau['pointj2'] += $valeur_carte_ajoutee;
-                                $id->setPointJ2($plateau['pointj2']);
+                                $plateau['pointj2_cat3'] = -20 * ($multiplierPointsPar + 1);
+                            }else{
+                                $plateau['pointj2_cat3'] += $valeur_carte_ajouteeApresMultiplication;
                             }
-                           array_push($plateau['poseesj2_cat3'], $cartecheck);
-                           $nepaschangerlamain = true;
+                            $id->setPointJ2_cat3($plateau['pointj2_cat3']);
+                            array_push($plateau['poseesj2_cat3'], $cartecheck);
+                            $nepaschangerlamain = true;
+                        }else{
+                            $infos = 2;
                         }
                     }
-
-
                 }
 
                 //Rajouter dans la catégorie4
-                if ( $categorie_carte_ajoutee == 4){
+                if ( $categorie_carte_ajoutee == 4) {
+                    $cbCartesExtra = $this->compterCartesExtraDejaPosees($plateau['poseesj2_cat4']);
+                    $multiplierPointsPar = $this->multiplierPar($cbCartesExtra);
+                    $multiplierPointsPar *= 1;
                     $dernière_carte_de_cette_categorie = $this->derniereValeur($plateau['poseesj2_cat4']);
-                    if ($plateau['pointj2_cat4'] == 0){
-                        $plateau['pointj2_cat4'] -= 20;
-                        $plateau['pointj2_cat4'] += $valeur_carte_ajoutee;
+                    $valeur_carte_ajouteeApresMultiplication = $valeur_carte_ajoutee*$multiplierPointsPar;
+
+                    if ($dernière_carte_de_cette_categorie == false) {
+                        if ($type_carte_ajoutee == 'normal'){
+                            $initialisation = -20*$multiplierPointsPar;
+                            $initialisation += $valeur_carte_ajoutee;
+                        }
+                        if ($type_carte_ajoutee == 'extra'){
+                            $initialisation = -20*($multiplierPointsPar+1);
+                        }
+                        $plateau['pointj2_cat4'] += $initialisation;
+                        /////////////////////////////////////////////tutu
                         $id->setPointJ2_cat4($plateau['pointj2_cat4']);
-                        $plateau['pointj2'] -= 20;
-                        $plateau['pointj2'] += $valeur_carte_ajoutee;
-                        $id->setPointJ2($plateau['pointj2']);
-                        array_push( $plateau['poseesj2_cat4'],$cartecheck);
-                        $nepaschangerlamain = true ;
+                        array_push($plateau['poseesj2_cat4'], $cartecheck);
+                        $nepaschangerlamain = true;
                     }
                     if ($dernière_carte_de_cette_categorie != false) {
-                        //Récupérer ID de la dernière carte
-                        //dump($dernière_carte_de_cette_categorie);
                         //Récupérer la valeur de cette dernière carte
                         $precedenteValeur = $cartes[$dernière_carte_de_cette_categorie]->getValeur();
-                        //dump($precedenteValeur);
-                        if ($precedenteValeur <= $valeur_carte_ajoutee){
-                            if ($type_carte_ajoutee == 'extra'){
-                                $plateau['pointj2_cat4'] *= 2;
-                                $id->setPointJ2_cat4($plateau['pointj2_cat4']);
+                        if ($precedenteValeur <= $valeur_carte_ajoutee) {
+                            if ($type_carte_ajoutee == 'extra') {
+                                $plateau['pointj1_cat4'] = -20 * ($multiplierPointsPar + 1);
                             }else{
-                                $plateau['pointj2_cat4'] += $valeur_carte_ajoutee;
-                                $id->setPointJ2_cat4($plateau['pointj2_cat4']);
-                                $plateau['pointj2'] += $valeur_carte_ajoutee;
-                                $id->setPointJ2($plateau['pointj2']);
+                                $plateau['pointj2_cat4'] += $valeur_carte_ajouteeApresMultiplication;
                             }
-                            array_push( $plateau['poseesj2_cat4'],$cartecheck);
-                            $nepaschangerlamain = true ;
+                            $id->setPointJ2_cat4($plateau['pointj2_cat4']);
+                            array_push($plateau['poseesj2_cat4'], $cartecheck);
+                            $nepaschangerlamain = true;
+                        }else{
+                            $infos = 2;
                         }
-
                     }
-
-
                 }
 
                 //Rajouter dans la catégorie 5
-                if ( $categorie_carte_ajoutee == 5){
-                    $dernière_carte_de_cette_categorie = $this -> derniereValeur($plateau['poseesj2_cat5']);
+                if ( $categorie_carte_ajoutee == 5) {
+                    $cbCartesExtra = $this->compterCartesExtraDejaPosees($plateau['poseesj2_cat5']);
+                    $multiplierPointsPar = $this->multiplierPar($cbCartesExtra);
+                    $multiplierPointsPar *= 1;
+                    $dernière_carte_de_cette_categorie = $this->derniereValeur($plateau['poseesj2_cat5']);
+                    $valeur_carte_ajouteeApresMultiplication = $valeur_carte_ajoutee*$multiplierPointsPar;
+                    if ($dernière_carte_de_cette_categorie == false) {
+                        if ($type_carte_ajoutee == 'normal'){
+                            $initialisation = -20*$multiplierPointsPar;
+                            $initialisation += $valeur_carte_ajoutee;
 
-                    if ($plateau['pointj2_cat5'] == 0){
-                        $plateau['pointj2_cat5'] -= 20;
-                        $plateau['pointj2_cat5'] += $valeur_carte_ajoutee;
+                        }
+                        if ($type_carte_ajoutee == 'extra'){
+                            $initialisation = -20*($multiplierPointsPar+1);
+                        }                        $plateau['pointj2_cat5'] += $initialisation;
                         $id->setPointJ2_cat5($plateau['pointj2_cat5']);
-                        $plateau['pointj2'] -= 20;
-                        $plateau['pointj2'] += $valeur_carte_ajoutee;
-                        $id->setPointJ2($plateau['pointj2']);
-                        array_push( $plateau['poseesj2_cat5'],$cartecheck);
-                        $nepaschangerlamain = true ;
+                        array_push($plateau['poseesj2_cat5'], $cartecheck);
+                        $nepaschangerlamain = true;
 
                     }
-                    if ($dernière_carte_de_cette_categorie != false){
-                        //Récupérer ID de la dernière carte
-                        //dump($dernière_carte_de_cette_categorie);
+                    if ($dernière_carte_de_cette_categorie != false) {
                         //Récupérer la valeur de cette dernière carte
                         $precedenteValeur = $cartes[$dernière_carte_de_cette_categorie]->getValeur();
-                        //dump($precedenteValeur);
-
-                        if ($precedenteValeur <= $valeur_carte_ajoutee){
-                            if ($type_carte_ajoutee == 'extra'){
-                                $plateau['pointj2_cat5'] *= 2;
-                                $id->setPointJ2_cat5($plateau['pointj2_cat5']);
+                        if ($precedenteValeur <= $valeur_carte_ajoutee) {
+                            if ($type_carte_ajoutee == 'extra') {
+                                $plateau['pointj2_cat5'] = -20 * ($multiplierPointsPar + 1);
                             }else{
-                                $plateau['pointj2_cat5'] += $valeur_carte_ajoutee;
-                                $id->setPointJ2_cat5($plateau['pointj2_cat5']);
-                                $plateau['pointj2'] += $valeur_carte_ajoutee;
-                                $id->setPointJ2($plateau['pointj2']);
+                                $plateau['pointj2_cat5'] += $valeur_carte_ajouteeApresMultiplication;
                             }
-                            array_push( $plateau['poseesj2_cat5'],$cartecheck);
-                            $nepaschangerlamain = true ;
+                            $id->setPointJ2_cat5($plateau['pointj2_cat5']);
+                            array_push($plateau['poseesj2_cat5'], $cartecheck);
+                            $nepaschangerlamain = true;
+                        }else{
+                            $infos = 2;
                         }
                     }
                 }
@@ -1138,7 +1201,16 @@ class JoueurController extends Controller
 
             //Recup id de la partie
             $partie=$situation->getId();
+
+            $situation->setInfosJ2($infos);
             //Les bails pour que ça marche
+            $em->persist($situation);
+            $em->flush();
+
+            //UPDATE LES POINTS TOTAUX
+            $em = $this->getDoctrine()->getManager();
+            $pointstotaux = $plateau['pointj2_cat1'] + $plateau['pointj2_cat2'] + $plateau['pointj2_cat3'] + $plateau['pointj2_cat4'] + $plateau['pointj2_cat5'];
+            $id->setPointJ2($pointstotaux);
             $em->persist($situation);
             $em->flush();
 
@@ -1162,7 +1234,7 @@ class JoueurController extends Controller
             //FIN JOUEUR 2//
         }
 
-        //return $this->render(':joueur:poser.html.twig', ['toto' => $dernière_carte_de_cette_categorie , 'categorieecheck'=>$categorieecheck,'cartecheck' => $cartecheck, 'cartes' => $cartes, 'partie' => $id, 'user' => $user, 'plateau' => $plateau, 'tour' => $tour, 'plateau' => $plateau, 'situation' => $situation, 'parte' =>'$partie']);
+        //return $this->render(':joueur:poser.html.twig', ['tutu' => $initialisation, 'toto' => $multiplierPointsPar , 'categorieecheck'=>$categorieecheck,'cartecheck' => $cartecheck, 'cartes' => $cartes, 'partie' => $id, 'user' => $user, 'plateau' => $plateau, 'tour' => $tour, 'plateau' => $plateau, 'situation' => $situation, 'parte' =>'$partie']);
         return $this->redirectToRoute('afficher_partie', ['id' => $id->getId()]);
     }
 
@@ -1184,5 +1256,26 @@ class JoueurController extends Controller
     {
         end($array);
         return end($array);
+    }
+
+    private function compterCartesExtraDejaPosees($cartesPosees){
+        $cartes = $this->getDoctrine()->getRepository('AppBundle:Cartes')->getAll();
+        $t = array();
+        foreach ($cartesPosees as $idDeLaCarte){
+            if ($cartes[$idDeLaCarte]->getType() == 'extra'){
+                $t[] = $idDeLaCarte;
+            }
+        }
+        $combien = count($t);
+        return $combien;
+
+    }
+    private function multiplierPar($nombre){
+        if($nombre == 0){
+            $toto = 1;
+        }else{
+            $toto = $nombre+1;
+        }
+        return $toto;
     }
 }
