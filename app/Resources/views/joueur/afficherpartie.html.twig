@@ -288,13 +288,15 @@
 
 
     <script type="text/javascript">
-        var idpartie = 122;
-         setInterval(
-            function ()
-            {
-              $('#divarefresh').load('{{ path('afficher_partie', {'id': id } ) }}').fadeIn("slow");
-              console.log('test.');
-            },7000); // refresh every 10000 milliseconds
+        if ( {{ tour }} != {{ user.id }} ) {
+            setInterval(
+                function ()
+                {
+                    $('#divarefresh').load('{{ path('afficher_partie', {'id': id } ) }}').fadeIn("slow");
+                    console.log('test.');
+                },7000); // refresh every 10000 milliseconds
+        }
+
 
 
     </script>
