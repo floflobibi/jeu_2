@@ -1,288 +1,302 @@
 {% extends 'base.html.twig' %}
 
 {% block body %}
-    <h1>Partie entre {{ partie.joueur1.username }} et {{ partie.joueur2.username }}</h1>
-    <h2>{{ user.id }} - {{ tour }}</h2>
-    {% if tour==user.id %}
-    <h2>A toi de jouer !</h2>
-    {% else %}
-    <h2>C'est au tour de votre adversaire</h2>
-    {% endif %}
-    <div>
-        <hr>
-        <h3>Informations :</h3>
-    {% if partie.joueur1.id==user.id %}
-        {% if infosj1 == 1 %}
-            <p>Pas d'informations</p>
-        {% elseif infosj1 == 2 %}
-            <p>Vous ne pouvez pas placer une carte dans une catégorie si la valeur de la précédente est supérieur à celle que vous essayez de poser.</p>
-        {% elseif infosj1 == 3 %}
-            <p>Il n'y aucune carte dans cette défausse. Choissez une autre défausse ou la pioche.</p>
-        {% elseif infosj1 == 4 %}
-        {% endif %}
-    {% endif %}
-
-        {% if partie.joueur2.id==user.id %}
-            {% if infosj2 == 1 %}
-                <p>Pas d'informations</p>
-            {% elseif infosj2 == 2 %}
-                <p>Vous ne pouvez pas placer une carte dans une catégorie si la valeur de la précédente est supérieur à celle que vous essayez de poser.</p>
-            {% elseif infosj2 == 3 %}
-                <p>Il n'y aucune carte dans cette défausse. Choissez une autre défausse ou la pioche.</p>
-            {% elseif infosj2 == 4 %}
-            {% endif %}
-        {% endif %}
-        <hr>
-
-
-        {% if tour==user.id and (nbcartesj1<8 or nbcartesj2<8) %}
-            <p>Vous ne pouvez poser qu'une seule carte à la fois. Veuillez piocher.</p>
-        {% elseif tour==user.id and (nbcartesj1>7 or nbcartesj2>7) %}
-            <button type="submit" form="1" value="valid_action">Poser votre carte</button>
+    <div id="divarefresh">
+        <h1>Partie entre {{ partie.joueur1.username }} et {{ partie.joueur2.username }}</h1>
+        <h2>{{ user.id }} - {{ tour }}</h2>
+        {% if tour==user.id %}
+            <h2>A toi de jouer !</h2>
         {% else %}
-            <p>Ce n'est pas à vous de poser votre carte</p>
+            <h2>C'est au tour de votre adversaire</h2>
         {% endif %}
-
-
-    </div>
-
-    <form action="{{ path('poser_partie', {id:partie.id}) }}" method="get" id="1">
-
         <div>
-            <h2>Cartes du joueur 1</h2>
-            <table border="solid">
-                <tr>
-                    <td>Vos cartes</td>
-                    {% for carte in plateau.mainJ1 %}
-                        {% if user.id==partie.joueur1.id %}
-                            <td>
-                            <img src="{{asset('assets/img/cartes/'~cartes[carte].id~'.png') }}" alt="cartes" width="100">
-                            </td>
-                        {% elseif user.id==partie.joueur2.id %}
-                            <td>
-                                <img src="{{asset('assets/img/back.png') }}" alt="cartes" width="100">
-                            </td>
-                        {% endif %}
-                    {% endfor %}
-                </tr>
-
-                {% if user.id==partie.joueur1.id %}
-                    <tr>
-                    <td>Les placer</td>
-                    {% for carte in plateau.mainJ1 %}
-
-                            <td>
-                                <input name="cartecheck" value="{{ cartes[carte].id }}" required type="radio">
-                            </td>
-
-                    {% endfor %}
-                    </tr>
+            <hr>
+            <h3>Informations :</h3>
+            {% if partie.joueur1.id==user.id %}
+                {% if infosj1 == 1 %}
+                    <p>Pas d'informations</p>
+                {% elseif infosj1 == 2 %}
+                    <p>Vous ne pouvez pas placer une carte dans une catégorie si la valeur de la précédente est supérieur à celle que vous essayez de poser.</p>
+                {% elseif infosj1 == 3 %}
+                    <p>Il n'y aucune carte dans cette défausse. Choissez une autre défausse ou la pioche.</p>
+                {% elseif infosj1 == 4 %}
                 {% endif %}
+            {% endif %}
 
-            </table>
+            {% if partie.joueur2.id==user.id %}
+                {% if infosj2 == 1 %}
+                    <p>Pas d'informations</p>
+                {% elseif infosj2 == 2 %}
+                    <p>Vous ne pouvez pas placer une carte dans une catégorie si la valeur de la précédente est supérieur à celle que vous essayez de poser.</p>
+                {% elseif infosj2 == 3 %}
+                    <p>Il n'y aucune carte dans cette défausse. Choissez une autre défausse ou la pioche.</p>
+                {% elseif infosj2 == 4 %}
+                {% endif %}
+            {% endif %}
+            <hr>
+
+
+            {% if tour==user.id and (nbcartesj1<8 or nbcartesj2<8) %}
+                <p>Vous ne pouvez poser qu'une seule carte à la fois. Veuillez piocher.</p>
+            {% elseif tour==user.id and (nbcartesj1>7 or nbcartesj2>7) %}
+                <button type="submit" form="1" value="valid_action">Poser votre carte</button>
+            {% else %}
+                <p>Ce n'est pas à vous de poser votre carte</p>
+            {% endif %}
+
+
         </div>
 
+        <form action="{{ path('poser_partie', {id:partie.id}) }}" method="get" id="1">
 
-        <div>
-            <h2>Cartes du joueur 2</h2>
-            <table border="solid">
-                <tr>
-                    <td>Vos cartes</td>
-                    {% for carte in plateau.mainJ2 %}
-                        {% if user.id==partie.joueur2.id %}
-                        <td>{{ cartes[carte].categorie.libelle }}
-                            <img src="{{asset('assets/img/cartes/'~cartes[carte].id~'.png') }}" alt="cartes" width="100">
-                        </td>
-                        {% elseif user.id==partie.joueur1.id %}
-                            <td><img src="{{asset('assets/img/back.png') }}" alt="cartes" width="100"></td>
-                        {% endif %}
-                    {% endfor %}
-                </tr>
-                {% if user.id==partie.joueur2.id %}
+            <div>
+                <h2>Cartes du joueur 1</h2>
+                <table border="solid">
                     <tr>
-                        <td>Les placer</td>
+                        <td>Vos cartes</td>
+                        {% for carte in plateau.mainJ1 %}
+                            {% if user.id==partie.joueur1.id %}
+                                <td>
+                                    <img src="{{asset('assets/img/cartes/'~cartes[carte].id~'.png') }}" alt="cartes" width="100">
+                                </td>
+                            {% elseif user.id==partie.joueur2.id %}
+                                <td>
+                                    <img src="{{asset('assets/img/back.png') }}" alt="cartes" width="100">
+                                </td>
+                            {% endif %}
+                        {% endfor %}
+                    </tr>
+
+                    {% if user.id==partie.joueur1.id %}
+                        <tr>
+                            <td>Les placer</td>
+                            {% for carte in plateau.mainJ1 %}
+
+                                <td>
+                                    <input name="cartecheck" value="{{ cartes[carte].id }}" required type="radio">
+                                </td>
+
+                            {% endfor %}
+                        </tr>
+                    {% endif %}
+
+                </table>
+            </div>
+
+
+            <div>
+                <h2>Cartes du joueur 2</h2>
+                <table border="solid">
+                    <tr>
+                        <td>Vos cartes</td>
                         {% for carte in plateau.mainJ2 %}
+                            {% if user.id==partie.joueur2.id %}
+                                <td>{{ cartes[carte].categorie.libelle }}
+                                    <img src="{{asset('assets/img/cartes/'~cartes[carte].id~'.png') }}" alt="cartes" width="100">
+                                </td>
+                            {% elseif user.id==partie.joueur1.id %}
+                                <td><img src="{{asset('assets/img/back.png') }}" alt="cartes" width="100"></td>
+                            {% endif %}
+                        {% endfor %}
+                    </tr>
+                    {% if user.id==partie.joueur2.id %}
+                        <tr>
+                            <td>Les placer</td>
+                            {% for carte in plateau.mainJ2 %}
 
                                 <td><input name="cartecheck" value="{{ cartes[carte].id }}" required type="radio"></td>
 
-                        {% endfor %}
-                    </tr>
-                {% endif %}
-
-            </table>
-        </div>
-
-        <hr>
-    <table border="solid">
-        <tr>
-            <td>Catégories</td>
-            <td>Cordes</td>
-            <td>Clavier</td>
-            <td>Bois</td>
-            <td>Cuivre</td>
-            <td>Percussion</td>
-        </tr>
-        <tr>
-            <td>Poser</td>
-            <td><input name="categorieecheck" required value="1" type="radio"></td>
-            <td><input name="categorieecheck" required value="2" type="radio"></td>
-            <td><input name="categorieecheck" required value="3" type="radio"></td>
-            <td><input name="categorieecheck" required value="4" type="radio"></td>
-            <td><input name="categorieecheck" required value="5" type="radio"></td>
-        </tr>
-        <tr>
-            <td>Cartes posées par J1</td>
-            <td>
-                {% for carte in plateau.poseesj1_cat1 %}
-
-                        <img src="{{asset('assets/img/cartes/'~cartes[carte].id~'.png') }}" alt="cartes" width="100">
-
-                {% endfor %}
-            </td>
-            <td>
-                {% for carte in plateau.poseesj1_cat2 %}
-
-                        <img src="{{asset('assets/img/cartes/'~cartes[carte].id~'.png') }}" alt="cartes" width="100">
-
-                {% endfor %}
-            </td>
-            <td>
-                {% for carte in plateau.poseesj1_cat3 %}
-                        <img src="{{asset('assets/img/cartes/'~cartes[carte].id~'.png') }}" alt="cartes" width="100">
-                {% endfor %}
-            </td>
-            <td>
-                {% for carte in plateau.poseesj1_cat4 %}
-                    {% if cartes[carte].getCategorie().id == '4' %}
-                        <img src="{{asset('assets/img/cartes/'~cartes[carte].id~'.png') }}" alt="cartes" width="100">
+                            {% endfor %}
+                        </tr>
                     {% endif %}
-                {% endfor %}
-            </td>
-            <td>
-                {% for carte in plateau.poseesj1_cat5 %}
-                        <img src="{{asset('assets/img/cartes/'~cartes[carte].id~'.png') }}" alt="cartes" width="100">
-                {% endfor %}
-            </td>
 
-        </tr>
-        <tr>
-            <td>Points du joueur 1 : <strong>{{ plateau.pointj1 }}</strong> </td>
-            <td>{{ plateau.pointj1_cat1 }}</td>
-            <td>{{ plateau.pointj1_cat2 }}</td>
-            <td>{{ plateau.pointj1_cat3 }}</td>
-            <td>{{ plateau.pointj1_cat4 }}</td>
-            <td>{{ plateau.pointj1_cat5 }}</td>
-        </tr>
-        <tr>
-            <td>Points du joueur 2 : <strong>{{ plateau.pointj2 }}</strong></td>
-            <td>{{ plateau.pointj2_cat1 }}</td>
-            <td>{{ plateau.pointj2_cat2 }}</td>
-            <td>{{ plateau.pointj2_cat3 }}</td>
-            <td>{{ plateau.pointj2_cat4 }}</td>
-            <td>{{ plateau.pointj2_cat5 }}</td>
-        </tr>
-        <tr>
-            <td>Cartes posées par J2</td>
-            <td>
-                {% for carte in plateau.poseesj2_cat1 %}
-                        <img src="{{asset('assets/img/cartes/'~cartes[carte].id~'.png') }}" alt="cartes" width="100">
-                {% endfor %}
-            </td>
-            <td>
-                {% for carte in plateau.poseesj2_cat2 %}
-                        <img src="{{asset('assets/img/cartes/'~cartes[carte].id~'.png') }}" alt="cartes" width="100">
-                {% endfor %}
-            </td>
-            <td>
-                {% for carte in plateau.poseesj2_cat3 %}
-                        <img src="{{asset('assets/img/cartes/'~cartes[carte].id~'.png') }}" alt="cartes" width="100">
-                {% endfor %}
-            </td>
-            <td>
-                {% for carte in plateau.poseesj2_cat4 %}
-                        <img src="{{asset('assets/img/cartes/'~cartes[carte].id~'.png') }}" alt="cartes" width="100">
-                {% endfor %}
-            </td>
-            <td>
-                {% for carte in plateau.poseesj2_cat5 %}
-                        <img src="{{asset('assets/img/cartes/'~cartes[carte].id~'.png') }}" alt="cartes" width="100">
-                {% endfor %}
-            </td>
-        </tr>
-        <tr>
-            <td>Defausse</td>
-            <td>
-                {% for carte in plateau.defausse_cat1 %}
-                    <img src="{{asset('assets/img/cartes/'~cartes[carte].id~'.png') }}" alt="cartes" width="100">
-                {% endfor %}
-            </td>
-            <td>
-                {% for carte in plateau.defausse_cat2 %}
-                    <img src="{{asset('assets/img/cartes/'~cartes[carte].id~'.png') }}" alt="cartes" width="100">
-                {% endfor %}
-            </td>
-            <td>
-                {% for carte in plateau.defausse_cat3 %}
-                    <img src="{{asset('assets/img/cartes/'~cartes[carte].id~'.png') }}" alt="cartes" width="100">
-                {% endfor %}
-            </td>
-            <td>
-                {% for carte in plateau.defausse_cat4 %}
-                    <img src="{{asset('assets/img/cartes/'~cartes[carte].id~'.png') }}" alt="cartes" width="100">
-                {% endfor %}
-            </td>
-            <td>
-                {% for carte in plateau.defausse_cat5 %}
-                    <img src="{{asset('assets/img/cartes/'~cartes[carte].id~'.png') }}" alt="cartes" width="100">
-                {% endfor %}
-            </td>
-        </tr>
-        <tr>
-            <td>Poser Défausse</td>
-            <td><input name="categorieecheck" required value="6" type="radio"></td>
-            <td><input name="categorieecheck" required value="7" type="radio"></td>
-            <td><input name="categorieecheck" required value="8" type="radio"></td>
-            <td><input name="categorieecheck" required value="9" type="radio"></td>
-            <td><input name="categorieecheck" required value="10" type="radio"></td>
-        </tr>
-    </table>
+                </table>
+            </div>
 
-    </form>
-    <form action="{{ path('defausser_partie', {id:partie.id}) }}" method="get" id="2">
-        <table border="solid">
-        <tr>
-                <td>Récupérer Défausse</td>
-                <td><input name="defausse" required value="1" type="radio"></td>
-                <td><input name="defausse" required value="2" type="radio"></td>
-                <td><input name="defausse" required value="3" type="radio"></td>
-                <td><input name="defausse" required value="4" type="radio"></td>
-                <td><input name="defausse" required value="5" type="radio"></td>
-        </tr>
-        </table>
-    </form>
-    <hr>
-    <div>
-        <h2>Pioche</h2>
+            <hr>
+            <table border="solid">
+                <tr>
+                    <td>Catégories</td>
+                    <td>Cordes</td>
+                    <td>Clavier</td>
+                    <td>Bois</td>
+                    <td>Cuivre</td>
+                    <td>Percussion</td>
+                </tr>
+                <tr>
+                    <td>Poser</td>
+                    <td><input name="categorieecheck" required value="1" type="radio"></td>
+                    <td><input name="categorieecheck" required value="2" type="radio"></td>
+                    <td><input name="categorieecheck" required value="3" type="radio"></td>
+                    <td><input name="categorieecheck" required value="4" type="radio"></td>
+                    <td><input name="categorieecheck" required value="5" type="radio"></td>
+                </tr>
+                <tr>
+                    <td>Cartes posées par J1</td>
+                    <td>
+                        {% for carte in plateau.poseesj1_cat1 %}
+
+                            <img src="{{asset('assets/img/cartes/'~cartes[carte].id~'.png') }}" alt="cartes" width="100">
+
+                        {% endfor %}
+                    </td>
+                    <td>
+                        {% for carte in plateau.poseesj1_cat2 %}
+
+                            <img src="{{asset('assets/img/cartes/'~cartes[carte].id~'.png') }}" alt="cartes" width="100">
+
+                        {% endfor %}
+                    </td>
+                    <td>
+                        {% for carte in plateau.poseesj1_cat3 %}
+                            <img src="{{asset('assets/img/cartes/'~cartes[carte].id~'.png') }}" alt="cartes" width="100">
+                        {% endfor %}
+                    </td>
+                    <td>
+                        {% for carte in plateau.poseesj1_cat4 %}
+                            {% if cartes[carte].getCategorie().id == '4' %}
+                                <img src="{{asset('assets/img/cartes/'~cartes[carte].id~'.png') }}" alt="cartes" width="100">
+                            {% endif %}
+                        {% endfor %}
+                    </td>
+                    <td>
+                        {% for carte in plateau.poseesj1_cat5 %}
+                            <img src="{{asset('assets/img/cartes/'~cartes[carte].id~'.png') }}" alt="cartes" width="100">
+                        {% endfor %}
+                    </td>
+
+                </tr>
+                <tr>
+                    <td>Points du joueur 1 : <strong>{{ plateau.pointj1 }}</strong> </td>
+                    <td>{{ plateau.pointj1_cat1 }}</td>
+                    <td>{{ plateau.pointj1_cat2 }}</td>
+                    <td>{{ plateau.pointj1_cat3 }}</td>
+                    <td>{{ plateau.pointj1_cat4 }}</td>
+                    <td>{{ plateau.pointj1_cat5 }}</td>
+                </tr>
+                <tr>
+                    <td>Points du joueur 2 : <strong>{{ plateau.pointj2 }}</strong></td>
+                    <td>{{ plateau.pointj2_cat1 }}</td>
+                    <td>{{ plateau.pointj2_cat2 }}</td>
+                    <td>{{ plateau.pointj2_cat3 }}</td>
+                    <td>{{ plateau.pointj2_cat4 }}</td>
+                    <td>{{ plateau.pointj2_cat5 }}</td>
+                </tr>
+                <tr>
+                    <td>Cartes posées par J2</td>
+                    <td>
+                        {% for carte in plateau.poseesj2_cat1 %}
+                            <img src="{{asset('assets/img/cartes/'~cartes[carte].id~'.png') }}" alt="cartes" width="100">
+                        {% endfor %}
+                    </td>
+                    <td>
+                        {% for carte in plateau.poseesj2_cat2 %}
+                            <img src="{{asset('assets/img/cartes/'~cartes[carte].id~'.png') }}" alt="cartes" width="100">
+                        {% endfor %}
+                    </td>
+                    <td>
+                        {% for carte in plateau.poseesj2_cat3 %}
+                            <img src="{{asset('assets/img/cartes/'~cartes[carte].id~'.png') }}" alt="cartes" width="100">
+                        {% endfor %}
+                    </td>
+                    <td>
+                        {% for carte in plateau.poseesj2_cat4 %}
+                            <img src="{{asset('assets/img/cartes/'~cartes[carte].id~'.png') }}" alt="cartes" width="100">
+                        {% endfor %}
+                    </td>
+                    <td>
+                        {% for carte in plateau.poseesj2_cat5 %}
+                            <img src="{{asset('assets/img/cartes/'~cartes[carte].id~'.png') }}" alt="cartes" width="100">
+                        {% endfor %}
+                    </td>
+                </tr>
+                <tr>
+                    <td>Defausse</td>
+                    <td>
+                        {% for carte in plateau.defausse_cat1 %}
+                            <img src="{{asset('assets/img/cartes/'~cartes[carte].id~'.png') }}" alt="cartes" width="100">
+                        {% endfor %}
+                    </td>
+                    <td>
+                        {% for carte in plateau.defausse_cat2 %}
+                            <img src="{{asset('assets/img/cartes/'~cartes[carte].id~'.png') }}" alt="cartes" width="100">
+                        {% endfor %}
+                    </td>
+                    <td>
+                        {% for carte in plateau.defausse_cat3 %}
+                            <img src="{{asset('assets/img/cartes/'~cartes[carte].id~'.png') }}" alt="cartes" width="100">
+                        {% endfor %}
+                    </td>
+                    <td>
+                        {% for carte in plateau.defausse_cat4 %}
+                            <img src="{{asset('assets/img/cartes/'~cartes[carte].id~'.png') }}" alt="cartes" width="100">
+                        {% endfor %}
+                    </td>
+                    <td>
+                        {% for carte in plateau.defausse_cat5 %}
+                            <img src="{{asset('assets/img/cartes/'~cartes[carte].id~'.png') }}" alt="cartes" width="100">
+                        {% endfor %}
+                    </td>
+                </tr>
+                <tr>
+                    <td>Poser Défausse</td>
+                    <td><input name="categorieecheck" required value="6" type="radio"></td>
+                    <td><input name="categorieecheck" required value="7" type="radio"></td>
+                    <td><input name="categorieecheck" required value="8" type="radio"></td>
+                    <td><input name="categorieecheck" required value="9" type="radio"></td>
+                    <td><input name="categorieecheck" required value="10" type="radio"></td>
+                </tr>
+            </table>
+
+        </form>
+        <form action="{{ path('defausser_partie', {id:partie.id}) }}" method="get" id="2">
+            <table border="solid">
+                <tr>
+                    <td>Récupérer Défausse</td>
+                    <td><input name="defausse" required value="1" type="radio"></td>
+                    <td><input name="defausse" required value="2" type="radio"></td>
+                    <td><input name="defausse" required value="3" type="radio"></td>
+                    <td><input name="defausse" required value="4" type="radio"></td>
+                    <td><input name="defausse" required value="5" type="radio"></td>
+                </tr>
+            </table>
+        </form>
+        <hr>
         <div>
-    {% if tour==user.id and (nbcartesj1<8 or nbcartesj2<8) %}
-        {% if nbcartespioche>0 %}
-            <a href="{{ path('piocher_partie', {id:partie.id}) }}"><button>Récupérer depuis la pioche</button></a>
-            <button type="submit" form="2" value="valid_action">Récuperez depuis la defausse</button>
-        {% else %}
-            <p>Fin du game</p>
-        {% endif %}
-    {% elseif tour==user.id and (nbcartesj1>7 or nbcartesj2>7) %}
-        <p>Vous devez jouer avant de piocher</p>
-    {% else %}
-            <p>Ce n'est pas à vous de piocher</p>
-    {% endif %}
-            <br>
-            Cartes restants à j1 : {{ nbcartesj1 }} <br>
-            Cartes restants à j2 : {{ nbcartesj2 }} <br>
-            Cartes restants dans la pioche : {{ nbcartespioche }} <br>
+            <h2>Pioche</h2>
+            <div>
+                {% if tour==user.id and (nbcartesj1<8 or nbcartesj2<8) %}
+                    {% if nbcartespioche>0 %}
+                        <a href="{{ path('piocher_partie', {id:partie.id}) }}"><button>Récupérer depuis la pioche</button></a>
+                        <button type="submit" form="2" value="valid_action">Récuperez depuis la defausse</button>
+                    {% else %}
+                        <p>Fin du game</p>
+                    {% endif %}
+                {% elseif tour==user.id and (nbcartesj1>7 or nbcartesj2>7) %}
+                    <p>Vous devez jouer avant de piocher</p>
+                {% else %}
+                    <p>Ce n'est pas à vous de piocher</p>
+                {% endif %}
+                <br>
+                Cartes restants à j1 : {{ nbcartesj1 }} <br>
+                Cartes restants à j2 : {{ nbcartesj2 }} <br>
+                Cartes restants dans la pioche : {{ nbcartespioche }} <br>
 
+            </div>
         </div>
     </div>
 
+
+    <script type="text/javascript">
+        var idpartie = 122;
+         setInterval(
+            function ()
+            {
+              $('#divarefresh').load('{{ path('afficher_partie', {'id': id } ) }}').fadeIn("slow");
+              console.log('test.');
+            },7000); // refresh every 10000 milliseconds
+
+
+    </script>
 
 {% endblock %}

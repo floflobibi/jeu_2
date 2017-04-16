@@ -106,6 +106,7 @@ class JoueurController extends Controller
         $user = $this->getUser();
         //Récup partie
         $situation = $id->getSituation();
+        $idpartie = $id->getId();
         //Décode le json de la bdd pour afficher
         $plateau['mainJ1'] = json_decode($situation->getMainJ1());
         $plateau['mainJ2'] = json_decode($situation->getMainJ2());
@@ -209,7 +210,7 @@ class JoueurController extends Controller
             return $this->render(':joueur:findepartie.html.twig', ['cartes' => $cartes, 'partie' => $id, 'user' => $user, 'plateau' => $plateau]);
 
         }else{
-            return $this->render(':joueur:afficherpartie.html.twig', ['infosj1' => $infosj1,'infosj2' => $infosj2,'nbcartesj1' => $nbcartesj1, 'nbcartesj2' => $nbcartesj2, 'nbcartespioche' => $nbcartespioche,'cartes' => $cartes, 'partie' => $id, 'user' => $user, 'plateau' => $plateau, 'tour' => $tour]);
+            return $this->render(':joueur:afficherpartie.html.twig', ['id' => $idpartie, 'infosj1' => $infosj1,'infosj2' => $infosj2,'nbcartesj1' => $nbcartesj1, 'nbcartesj2' => $nbcartesj2, 'nbcartespioche' => $nbcartespioche,'cartes' => $cartes, 'partie' => $id, 'user' => $user, 'plateau' => $plateau, 'tour' => $tour]);
 
         }
 
