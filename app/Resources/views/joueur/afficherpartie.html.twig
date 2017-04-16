@@ -284,21 +284,23 @@
 
             </div>
         </div>
+
+        <script type="text/javascript" id="script">
+            if ( {{ tour }} != {{ user.id }} ) {
+                setInterval(
+                    function ()
+                    {
+                        $('#divarefresh').load('{{ path('afficher_partie', {'id': id } ) }}').fadeIn("slow");
+                        console.log('test.');
+                    },7000); // refresh every 70000 milliseconds
+            }
+
+
+
+        </script>
     </div>
 
 
-    <script type="text/javascript">
-        if ( {{ tour }} != {{ user.id }} ) {
-            setInterval(
-                function ()
-                {
-                    $('#divarefresh').load('{{ path('afficher_partie', {'id': id } ) }}').fadeIn("slow");
-                    console.log('test.');
-                },7000); // refresh every 10000 milliseconds
-        }
 
-
-
-    </script>
 
 {% endblock %}
