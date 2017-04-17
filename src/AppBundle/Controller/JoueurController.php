@@ -93,6 +93,26 @@ class JoueurController extends Controller
 
         $em->persist($partie);
         $em->flush();
+
+        /// ENVOIE D'UN MAIL
+
+            $aqui = $user->getEmail();
+            $message = \Swift_Message::newInstance()
+                ->setSubject('Hello Email')
+                ->setFrom('florine-bignon@orange.fr')
+                ->setTo($aqui)
+                ->setBody(
+                    $this->renderView(
+                    // app/Resources/views/mails/lancementpartie.html.twig
+                        'mail/lancementpartie.html.twig',
+                        array('name' => $user)
+                    ),
+                    'text/html'
+                )
+            ;
+            $this->get('mailer')->send($message);
+        /// FIN DE L'ENVOIE DU MAIL
+
         return $this->redirectToRoute('afficher_partie', ['id' => $partie->getId()]);
         //return $this->render('joueur/partie.html.twig', ['partie' => $partie]);
     }
