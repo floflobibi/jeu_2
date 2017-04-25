@@ -2,26 +2,27 @@
 {% block body %}
 
 <div class="container">
-
     <br><br><br>
     <h2>Classement</h2>
 
-    {{ dump(joueurs) }}
+    <h3>Ces joueurs sont classés en fonction de leurs nombres de parties gagnées.</h3>
 
     <table class="table">
         <tr>
             <td>Joueurs </td>
             <td>Position</td>
+            <td>Total des points</td>
         </tr>
         {% for joueur in joueurs %}
             <tr>
                 <td>{{ joueur.username }}</td>
                 <td>{{ joueur.partiesGagnees }}</td>
+                <td>{{ joueur.cumulPoints }}</td>
             </tr>
         {% endfor %}
 
     </table>
-    <img class="logo" src="{{asset('assets/img/logo.png') }}"></div>
 
+</div>
 
 {% endblock %}

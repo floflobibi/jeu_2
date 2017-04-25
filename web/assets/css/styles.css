@@ -169,7 +169,7 @@ time, mark, audio, video {
     padding: 0;
     border: 0;
     font: inherit;
-   font-size: 100%;
+    font-size: 100%;
     vertical-align: baseline;
 }
 
@@ -185,8 +185,8 @@ ol, ul {
 
 /* line 26, ../../../../../Ruby23-x64/lib/ruby/gems/2.3.0/gems/compass-core-1.0.3/stylesheets/compass/reset/_utilities.scss */
 table {
-   /* border-collapse: collapse;
-    border-spacing: 0;*/
+    /* border-collapse: collapse;
+     border-spacing: 0;*/
 }
 
 /* line 28, ../../../../../Ruby23-x64/lib/ruby/gems/2.3.0/gems/compass-core-1.0.3/stylesheets/compass/reset/_utilities.scss */
@@ -231,13 +231,13 @@ html {
 }
 
 /* line 6, ../sass/hamburger.scss */
-input {
+.cmenu {
     position: fixed;
     opacity: 0;
 }
 
 /* line 11, ../sass/hamburger.scss */
-label {
+.lmenu {
     position: absolute;
     margin: 0;
     padding: 0;
@@ -247,7 +247,7 @@ label {
     cursor: pointer;
 }
 /* line 19, ../sass/hamburger.scss */
-label::before {
+.lmenu::before {
     position: fixed;
     z-index: 1;
     top: 0;
@@ -261,7 +261,7 @@ label::before {
     transition: opacity 0.5s cubic-bezier(0.19, 1, 0.22, 1);
 }
 /* line 32, ../sass/hamburger.scss */
-label .burger {
+.lmenu .burger {
     position: fixed;
     top: 4%;
     left:10%;
@@ -273,8 +273,8 @@ label .burger {
     transition: opacity 0.5s cubic-bezier(0.19, 1, 0.22, 1);
 }
 /* line 42, ../sass/hamburger.scss */
-label .burger::before,
-label .burger .bar, label .burger::after {
+.lmenu .burger::before,
+.lmenu .burger .bar, .lmenu .burger::after {
     position: absolute;
     left: 0;
     display: block;
@@ -285,31 +285,31 @@ label .burger .bar, label .burger::after {
     transition: all 0.5s cubic-bezier(0.19, 1, 0.22, 1);
 }
 /* line 54, ../sass/hamburger.scss */
-label .burger .bar {
+.lmenu .burger .bar {
     top: 44%;
     background-color: #000;
 }
 /* line 58, ../sass/hamburger.scss */
-label .burger::before {
+.lmenu .burger::before {
     top: 0;
     transform-origin: top left;
     background-color: #000;
 }
 /* line 63, ../sass/hamburger.scss */
-label .burger::after {
+.lmenu .burger::after {
     bottom: 0;
     transform-origin: bottom left;
     background-color: #000;
 }
 
 /* line 71, ../sass/hamburger.scss */
-label .burger .bar {
+.lmenu .burger .bar {
     background-color: #000;
 }
 
 /* line 77, ../sass/hamburger.scss */
-input:focus + label .burger,
-label:hover .burger {
+.cmenu:focus + .lmenu .burger,
+.lmenu:hover .burger {
     opacity: .75;
 }
 

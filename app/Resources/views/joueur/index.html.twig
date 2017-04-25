@@ -1,6 +1,7 @@
 {% extends 'base.html.twig' %}
 
 {% block body %}
+    <div class="container">
     <h1>Espace joueur: {{ user.nom }}</h1>
 
     <h2>Créer une nouvelle partie</h2>
@@ -16,7 +17,7 @@
 
     <h2>Mes parties en cours</h2>
 
-    <div>
+
         <table class="table">
             {% for partie in user.parties %}
                 {% for partie in partie %}
@@ -26,6 +27,7 @@
                <td> Aucune partie en cours. <a href="{{ path('joueur_parties_add') }}">Créer une partie</a></td>
             {% endfor %}
         </table>
+
     </div>
 
 

@@ -1,0 +1,148 @@
+@font-face {
+    font-family: Avenir;
+    src: url("AV.otf") format("opentype");
+}
+
+.title{
+    font-family: "Avenir";
+    font-size: 150px;
+    letter-spacing: 0.3vw;
+    text-align: center;
+    color: #ffcc00;
+    text-shadow: 8px 8px #1d1d1d;
+    margin:0 auto;
+    position:absolute;
+    display: block;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    z-index: 2;
+}
+
+.logo{
+    z-index: 1;
+    position: absolute;
+    float: right;
+    right: 10%;
+    top: 4%;
+}
+/*
+h1{
+    letter-spacing: 5pt;
+    font-family: "Avenir";
+    text-transform: lowercase;
+    z-index: 1;
+    font-size: 22px;
+    text-align: center;
+    margin:0 auto;
+    position:absolute;
+    color: #fff;
+    position:absolute;
+    display: block;
+    top: 60%;
+    left: 50%;
+    transform: translate(-50%, 200%);
+}
+*/
+body {
+    background-color: #eaede6;
+    overflow: hidden;
+    position:relative;
+    touch-action:none;
+    -webkit-user-drag:none;
+    text-rendering:optimizeLegibility;
+}
+
+canvas {
+    width: 100%;
+    vertical-align:bottom;
+}
+
+*
+{
+    outline:0;
+    margin:0;
+    padding:0;
+    -webkit-tap-highlight-color:transparent}
+
+html
+{
+    font-family:sans-serif;
+    -ms-text-size-adjust:100%;
+    -webkit-text-size-adjust:100%}
+
+iframe
+{
+    display:none}
+
+::selection
+{
+    background:#000;
+    color:#f1dfdd}
+
+ul
+{
+    list-style-type:none}
+
+body,html
+{
+    background-color:#33476a;
+    -webkit-font-smoothing:antialiased;
+    -moz-osx-font-smoothing:grayscale;
+    overflow:hidden;
+    font-weight:bold;
+    width:100vw;
+    height:100%;
+    padding:0
+}
+
+body
+{
+    position:relative;
+    touch-action:none;
+    -webkit-user-drag:none}
+
+#waveback
+{
+    width:100%;
+    height:100%;
+    position:fixed;
+    background-color:white;
+    -webkit-transform:scaleY(2);
+    -moz-transform:scaleY(2);
+    -ms-transform:scaleY(2);
+    -o-transform:scaleY(2);
+    transform:scaleY(2)}
+
+#waveback div
+{
+    position:fixed;
+    width:100%;
+    height:50%}
+
+#waveback .top
+{
+    background-color:#eaede6;
+    top:0}
+
+#waveback .bottom
+{
+    bottom:0;
+    background-color:#2f2f2f}
+
+#waveback_2{
+    margin-top:100px;
+}
+canvas
+{
+    position:fixed}
+
+#block
+{
+    position:fixed;
+    left:0;
+    top:0;
+    width:100%;
+    height:100%;
+    z-index:999;
+    display:none}

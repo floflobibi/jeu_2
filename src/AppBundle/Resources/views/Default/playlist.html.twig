@@ -1,58 +1,14 @@
 {% extends 'base.html.twig' %}
 {% block body %}
-<!-- SCM Music Player http://scmplayer.co -->
-<script type="text/javascript" src="http://scmplayer.co/script.js"
-        data-config="
-        {
-        'skin':'http://static.tumblr.com/su8juwr/CZ8mrj53t/diamante.css',
-        'volume':50,
-        'autoplay':false,
-        'shuffle':true,
-        'repeat':1,
-        'placement':'top',
-        'showplaylist':false,
-        'playlist':
-            [
-            {'title':'test 1','url':'https://www.youtube.com/watch?v=_ZPpU7774DQ'},
-            {'title':'test 2','url':'https://www.youtube.com/watch?v=4qGAjgUZwsk'}
-            ]
-        }" ></script>
-<!-- SCM Music Player script end -->
-<link rel="stylesheet" type="text/css" href="{{ asset('assets/css/smcplayer.css') }}">
-
-<link rel="stylesheet" type="text/css" href="{{ asset('assets/css/styles.css') }}">
-<script src=" {{asset('assets/js/main.js') }}"></script>
-<meta name="viewport" content="width=device-width, initial-scale=1.0, shrink-to-fit=no">
 <div class="container">
-    <input type="checkbox" id="navcheck" role="button" title="menu">
-    <label for="navcheck" aria-hidden="true" title="menu">
-        <span class="burger">
-          <span class="bar">
-            <span class="visuallyhidden">Menu</span>
-            </span>
-        </span>
-    </label>
 
-    <nav id="menu">
-        <a href="{{ path('homepage') }}">Le jeu</a>
-        {% if is_granted("IS_AUTHENTICATED_REMEMBERED") %}
-            <a href="{{ path('joueur_homepage') }}">Mon espace joueur</a>
-            <a href="{{ path('fos_user_profile_show') }}">{{ 'layout.logged_in_as'|trans({'%username%': app.user.username}, 'FOSUserBundle') }} |</a>
-            <a href="{{ path('fos_user_security_logout') }}">
-                {{ 'layout.logout'|trans({}, 'FOSUserBundle') }}</a>
-        {% else %}
-            <a href="{{ path('fos_user_security_login') }}">{{ 'layout.login'|trans({}, 'FOSUserBundle') }}</a>
-            <a href="{{ path('fos_user_registration_register')}}">S'inscrire</a>
-        {% endif %}
-        {% if is_granted('ROLE_ADMIN') %}
-            <a href="{{ path('admin') }}">Administration</a>
-        {% endif %}
-        <a href="{{ path('classement') }}">Classement</a>
-        <a href="{{ path('playlist') }}">Playlist</a>
-
-    </nav>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, shrink-to-fit=no">
 
 
-    <img class="logo" src="{{asset('assets/img/logo.png') }}"></div>
+
+
+
+
+    <p>Playlist</p>
 </div>
 {% endblock %}
