@@ -3,9 +3,32 @@
 {% block body %}
     <h1>Espace joueur: {{ user.nom }}</h1>
 
+    <h2>Créer une nouvelle partie</h2>
 
-    <ul>
-        <li><a href="{{ path('joueur_parties') }}">Mes parties</a></li>
-        <li><a href="{{ path('joueur_parties_add') }}">Nouvelle Partie</a></li>
-    </ul>
+    <table class="table">
+        {% for joueur in joueurs if joueur.username != user.username %}
+            <tr>
+                <td>{{ joueur.username }}</td>
+                <td><a href="{{ path('creer_partie', {'joueur':joueur.id}) }}">Inviter à jouer</a></td>
+            </tr>
+        {% endfor %}
+    </table>
+
+    <h2>Mes parties en cours</h2>
+
+    <div>
+        <table class="table">
+            {% for partie in user.parties %}
+                {% for partie in partie %}
+                  <tr>  <td><a href="{{ path('afficher_partie', {'id':partie.id}) }}">#{{ partie.id }}</a></td></tr>
+                {% endfor %}
+            {% else %}
+               <td> Aucune partie en cours. <a href="{{ path('joueur_parties_add') }}">Créer une partie</a></td>
+            {% endfor %}
+        </table>
+    </div>
+
+
+
+
 {% endblock %}

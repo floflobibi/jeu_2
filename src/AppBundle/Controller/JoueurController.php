@@ -25,7 +25,9 @@ class JoueurController extends Controller
     public function indexAction()
     {
         $user = $this->getUser();
-        return $this->render("joueur/index.html.twig", ['user' => $user]);
+        $joueurs = $this->getDoctrine()->getRepository('AppBundle:User')->findAll();
+
+        return $this->render("joueur/index.html.twig", ['user' => $user, 'joueurs' => $joueurs]);
     }
     /**
      * @Route("/parties/", name="joueur_parties")
@@ -33,7 +35,9 @@ class JoueurController extends Controller
     public function mesPartiesAction()
     {
         $user = $this->getUser();
-        return $this->render("joueur/mesparties.html.twig", ['user' => $user]);
+        // récupérer tous les joueurs existants
+        $joueurs = $this->getDoctrine()->getRepository('AppBundle:User')->findAll();
+        return $this->render("joueur/mesparties.html.twig", ['user' => $user, 'joueurs' => $joueurs]);
     }
     /**
      * @Route("/parties/add", name="joueur_parties_add")
