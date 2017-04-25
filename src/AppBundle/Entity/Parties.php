@@ -33,7 +33,7 @@ class Parties
     /**
      * @var \DateTime
      *
-     * @ORM\Column(name="fin", type="datetime")
+     * @ORM\Column(name="fin", type="datetime",nullable=true)
      */
     private $fin;
     /**
@@ -511,7 +511,7 @@ class Parties
     public function __construct()
     {
         $this->setDebut(new \DateTime("now"));
-        $this->setFin(new \DateTime("now"));
+        //$this->setFin('');
     }
     /**
      * Set situation

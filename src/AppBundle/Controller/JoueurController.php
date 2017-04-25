@@ -78,8 +78,6 @@ class JoueurController extends Controller
         $infos = 1;
         $situation->setInfosJ1($infos);
         $situation->setInfosJ2($infos);
-
-
         $em = $this->getDoctrine()->getManager();
 
         $em->persist($situation);
@@ -124,6 +122,21 @@ class JoueurController extends Controller
     {
         $cartes = $this->getDoctrine()->getRepository('AppBundle:Cartes')->getAll();
         $user = $this->getUser();
+        $iduser = $user->getId();
+
+        //Id joueur 1
+        $joueur1=$id->getJoueur1();
+        $idjoueur1=$joueur1->getId();
+
+        //Id joueur 2
+        $joueur2=$id->getJoueur2();
+        $idjoueur2=$joueur2->getId();
+
+        if ( $iduser != $idjoueur2 and $iduser!= $idjoueur1){
+            return $this->render(':joueur:noacces.html.twig', [ 'partie' => $id, 'user' => $user]);
+
+        }
+
         //Récup partie
         $situation = $id->getSituation();
         $idpartie = $id->getId();
@@ -215,6 +228,7 @@ class JoueurController extends Controller
 ///////////////////////////////////////////////////////////////////
         $tour = $id->getTourde();
 
+
         //Compter les cartes du joueur 1
         $nbcartesj1= count($plateau['mainJ1']);
         //Compter les cartes du joueur 2
@@ -226,8 +240,40 @@ class JoueurController extends Controller
         //Infos à noter
         $infosj1 = $situation->getInfosJ1();
         $infosj2 = $situation->getInfosJ2();
+
         if (empty($plateau['pioche'])){
-            return $this->render(':joueur:findepartie.html.twig', ['cartes' => $cartes, 'partie' => $id, 'user' => $user, 'plateau' => $plateau]);
+            $em = $this->getDoctrine()->getManager();
+
+            $cumulj1 = $joueur1->getCumulPoints();
+            $cumulpartiesgagneesj1 = $joueur1->getpartiesGagnees();
+            $cumulj2 = $joueur2->getCumulPoints();
+            $cumulpartiesgagneesj2 = $joueur2->getpartiesGagnees();
+
+            $cumulj1 += $plateau['pointj1'];
+            $cumulj2 += $plateau['pointj2'];
+
+            if ($plateau['pointj1']>$plateau['pointj2']){
+                $cumulpartiesgagneesj1 +=1;
+                $joueur1->setpartiesGagnees($cumulpartiesgagneesj1);
+            }elseif ($plateau['pointj1']<$plateau['pointj2']){
+                $cumulpartiesgagneesj2 +=1;
+                $joueur2->setpartiesGagnees($cumulpartiesgagneesj2);
+            }elseif ($plateau['pointj1'] == $plateau['pointj2']){
+                $cumulpartiesgagneesj1 +=0.5;
+                $joueur1->setpartiesGagnees($cumulpartiesgagneesj1);
+                $cumulpartiesgagneesj2 +=0.5;
+                $joueur2->setpartiesGagnees($cumulpartiesgagneesj2);
+            }
+
+            $id->setFin(new \DateTime("now"));
+            $joueur1->setCumulPoints($cumulj1);
+            $joueur2->setCumulPoints($cumulj2);
+
+            $em->persist($id);
+            $em->persist($user);
+            $em->flush();
+
+            return $this->render(':joueur:findepartie.html.twig', ['cumulpartiesgagneesj2' => $cumulpartiesgagneesj2, 'cumulpartiesgagneesj1' => $cumulpartiesgagneesj1,'cumulj1' => $cumulj1, 'cumulj2' => $cumulj2,'cartes' => $cartes, 'partie' => $id, 'user' => $user, 'plateau' => $plateau]);
 
         }else{
             return $this->render(':joueur:afficherpartie.html.twig', ['id' => $idpartie, 'infosj1' => $infosj1,'infosj2' => $infosj2,'nbcartesj1' => $nbcartesj1, 'nbcartesj2' => $nbcartesj2, 'nbcartespioche' => $nbcartespioche,'cartes' => $cartes, 'partie' => $id, 'user' => $user, 'plateau' => $plateau, 'tour' => $tour]);
@@ -1277,13 +1323,11 @@ class JoueurController extends Controller
 
         return $t;
     }
-
     private function derniereValeur($array)
     {
         end($array);
         return end($array);
     }
-
     private function compterCartesExtraDejaPosees($cartesPosees){
         $cartes = $this->getDoctrine()->getRepository('AppBundle:Cartes')->getAll();
         $t = array();

@@ -20,7 +20,9 @@ class DefaultController extends Controller
      */
     public function classementAction()
     {
-        return $this->render('AppBundle:Default:classement.html.twig');
+        $joueurs = $this->getDoctrine()->getRepository('AppBundle:User')->findBy(array(),array('partiesGagnees'=>'desc'));
+
+        return $this->render('AppBundle:Default:classement.html.twig', ['joueurs'=>$joueurs]);
     }
     /**
      * @Route("/playlist", name="playlist")

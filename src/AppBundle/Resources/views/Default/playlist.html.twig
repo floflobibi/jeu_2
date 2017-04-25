@@ -1,5 +1,26 @@
+<!-- SCM Music Player http://scmplayer.co -->
+<script type="text/javascript" src="http://scmplayer.co/script.js"
+        data-config="
+        {
+        'skin':'http://static.tumblr.com/su8juwr/CZ8mrj53t/diamante.css',
+        'volume':50,
+        'autoplay':false,
+        'shuffle':true,
+        'repeat':1,
+        'placement':'top',
+        'showplaylist':false,
+        'playlist':
+            [
+            {'title':'test 1','url':'https://www.youtube.com/watch?v=_ZPpU7774DQ'},
+            {'title':'test 2','url':'https://www.youtube.com/watch?v=4qGAjgUZwsk'}
+            ]
+        }" ></script>
+<!-- SCM Music Player script end -->
+<link rel="stylesheet" type="text/css" href="{{ asset('assets/css/smcplayer.css') }}">
+
 <link rel="stylesheet" type="text/css" href="{{ asset('assets/css/styles.css') }}">
 <script src=" {{asset('assets/js/main.js') }}"></script>
+<meta name="viewport" content="width=device-width, initial-scale=1.0, shrink-to-fit=no">
 <div class="container">
     <input type="checkbox" id="navcheck" role="button" title="menu">
     <label for="navcheck" aria-hidden="true" title="menu">
@@ -28,8 +49,7 @@
         <a href="{{ path('playlist') }}">Playlist</a>
 
     </nav>
-    <p class="annonce">Notre sélection musicale sera bientôt disponible !</p>
-    <div id="waveback" style="transform: matrix(1, 0, 0, 2, 0, 0);"><div class="top"></div><div class="bottom"></div></div>
-    <canvas id="wave" width="1723" ,="" height="377" style="width: 1723px; height: 377.333px; transform: matrix(1, 0, 0, 1, 0, 377.5);"></canvas>
+
+
     <img class="logo" src="{{asset('assets/img/logo.png') }}"></div>
 </div>

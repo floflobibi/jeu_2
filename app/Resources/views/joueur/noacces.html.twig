@@ -1,0 +1,11 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+    <h1>Partie entre {{ partie.joueur1.username }} et {{ partie.joueur2.username }}</h1>
+    <h2>Vous essayez d'accéder à une partie dont vous ne faites pas partie!</h2>
+
+    <p><a href="{{ path('joueur_parties_add') }}">Pour défier un joueur, venez ici.</a></p>
+
+
+
+{% endblock %}

@@ -7,7 +7,13 @@
     <h3>Le Gagnant : {% if plateau.pointj1 >= plateau.pointj2 %} {{ partie.joueur1.username }} {% else %} {{ partie.joueur2.username }} {%  endif %} </h3>
 
     <h4>Points du joueur 1 : {{ plateau.pointj1 }}</h4>
+    <h4>Cumul des points du joueur 1 : {{ dump(cumulj1) }}</h4>
+    {{ dump(cumulpartiesgagneesj1) }}
     <h4>Points du joueur 2 : {{ plateau.pointj2 }}</h4>
+
+    <h4>Cumul des points du joueur 2 : {{ dump (cumulj2) }}</h4>
+    {{ dump(cumulpartiesgagneesj2) }}
+
     <p><a href="{{ path('joueur_parties_add') }}">Défier un autre joueur</a></p>
 
 

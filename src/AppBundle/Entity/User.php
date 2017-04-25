@@ -136,4 +136,64 @@ class User extends BaseUser
     {
         return $this->parties_2;
     }
+    /**
+     * @var int
+     *
+     * @ORM\Column(name="cumul_points", type="integer")
+     */
+    private $cumulPoints = 0;
+
+    /**
+     * Set cumulPoints
+     *
+     * @param integer $cumulPoints
+     *
+     * @return User
+     */
+    public function setCumulPoints($cumulPoints)
+    {
+        $this->cumulPoints = $cumulPoints;
+        return $this;
+    }
+
+    /**
+     * Get cumulPoints
+     *
+     * @return int
+     */
+    public function getCumulPoints()
+    {
+        return $this->cumulPoints;
+    }
+
+    /**
+     * @var int
+     *
+     * @ORM\Column(name="partiesGagnees", type="integer")
+     */
+    private $partiesGagnees = 0;
+
+    /**
+     * Set partiesGagnees
+     *
+     * @param integer $partiesGagnees
+     *
+     * @return User
+     */
+    public function setpartiesGagnees($partiesGagnees)
+    {
+        $this->partiesGagnees = $partiesGagnees;
+        return $this;
+    }
+
+    /**
+     * Get partiesGagnees
+     *
+     * @return int
+     */
+    public function getpartiesGagnees()
+    {
+        return $this->partiesGagnees;
+    }
+
 }
