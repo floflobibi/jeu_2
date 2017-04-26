@@ -1,26 +1,26 @@
-/* line 24, ../../../../../Ruby23-x64/lib/ruby/gems/2.3.0/gems/compass-core-1.0.3/stylesheets/compass/reset/_utilities.scss */
+/* line 24, ../../../../../Ruby23-x64/lib/ruby/grems/2.3.0/grems/compass-core-1.0.3/stylesheets/compass/reset/_utilities.scss */
 ol, ul {
     list-style: none;
 }
 
-/* line 28, ../../../../../Ruby23-x64/lib/ruby/gems/2.3.0/gems/compass-core-1.0.3/stylesheets/compass/reset/_utilities.scss */
+/* line 28, ../../../../../Ruby23-x64/lib/ruby/grems/2.3.0/grems/compass-core-1.0.3/stylesheets/compass/reset/_utilities.scss */
 caption, th, td {
     text-align: left;
     font-weight: normal;
     vertical-align: middle;
 }
 
-/* line 30, ../../../../../Ruby23-x64/lib/ruby/gems/2.3.0/gems/compass-core-1.0.3/stylesheets/compass/reset/_utilities.scss */
+/* line 30, ../../../../../Ruby23-x64/lib/ruby/grems/2.3.0/grems/compass-core-1.0.3/stylesheets/compass/reset/_utilities.scss */
 q, blockquote {
     quotes: none;
 }
-/* line 103, ../../../../../Ruby23-x64/lib/ruby/gems/2.3.0/gems/compass-core-1.0.3/stylesheets/compass/reset/_utilities.scss */
+/* line 103, ../../../../../Ruby23-x64/lib/ruby/grems/2.3.0/grems/compass-core-1.0.3/stylesheets/compass/reset/_utilities.scss */
 q:before, q:after, blockquote:before, blockquote:after {
     content: "";
     content: none;
 }
 
-/* line 116, ../../../../../Ruby23-x64/lib/ruby/gems/2.3.0/gems/compass-core-1.0.3/stylesheets/compass/reset/_utilities.scss */
+/* line 116, ../../../../../Ruby23-x64/lib/ruby/grems/2.3.0/grems/compass-core-1.0.3/stylesheets/compass/reset/_utilities.scss */
 article, aside, details, figcaption, figure, footer, header, hgroup, main, menu, nav, section, summary {
     display: block;
 }
@@ -34,9 +34,17 @@ article, aside, details, figcaption, figure, footer, header, hgroup, main, menu,
     -moz-osx-font-smoothing: grayscale;
 }
 
+.logo{
+    z-index: 1;
+    position: absolute;
+    float: right;
+    right: 10%;
+    top: 4%;
+}
+
 /* line 6, ../sass/base.scss */
 html {
-    font-size: 62.5%;
+    font-size: 62.5%!important;
 }
 
 /* line 6, ../sass/hamburger.scss */
@@ -75,8 +83,8 @@ html {
     top: 4%;
     left:10%;
     z-index: 3;
-    width: 2em;
-    height: 2em;
+    width: 2rem;
+    height: 2rem;
     margin: 0;
     padding: 0;
     transition: opacity 0.5s cubic-bezier(0.19, 1, 0.22, 1);
@@ -132,7 +140,7 @@ nav {
     display: flex;
     flex-flow: column nowrap;
     justify-content: center;
-    align-items: flex-start;
+    align-itrems: flex-start;
     transform: translate3d(0, 0, 0);
     /* material acceleration */
     transform: translateX(-100%);
@@ -146,7 +154,7 @@ nav::before {
     bottom: 0;
     left: 0;
     z-index: -1;
-    width: 25em;
+    width: 25rem;
     background: #fbbf0a;
     content: '';
     transform: skewX(15deg) translateX(-100%);
@@ -154,17 +162,17 @@ nav::before {
     will-change: transform;
     transition: transform 0.5s cubic-bezier(0.19, 1, 0.22, 1);
 }
-@media (min-width: 40em) {
+@media (min-width: 40rem) {
     /* line 96, ../sass/hamburger.scss */
     nav::before {
-        width: 40em;
+        width: 40rem;
     }
 }
 /* line 113, ../sass/hamburger.scss */
 nav a {
-    margin: .5em 0;
-    padding: .2em 2em;
-    font-size: 1.5em;
+    margin: .5rem 0;
+    padding: .2rem 2rem;
+    font-size: 1.5rem;
     color: white;
     text-decoration: none;
     font-weight: 500;
@@ -248,7 +256,7 @@ main .content {
 }
 /* line 172, ../sass/hamburger.scss */
 [id="navcheck"]:checked ~ main .content {
-    transform: translateX(3em);
+    transform: translateX(3rem);
     transform-origin: left center;
     -webkit-filter: blur(2px);
     filter: blur(2px);

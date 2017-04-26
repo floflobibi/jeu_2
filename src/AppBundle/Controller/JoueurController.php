@@ -359,15 +359,13 @@ class JoueurController extends Controller
     }
     /**
      * @param Parties $id
-     * @Route("/defausser/{id}", name="defausser_partie")
+     * @Route("/defausser1/{id}", name="defausser1_partie")
      */
-    public function defausserAction(Request $request, Parties $id)
+    public function defausser1Action(Request $request, Parties $id)
     {
         $cartes = $this->getDoctrine()->getRepository('AppBundle:Cartes')->getAll();
         $user = $this->getUser();
-
         $situation = $id->getSituation();
-
 
         if (!empty($situation->getDefausse_cat1())){
             $defausse1 = $plateau['defausse_cat1'] = $situation->getDefausse_cat1();
@@ -375,41 +373,15 @@ class JoueurController extends Controller
             $defausse1 = $plateau['defausse_cat1'] = $situation->getDefausse_cat1();
             $defausse1 = array();
         }
-        if (!empty($situation->getDefausse_cat2())){
-            $defausse2 = $plateau['defausse_cat2'] = $situation->getDefausse_cat2();
-        }else {
-            $defausse2 = $plateau['defausse_cat2'] = $situation->getDefausse_cat2();
-            $defausse2 = array();
-        }
-        if (!empty($situation->getDefausse_cat3())){
-            $defausse3 = $plateau['defausse_cat3'] = $situation->getDefausse_cat3();
-        }else {
-            $defausse3 = $plateau['defausse_cat3'] = $situation->getDefausse_cat3();
-            $defausse3 = array();
-        }
-        if (!empty($situation->getDefausse_cat4())){
-            $defausse4 = $plateau['defausse_cat4'] = $situation->getDefausse_cat4();
-        }else {
-            $defausse4 = $plateau['defausse_cat4'] = $situation->getDefausse_cat4();
-            $defausse4 = array();
-        }
-        if (!empty($situation->getDefausse_cat5())){
-            $defausse5 = $plateau['defausse_cat5'] = $situation->getDefausse_cat5();
-        }else {
-            $defausse5 = $plateau['defausse_cat5'] = $situation->getDefausse_cat5();
-            $defausse5 = array();
-        }
 
         $tour = $id->getTourde();
         $infos = 1;
-
 
         //Récupérer la carte sélectionnée
         $defausse_selectionnee = $request->get('defausse')*1;
         $defausseNonVide = false;
 
         //Si defausse1 selectionnée
-        if ($defausse_selectionnee == 1){
             if (!empty($defausse1)){
                 $element = array_pop($defausse1);
                 $nouvelledefausse = array_diff($defausse1,[$element]);
@@ -419,100 +391,27 @@ class JoueurController extends Controller
                 $infos = 3;
             }
 
-        }
-
-        //Si defausse2 selectionnée
-
-        if ($defausse_selectionnee == 2){
-            if (!empty($defausse2)){
-                $element = array_pop($defausse2);
-                $nouvelledefausse = array_diff($defausse2,[$element]);
-                $defausseNonVide = true;
-            }else{
-                $infos = 3;
-            }
-
-
-        }
-        //Si defausse3 selectionnée
-        if ($defausse_selectionnee == 3){
-            if (!empty($defausse3)){
-                $element = array_pop($defausse3);
-                $nouvelledefausse = array_diff($defausse3,[$element]);
-                $defausseNonVide = true;
-            }else{
-                $infos = 3;
-            }
-        }
-        //Si defausse4 selectionnée
-        if ($defausse_selectionnee == 4){
-            if (!empty($defausse4)){
-                $element = array_pop($defausse4);
-                $nouvelledefausse = array_diff($defausse4,[$element]);
-                $defausseNonVide = true;
-            }else{
-                $infos = 3;
-            }
-
-        }
-        //Si defausse5 selectionnée
-        if ($defausse_selectionnee == 5){
-            if (!empty($defausse5)){
-                $element = array_pop($defausse5);
-                $nouvelledefausse = array_diff($defausse5,[$element]);
-                $defausseNonVide = true;
-            }else{
-                $infos = 3;
-            }
-
-        }
-
-        //ce dump fonctionne :dump($defausseNonVide);
 
         // Id joueur actif
         $useractif=$user->getId();
-
         //Id joueur 1
         $joueur1=$id->getJoueur1();
         $idjoueur1=$joueur1->getId();
-
         //Id joueur 2
         $joueur2=$id->getJoueur2();
         $idjoueur2=$joueur2->getId();
-
 
         if ($tour==$useractif and $defausseNonVide == true){
             $plateau['mainJ1'] = json_decode($situation->getMainJ1());
             $plateau['mainJ2'] = json_decode($situation->getMainJ2());
             if ($useractif==$idjoueur1){
-
                 $mainj1=$plateau['mainJ1'];
                 $mainj1[]=$element;
                 $situation->setMainJ1($mainj1);
                 $em = $this->getDoctrine()->getManager();
                 $situation->setMainJ1(json_encode($mainj1));
-
                 //Si defausse1 selectionné
-                if ($defausse_selectionnee == 1){
                     $situation->setDefausse_cat1($nouvelledefausse);
-                }
-                //Si defausse2 selectionné
-                if ($defausse_selectionnee == 2){
-                    $situation->setDefausse_cat2($nouvelledefausse);
-                }
-                //Si defausse3 selectionné
-                if ($defausse_selectionnee == 3){
-                    $situation->setDefausse_cat3($nouvelledefausse);
-                }
-                //Si defausse4 selectionné
-                if ($defausse_selectionnee == 4){
-                    $situation->setDefausse_cat4($nouvelledefausse);
-                }
-                //Si defausse5 selectionné
-                if ($defausse_selectionnee == 5){
-                    $situation->setDefausse_cat5($nouvelledefausse);
-                }
-
                 $em->persist($situation);
                 $em->flush();
 
@@ -524,34 +423,13 @@ class JoueurController extends Controller
                 $em->flush();
             }
             if ($useractif==$idjoueur2){
-
                 $mainj2=$plateau['mainJ2'];
                 $mainj2[]=$element;
                 $situation->setMainJ2($mainj2);
                 $em = $this->getDoctrine()->getManager();
                 $situation->setMainJ2(json_encode($mainj2));
-
                 //Si defausse1 selectionné
-                if ($defausse_selectionnee == 1){
                     $situation->setDefausse_cat1($nouvelledefausse);
-                }
-                //Si defausse2 selectionné
-                if ($defausse_selectionnee == 2){
-                    $situation->setDefausse_cat2($nouvelledefausse);
-                }
-                //Si defausse3 selectionné
-                if ($defausse_selectionnee == 3){
-                    $situation->setDefausse_cat3($nouvelledefausse);
-                }
-                //Si defausse4 selectionné
-                if ($defausse_selectionnee == 4){
-                    $situation->setDefausse_cat4($nouvelledefausse);
-                }
-                //Si defausse5 selectionné
-                if ($defausse_selectionnee == 5){
-                    $situation->setDefausse_cat5($nouvelledefausse);
-                }
-
                 $em->persist($situation);
                 $em->flush();
 
@@ -563,7 +441,6 @@ class JoueurController extends Controller
                 $em->flush();
             }
         }
-
         if ($useractif==$idjoueur1){
             $em = $this->getDoctrine()->getManager();
             $situation->setInfosJ1($infos);
@@ -571,19 +448,433 @@ class JoueurController extends Controller
             $em->flush();
         }
         if($useractif==$idjoueur2){
-        $em = $this->getDoctrine()->getManager();
-        $situation->setInfosJ2($infos);
-        $em->persist($situation);
-        $em->flush();
-    }
+            $em = $this->getDoctrine()->getManager();
+            $situation->setInfosJ2($infos);
+            $em->persist($situation);
+            $em->flush();
+        }
 
         $partie=$situation->getId();
         $idd=$id->getId();
 
-        //return $this->render(':joueur:defausser.html.twig', ['useridj1' => $idjoueur1,'useridj2' => $idjoueur2 ,'idd' => $idd,'cartes' => $cartes, 'partie' => $id, 'user' => $user, 'plateau' => $plateau, 'tour' => $tour, 'element' => $element, 'plateau' => $plateau, 'situation' => $situation, 'parte' =>'$partie']);
+        //return $this->render(':joueur:defausser.html.twig', ['useridj1' => $idjoueur1,'useridj2' => $idjoueur2 ,'idd' => $idd,'cartes' => $cartes, 'partie' => $id, 'user' => $user, 'plateau' => $plateau, 'tour' => $tour, 'situation' => $situation, 'parte' =>'$partie']);
+        return $this->redirectToRoute('afficher_partie', ['id' => $id->getId()]);
+    }
+    /**
+     * @param Parties $id
+     * @Route("/defausser2/{id}", name="defausser2_partie")
+     */
+    public function defausser2Action(Request $request, Parties $id)
+    {
+        $cartes = $this->getDoctrine()->getRepository('AppBundle:Cartes')->getAll();
+        $user = $this->getUser();
+        $situation = $id->getSituation();
+
+        if (!empty($situation->getDefausse_cat2())){
+            $defausse2 = $plateau['defausse_cat2'] = $situation->getDefausse_cat2();
+        }else {
+            $defausse2 = $plateau['defausse_cat2'] = $situation->getDefausse_cat2();
+            $defausse2 = array();
+        }
+
+        $tour = $id->getTourde();
+        $infos = 1;
+
+        //Récupérer la carte sélectionnée
+        $defausse_selectionnee = $request->get('defausse')*1;
+        $defausseNonVide = false;
+
+        //Si defausse selectionnée
+        if (!empty($defausse2)){
+            $element = array_pop($defausse2);
+            $nouvelledefausse = array_diff($defausse2,[$element]);
+            $defausseNonVide = true;
+        }
+        else{
+            $infos = 3;
+        }
+
+
+        // Id joueur actif
+        $useractif=$user->getId();
+        //Id joueur 1
+        $joueur1=$id->getJoueur1();
+        $idjoueur1=$joueur1->getId();
+        //Id joueur 2
+        $joueur2=$id->getJoueur2();
+        $idjoueur2=$joueur2->getId();
+
+        if ($tour==$useractif and $defausseNonVide == true){
+            $plateau['mainJ1'] = json_decode($situation->getMainJ1());
+            $plateau['mainJ2'] = json_decode($situation->getMainJ2());
+            if ($useractif==$idjoueur1){
+                $mainj1=$plateau['mainJ1'];
+                $mainj1[]=$element;
+                $situation->setMainJ1($mainj1);
+                $em = $this->getDoctrine()->getManager();
+                $situation->setMainJ1(json_encode($mainj1));
+                    $situation->setDefausse_cat2($nouvelledefausse);
+                $em->persist($situation);
+                $em->flush();
+
+                //Set le tour
+                $em = $this->getDoctrine()->getManager();
+                $nouveautour = $idjoueur2;
+                $id->setTourde($nouveautour);
+                $em->persist($id);
+                $em->flush();
+            }
+            if ($useractif==$idjoueur2){
+                $mainj2=$plateau['mainJ2'];
+                $mainj2[]=$element;
+                $situation->setMainJ2($mainj2);
+                $em = $this->getDoctrine()->getManager();
+                $situation->setMainJ2(json_encode($mainj2));
+                //Si defausse2 selectionné
+                    $situation->setDefausse_cat2($nouvelledefausse);
+                $em->persist($situation);
+                $em->flush();
+
+                //Set le tour
+                $em = $this->getDoctrine()->getManager();
+                $nouveautour = $idjoueur1;
+                $id->setTourde($nouveautour);
+                $em->persist($id);
+                $em->flush();
+            }
+        }
+        if ($useractif==$idjoueur1){
+            $em = $this->getDoctrine()->getManager();
+            $situation->setInfosJ1($infos);
+            $em->persist($situation);
+            $em->flush();
+        }
+        if($useractif==$idjoueur2){
+            $em = $this->getDoctrine()->getManager();
+            $situation->setInfosJ2($infos);
+            $em->persist($situation);
+            $em->flush();
+        }
+
+        $partie=$situation->getId();
+        $idd=$id->getId();
+
+        //return $this->render(':joueur:defausser.html.twig', ['useridj1' => $idjoueur1,'useridj2' => $idjoueur2 ,'idd' => $idd,'cartes' => $cartes, 'partie' => $id, 'user' => $user, 'plateau' => $plateau, 'tour' => $tour, 'situation' => $situation, 'parte' =>'$partie']);
+        return $this->redirectToRoute('afficher_partie', ['id' => $id->getId()]);
+    }
+//////////
+
+    /**
+     * @param Parties $id
+     * @Route("/defausser3/{id}", name="defausser3_partie")
+     */
+    public function defausser3Action(Request $request, Parties $id)
+    {
+        $cartes = $this->getDoctrine()->getRepository('AppBundle:Cartes')->getAll();
+        $user = $this->getUser();
+        $situation = $id->getSituation();
+
+        if (!empty($situation->getDefausse_cat3())){
+            $defausse3 = $plateau['defausse_cat3'] = $situation->getDefausse_cat3();
+        }else {
+            $defausse3 = $plateau['defausse_cat3'] = $situation->getDefausse_cat3();
+            $defausse3 = array();
+        }
+
+        $tour = $id->getTourde();
+        $infos = 1;
+
+        //Récupérer la carte sélectionnée
+        $defausse_selectionnee = $request->get('defausse')*1;
+        $defausseNonVide = false;
+
+        //Si defausse selectionnée
+        if (!empty($defausse3)){
+            $element = array_pop($defausse3);
+            $nouvelledefausse = array_diff($defausse3,[$element]);
+            $defausseNonVide = true;
+        }
+        else{
+            $infos = 3;
+        }
+
+        // Id joueur actif
+        $useractif=$user->getId();
+        //Id joueur 1
+        $joueur1=$id->getJoueur1();
+        $idjoueur1=$joueur1->getId();
+        //Id joueur 2
+        $joueur2=$id->getJoueur2();
+        $idjoueur2=$joueur2->getId();
+
+        if ($tour==$useractif and $defausseNonVide == true){
+            $plateau['mainJ1'] = json_decode($situation->getMainJ1());
+            $plateau['mainJ2'] = json_decode($situation->getMainJ2());
+            if ($useractif==$idjoueur1){
+                $mainj1=$plateau['mainJ1'];
+                $mainj1[]=$element;
+                $situation->setMainJ1($mainj1);
+                $em = $this->getDoctrine()->getManager();
+                $situation->setMainJ1(json_encode($mainj1));
+                $situation->setDefausse_cat3($nouvelledefausse);
+                $em->persist($situation);
+                $em->flush();
+
+                //Set le tour
+                $em = $this->getDoctrine()->getManager();
+                $nouveautour = $idjoueur2;
+                $id->setTourde($nouveautour);
+                $em->persist($id);
+                $em->flush();
+            }
+            if ($useractif==$idjoueur2){
+                $mainj2=$plateau['mainJ2'];
+                $mainj2[]=$element;
+                $situation->setMainJ2($mainj2);
+                $em = $this->getDoctrine()->getManager();
+                $situation->setMainJ2(json_encode($mainj2));
+                //Si defausse2 selectionné
+                $situation->setDefausse_cat3($nouvelledefausse);
+                $em->persist($situation);
+                $em->flush();
+
+                //Set le tour
+                $em = $this->getDoctrine()->getManager();
+                $nouveautour = $idjoueur1;
+                $id->setTourde($nouveautour);
+                $em->persist($id);
+                $em->flush();
+            }
+        }
+        if ($useractif==$idjoueur1){
+            $em = $this->getDoctrine()->getManager();
+            $situation->setInfosJ1($infos);
+            $em->persist($situation);
+            $em->flush();
+        }
+        if($useractif==$idjoueur2){
+            $em = $this->getDoctrine()->getManager();
+            $situation->setInfosJ2($infos);
+            $em->persist($situation);
+            $em->flush();
+        }
+
+        $partie=$situation->getId();
+        $idd=$id->getId();
+
+        //return $this->render(':joueur:defausser.html.twig', ['useridj1' => $idjoueur1,'useridj2' => $idjoueur2 ,'idd' => $idd,'cartes' => $cartes, 'partie' => $id, 'user' => $user, 'plateau' => $plateau, 'tour' => $tour, 'situation' => $situation, 'parte' =>'$partie']);
         return $this->redirectToRoute('afficher_partie', ['id' => $id->getId()]);
     }
 
+//////////
+//////////
+
+    /**
+     * @param Parties $id
+     * @Route("/defausser4/{id}", name="defausser4_partie")
+     */
+    public function defausser4Action(Request $request, Parties $id)
+    {
+        $cartes = $this->getDoctrine()->getRepository('AppBundle:Cartes')->getAll();
+        $user = $this->getUser();
+        $situation = $id->getSituation();
+
+        if (!empty($situation->getDefausse_cat4())){
+            $defausse4 = $plateau['defausse_cat4'] = $situation->getDefausse_cat4();
+        }else {
+            $defausse4 = $plateau['defausse_cat4'] = $situation->getDefausse_cat4();
+            $defausse4 = array();
+        }
+
+        $tour = $id->getTourde();
+        $infos = 1;
+
+        //Récupérer la carte sélectionnée
+        $defausse_selectionnee = $request->get('defausse')*1;
+        $defausseNonVide = false;
+
+        //Si defausse selectionnée
+        if (!empty($defausse4)){
+            $element = array_pop($defausse4);
+            $nouvelledefausse = array_diff($defausse4,[$element]);
+            $defausseNonVide = true;
+        }
+        else{
+            $infos = 3;
+        }
+
+        // Id joueur actif
+        $useractif=$user->getId();
+        //Id joueur 1
+        $joueur1=$id->getJoueur1();
+        $idjoueur1=$joueur1->getId();
+        //Id joueur 2
+        $joueur2=$id->getJoueur2();
+        $idjoueur2=$joueur2->getId();
+
+        if ($tour==$useractif and $defausseNonVide == true){
+            $plateau['mainJ1'] = json_decode($situation->getMainJ1());
+            $plateau['mainJ2'] = json_decode($situation->getMainJ2());
+            if ($useractif==$idjoueur1){
+                $mainj1=$plateau['mainJ1'];
+                $mainj1[]=$element;
+                $situation->setMainJ1($mainj1);
+                $em = $this->getDoctrine()->getManager();
+                $situation->setMainJ1(json_encode($mainj1));
+                $situation->setDefausse_cat4($nouvelledefausse);
+                $em->persist($situation);
+                $em->flush();
+
+                //Set le tour
+                $em = $this->getDoctrine()->getManager();
+                $nouveautour = $idjoueur2;
+                $id->setTourde($nouveautour);
+                $em->persist($id);
+                $em->flush();
+            }
+            if ($useractif==$idjoueur2){
+                $mainj2=$plateau['mainJ2'];
+                $mainj2[]=$element;
+                $situation->setMainJ2($mainj2);
+                $em = $this->getDoctrine()->getManager();
+                $situation->setMainJ2(json_encode($mainj2));
+                //Si defausse2 selectionné
+                $situation->setDefausse_cat4($nouvelledefausse);
+                $em->persist($situation);
+                $em->flush();
+
+                //Set le tour
+                $em = $this->getDoctrine()->getManager();
+                $nouveautour = $idjoueur1;
+                $id->setTourde($nouveautour);
+                $em->persist($id);
+                $em->flush();
+            }
+        }
+        if ($useractif==$idjoueur1){
+            $em = $this->getDoctrine()->getManager();
+            $situation->setInfosJ1($infos);
+            $em->persist($situation);
+            $em->flush();
+        }
+        if($useractif==$idjoueur2){
+            $em = $this->getDoctrine()->getManager();
+            $situation->setInfosJ2($infos);
+            $em->persist($situation);
+            $em->flush();
+        }
+
+        $partie=$situation->getId();
+        $idd=$id->getId();
+
+        //return $this->render(':joueur:defausser.html.twig', ['useridj1' => $idjoueur1,'useridj2' => $idjoueur2 ,'idd' => $idd,'cartes' => $cartes, 'partie' => $id, 'user' => $user, 'plateau' => $plateau, 'tour' => $tour, 'situation' => $situation, 'parte' =>'$partie']);
+        return $this->redirectToRoute('afficher_partie', ['id' => $id->getId()]);
+    }
+
+//////////
+    /**
+     * @param Parties $id
+     * @Route("/defausser5/{id}", name="defausser5_partie")
+     */
+    public function defausser5Action(Request $request, Parties $id)
+    {
+        $cartes = $this->getDoctrine()->getRepository('AppBundle:Cartes')->getAll();
+        $user = $this->getUser();
+        $situation = $id->getSituation();
+
+        if (!empty($situation->getDefausse_cat5())){
+            $defausse5 = $plateau['defausse_cat5'] = $situation->getDefausse_cat5();
+        }else {
+            $defausse5 = $plateau['defausse_cat5'] = $situation->getDefausse_cat5();
+            $defausse5 = array();
+        }
+
+        $tour = $id->getTourde();
+        $infos = 1;
+
+        //Récupérer la carte sélectionnée
+        $defausse_selectionnee = $request->get('defausse')*1;
+        $defausseNonVide = false;
+
+        //Si defausse selectionnée
+        if (!empty($defausse5)){
+            $element = array_pop($defausse5);
+            $nouvelledefausse = array_diff($defausse5,[$element]);
+            $defausseNonVide = true;
+        }
+        else{
+            $infos = 3;
+        }
+
+        // Id joueur actif
+        $useractif=$user->getId();
+        //Id joueur 1
+        $joueur1=$id->getJoueur1();
+        $idjoueur1=$joueur1->getId();
+        //Id joueur 2
+        $joueur2=$id->getJoueur2();
+        $idjoueur2=$joueur2->getId();
+
+        if ($tour==$useractif and $defausseNonVide == true){
+            $plateau['mainJ1'] = json_decode($situation->getMainJ1());
+            $plateau['mainJ2'] = json_decode($situation->getMainJ2());
+            if ($useractif==$idjoueur1){
+                $mainj1=$plateau['mainJ1'];
+                $mainj1[]=$element;
+                $situation->setMainJ1($mainj1);
+                $em = $this->getDoctrine()->getManager();
+                $situation->setMainJ1(json_encode($mainj1));
+                $situation->setDefausse_cat5($nouvelledefausse);
+                $em->persist($situation);
+                $em->flush();
+
+                //Set le tour
+                $em = $this->getDoctrine()->getManager();
+                $nouveautour = $idjoueur2;
+                $id->setTourde($nouveautour);
+                $em->persist($id);
+                $em->flush();
+            }
+            if ($useractif==$idjoueur2){
+                $mainj2=$plateau['mainJ2'];
+                $mainj2[]=$element;
+                $situation->setMainJ2($mainj2);
+                $em = $this->getDoctrine()->getManager();
+                $situation->setMainJ2(json_encode($mainj2));
+                //Si defausse2 selectionné
+                $situation->setDefausse_cat5($nouvelledefausse);
+                $em->persist($situation);
+                $em->flush();
+
+                //Set le tour
+                $em = $this->getDoctrine()->getManager();
+                $nouveautour = $idjoueur1;
+                $id->setTourde($nouveautour);
+                $em->persist($id);
+                $em->flush();
+            }
+        }
+        if ($useractif==$idjoueur1){
+            $em = $this->getDoctrine()->getManager();
+            $situation->setInfosJ1($infos);
+            $em->persist($situation);
+            $em->flush();
+        }
+        if($useractif==$idjoueur2){
+            $em = $this->getDoctrine()->getManager();
+            $situation->setInfosJ2($infos);
+            $em->persist($situation);
+            $em->flush();
+        }
+
+        $partie=$situation->getId();
+        $idd=$id->getId();
+
+        //return $this->render(':joueur:defausser.html.twig', ['useridj1' => $idjoueur1,'useridj2' => $idjoueur2 ,'idd' => $idd,'cartes' => $cartes, 'partie' => $id, 'user' => $user, 'plateau' => $plateau, 'tour' => $tour, 'situation' => $situation, 'parte' =>'$partie']);
+        return $this->redirectToRoute('afficher_partie', ['id' => $id->getId()]);
+    }
+
+//////////
     /**
      * @param Parties $id
      * @Route("/poser/{id}", name="poser_partie")
@@ -657,36 +948,7 @@ class JoueurController extends Controller
             $plateau['poseesj2_cat5'] = $situation->getCartesPoseesJ2_cat5();
             $plateau['poseesj2_cat5'] = array();
         }
-        if (!empty($situation->getDefausse_cat1())){
-            $plateau['defausse_cat1'] = $situation->getDefausse_cat1();
-        }else{
-            $plateau['defausse_cat1'] = $situation->getDefausse_cat1();
-            $plateau['defausse_cat1'] = array();
-        }
-        if (!empty($situation->getDefausse_cat2())){
-            $plateau['defausse_cat2'] = $situation->getDefausse_cat2();
-        }else{
-            $plateau['defausse_cat2'] = $situation->getDefausse_cat2();
-            $plateau['defausse_cat2'] = array();
-        }
-        if (!empty($situation->getDefausse_cat3())){
-            $plateau['defausse_cat3'] = $situation->getDefausse_cat3();
-        }else{
-            $plateau['defausse_cat3'] = $situation->getDefausse_cat3();
-            $plateau['defausse_cat3'] = array();
-        }
-        if (!empty($situation->getDefausse_cat4())){
-            $plateau['defausse_cat4'] = $situation->getDefausse_cat4();
-        }else{
-            $plateau['defausse_cat4'] = $situation->getDefausse_cat4();
-            $plateau['defausse_cat4'] = array();
-        }
-        if (!empty($situation->getDefausse_cat5())){
-            $plateau['defausse_cat5'] = $situation->getDefausse_cat5();
-        }else{
-            $plateau['defausse_cat5'] = $situation->getDefausse_cat5();
-            $plateau['defausse_cat5'] = array();
-        }
+
 ///////////////////////////////////////////////////////////////////
         $plateau['pointj1'] = $id->getPointJ1();
         $lolo = $plateau['pointj1_cat1'] = $id->getPointJ1_cat1();
@@ -956,38 +1218,6 @@ class JoueurController extends Controller
             $em->flush();
 
 
-            //Si defausse selectionnée
-            if ($categorieecheck >5) {
-                $nepaschangerlamain = true ;
-                // Rajouter dans la catégorie 1
-                if( $categorie_carte_ajoutee == 1){
-                    array_push( $plateau['defausse_cat1'],$cartecheck);
-                    $situation->setDefausse_cat1($plateau['defausse_cat1']);
-
-                }
-                //Rajouter dans la catégorie 2
-                if ( $categorie_carte_ajoutee == 2)
-                {
-                    array_push( $plateau['defausse_cat2'],$cartecheck);
-                    $situation->setDefausse_cat2($plateau['defausse_cat2']);
-                }
-                //Rajouter dans la catégorie 3
-                if ( $categorie_carte_ajoutee == 3){
-                    array_push( $plateau['defausse_cat3'],$cartecheck);
-                    $situation->setDefausse_cat3($plateau['defausse_cat3']);
-                }
-                //Rajouter dans la catégorie4
-                if ( $categorie_carte_ajoutee == 4){
-                    array_push( $plateau['defausse_cat4'],$cartecheck);
-                    $situation->setDefausse_cat4($plateau['defausse_cat4']);
-                }
-                //Rajouter dans la catégorie 5
-                if ( $categorie_carte_ajoutee == 5){
-                    array_push( $plateau['defausse_cat5'],$cartecheck);
-                    $situation->setDefausse_cat5($plateau['defausse_cat5']);
-                }
-            }
-
                 //Set dans les categories
                 $situation->setCartesPoseesJ1_cat1(json_encode($plateau['poseesj1_cat1']));
                 $situation->setCartesPoseesJ1_cat2(json_encode($plateau['poseesj1_cat2']));
@@ -1237,36 +1467,7 @@ class JoueurController extends Controller
                     }
                 }
             }
-            //Si défausse selectionnée
-            if ($categorieecheck >5) {
-                $nepaschangerlamain = true ;
-                // Rajouter dans la catégorie 1
-                if( $categorie_carte_ajoutee == 1){
-                    array_push( $plateau['defausse_cat1'],$cartecheck);
-                    $situation->setDefausse_cat1($plateau['defausse_cat1']);
-                }
-                //Rajouter dans la catégorie 2
-                if ( $categorie_carte_ajoutee == 2)
-                {
-                    array_push( $plateau['defausse_cat2'],$cartecheck);
-                    $situation->setDefausse_cat2($plateau['defausse_cat2']);
-                }
-                //Rajouter dans la catégorie 3
-                if ( $categorie_carte_ajoutee == 3){
-                    array_push( $plateau['defausse_cat3'],$cartecheck);
-                    $situation->setDefausse_cat3($plateau['defausse_cat3']);
-                }
-                //Rajouter dans la catégorie4
-                if ( $categorie_carte_ajoutee == 4){
-                    array_push( $plateau['defausse_cat4'],$cartecheck);
-                    $situation->setDefausse_cat4($plateau['defausse_cat4']);
-                }
-                //Rajouter dans la catégorie 5
-                if ( $categorie_carte_ajoutee == 5){
-                    array_push( $plateau['defausse_cat5'],$cartecheck);
-                    $situation->setDefausse_cat5($plateau['defausse_cat5']);
-                }
-            }
+
 
             //Set dans les categories
             $situation->setCartesPoseesJ2_cat1(json_encode($plateau['poseesj2_cat1']));
@@ -1313,7 +1514,229 @@ class JoueurController extends Controller
         //return $this->render(':joueur:poser.html.twig', ['tutu' => $initialisation, 'toto' => $multiplierPointsPar , 'categorieecheck'=>$categorieecheck,'cartecheck' => $cartecheck, 'cartes' => $cartes, 'partie' => $id, 'user' => $user, 'plateau' => $plateau, 'tour' => $tour, 'plateau' => $plateau, 'situation' => $situation, 'parte' =>'$partie']);
         return $this->redirectToRoute('afficher_partie', ['id' => $id->getId()]);
     }
+    /**
+     * @param Parties $id
+     * @Route("/poser_def/{id}", name="poser_def_partie")
+     */
+    public function poserDefAction(Request $request, Parties $id)
+    {
+        $cartes = $this->getDoctrine()->getRepository('AppBundle:Cartes')->getAll();
+        $user = $this->getUser();
 
+        //Récupérer les données de base
+        $situation = $id->getSituation();
+        $plateau['mainJ1'] = json_decode($situation->getMainJ1());
+        $plateau['mainJ2'] = json_decode($situation->getMainJ2());
+
+        if (!empty($situation->getDefausse_cat1())){
+            $plateau['defausse_cat1'] = $situation->getDefausse_cat1();
+        }else{
+            $plateau['defausse_cat1'] = $situation->getDefausse_cat1();
+            $plateau['defausse_cat1'] = array();
+        }
+        if (!empty($situation->getDefausse_cat2())){
+            $plateau['defausse_cat2'] = $situation->getDefausse_cat2();
+        }else{
+            $plateau['defausse_cat2'] = $situation->getDefausse_cat2();
+            $plateau['defausse_cat2'] = array();
+        }
+        if (!empty($situation->getDefausse_cat3())){
+            $plateau['defausse_cat3'] = $situation->getDefausse_cat3();
+        }else{
+            $plateau['defausse_cat3'] = $situation->getDefausse_cat3();
+            $plateau['defausse_cat3'] = array();
+        }
+        if (!empty($situation->getDefausse_cat4())){
+            $plateau['defausse_cat4'] = $situation->getDefausse_cat4();
+        }else{
+            $plateau['defausse_cat4'] = $situation->getDefausse_cat4();
+            $plateau['defausse_cat4'] = array();
+        }
+        if (!empty($situation->getDefausse_cat5())){
+            $plateau['defausse_cat5'] = $situation->getDefausse_cat5();
+        }else{
+            $plateau['defausse_cat5'] = $situation->getDefausse_cat5();
+            $plateau['defausse_cat5'] = array();
+        }
+
+        $infos = 1;
+
+        $tour = $id->getTourde();
+
+        // Id joueur actif
+        $useractif=$user->getId();
+
+        //Id joueur 1
+        $joueur1=$id->getJoueur1();
+        $idjoueur1=$joueur1->getId();
+
+        //Id joueur 2
+        $joueur2=$id->getJoueur2();
+        $idjoueur2=$joueur2->getId();
+
+        //Récupérer la carte sélectionnée
+        $cartecheck = $request->get('cartecheck')*1;
+        //Récupérer la categorie
+        $categorieecheck = $request->get('categorieecheck')*1;
+
+        //Récupérer la catégorie de cartecheck
+        $categorie_carte_ajoutee = $cartes[$cartecheck]->getCategorie()->getId();
+        $type_carte_ajoutee = $cartes[$cartecheck]->getType();
+        $valeur_carte_ajoutee = $cartes[$cartecheck]->getValeur()*1;
+        $dernière_carte_de_cette_categorie = 1;
+
+        $nepaschangerlamain = false;
+
+        //$cbCartesExtra = $this->compterCartesExtraDejaPosees($plateau['mainJ1']);
+        //$multiplierPointsPar = $this->multiplierPar($cbCartesExtra);
+
+        $initialisation = 'tutu';
+        $valeur_carte_ajouteeApresMultiplication = 'toto';
+        $multiplierPointsPar = 'tata';
+
+        $precedenteValeur = 1;
+
+        if($useractif==$idjoueur1){
+            //DEBUT JOUEUR 1//
+
+            //Les bails pour que ça marche
+            $em = $this->getDoctrine()->getManager();
+
+
+            // defausse selectionnée
+
+                $nepaschangerlamain = true ;
+                // Rajouter dans la catégorie 1
+                if( $categorie_carte_ajoutee == 1){
+                    array_push( $plateau['defausse_cat1'],$cartecheck);
+                    $situation->setDefausse_cat1($plateau['defausse_cat1']);
+
+                }
+                //Rajouter dans la catégorie 2
+                if ( $categorie_carte_ajoutee == 2)
+                {
+                    array_push( $plateau['defausse_cat2'],$cartecheck);
+                    $situation->setDefausse_cat2($plateau['defausse_cat2']);
+                }
+                //Rajouter dans la catégorie 3
+                if ( $categorie_carte_ajoutee == 3){
+                    array_push( $plateau['defausse_cat3'],$cartecheck);
+                    $situation->setDefausse_cat3($plateau['defausse_cat3']);
+                }
+                //Rajouter dans la catégorie4
+                if ( $categorie_carte_ajoutee == 4){
+                    array_push( $plateau['defausse_cat4'],$cartecheck);
+                    $situation->setDefausse_cat4($plateau['defausse_cat4']);
+                }
+                //Rajouter dans la catégorie 5
+                if ( $categorie_carte_ajoutee == 5){
+                    array_push( $plateau['defausse_cat5'],$cartecheck);
+                    $situation->setDefausse_cat5($plateau['defausse_cat5']);
+                }
+
+
+   //Récup l'id de la partie
+            $partie=$situation->getId();
+
+            $situation->setInfosJ1($infos);
+
+            //Les bails pour que ça marche
+            $em->persist($situation);
+            $em->flush();
+            //UPDATE LA MAIN DU JOUEUR
+            $mainj1 = array();
+            $mainj1 = $plateau['mainJ1'];
+            if ($nepaschangerlamain == false){
+                $nouvellemainj1 = $mainj1 ;
+            }
+            if ($nepaschangerlamain == true ){
+                $nouvellemainj1 = $this->supprimeCarteMain($mainj1,$cartecheck);
+            }
+            $em = $this->getDoctrine()->getManager();
+            $nouvellemainj1encode = json_encode($nouvellemainj1);
+            $situation->setMainJ1($nouvellemainj1encode);
+            $em->persist($situation);
+            $em->flush();
+
+
+
+
+            //FIN JOUEUR 1//
+        }
+
+        if($useractif==$idjoueur2){
+            //DEBUT JOUEUR 2//
+            $multiplierPointsPar = 'test';
+
+            //Les bails pour que ça marche
+            $em = $this->getDoctrine()->getManager();
+            $mainj2 = $plateau['mainJ2'];
+
+            $nepaschangerlamain = false;
+
+
+            //Si défausse selectionnée
+
+                $nepaschangerlamain = true ;
+                // Rajouter dans la catégorie 1
+                if( $categorie_carte_ajoutee == 1){
+                    array_push( $plateau['defausse_cat1'],$cartecheck);
+                    $situation->setDefausse_cat1($plateau['defausse_cat1']);
+                }
+                //Rajouter dans la catégorie 2
+                if ( $categorie_carte_ajoutee == 2)
+                {
+                    array_push( $plateau['defausse_cat2'],$cartecheck);
+                    $situation->setDefausse_cat2($plateau['defausse_cat2']);
+                }
+                //Rajouter dans la catégorie 3
+                if ( $categorie_carte_ajoutee == 3){
+                    array_push( $plateau['defausse_cat3'],$cartecheck);
+                    $situation->setDefausse_cat3($plateau['defausse_cat3']);
+                }
+                //Rajouter dans la catégorie4
+                if ( $categorie_carte_ajoutee == 4){
+                    array_push( $plateau['defausse_cat4'],$cartecheck);
+                    $situation->setDefausse_cat4($plateau['defausse_cat4']);
+                }
+                //Rajouter dans la catégorie 5
+                if ( $categorie_carte_ajoutee == 5){
+                    array_push( $plateau['defausse_cat5'],$cartecheck);
+                    $situation->setDefausse_cat5($plateau['defausse_cat5']);
+                }
+
+
+
+            //Recup id de la partie
+            $partie=$situation->getId();
+
+            $situation->setInfosJ2($infos);
+            //Les bails pour que ça marche
+            $em->persist($situation);
+            $em->flush();
+
+            //UPDATE LA MAIN DU JOUEUR
+
+            $mainj2 = array();
+            $mainj2 = $plateau['mainJ2'];
+            if ($nepaschangerlamain == false){
+                $nouvellemainj2 = $mainj2 ;
+            }
+            if ($nepaschangerlamain == true ){
+                $nouvellemainj2 = $this->supprimeCarteMain($mainj2,$cartecheck);
+            }
+
+            $em = $this->getDoctrine()->getManager();
+            $nouvellemainj2encode = json_encode($nouvellemainj2);
+            $situation->setMainJ2($nouvellemainj2encode);
+            $em->persist($situation);
+            $em->flush();
+            //FIN JOUEUR 2//
+        }
+
+        //return $this->render(':joueur:poser.html.twig', ['tutu' => $initialisation, 'toto' => $multiplierPointsPar , 'categorieecheck'=>$categorieecheck,'cartecheck' => $cartecheck, 'cartes' => $cartes, 'partie' => $id, 'user' => $user, 'plateau' => $plateau, 'tour' => $tour, 'plateau' => $plateau, 'situation' => $situation, 'parte' =>'$partie']);
+        return $this->redirectToRoute('afficher_partie', ['id' => $id->getId()]);
+    }
     private function supprimeCarteMain($mainj1,$cartecheck)
     {
         $t =array();

@@ -2,7 +2,12 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="102bd809-8df4-4e7e-8148-9d561e586a61" name="Default" comment="">
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/config/config.yml" afterPath="$PROJECT_DIR$/app/config/config.yml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/Resources/views/joueur/afficherpartie.html.twig" afterPath="$PROJECT_DIR$/app/Resources/views/joueur/afficherpartie.html.twig" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/config/parameters.yml.dist" afterPath="$PROJECT_DIR$/app/config/parameters.yml.dist" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/AppBundle/Controller/JoueurController.php" afterPath="$PROJECT_DIR$/src/AppBundle/Controller/JoueurController.php" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/AppBundle/Resources/views/Default/playlist.html.twig" afterPath="$PROJECT_DIR$/src/AppBundle/Resources/views/Default/playlist.html.twig" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/AppBundle/Resources/views/base.html.twig" afterPath="$PROJECT_DIR$/src/AppBundle/Resources/views/base.html.twig" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="TRACKING_ENABLED" value="true" />
@@ -31,12 +36,116 @@
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="375">
-      <file leaf-file-name="config.yml" pinned="false" current-in-tab="true">
+      <file leaf-file-name="JoueurController.php" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/AppBundle/Controller/JoueurController.php">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="238">
+              <caret line="1582" column="81" lean-forward="false" selection-start-line="1582" selection-start-column="81" selection-end-line="1582" selection-end-column="81" />
+              <folding>
+                <element signature="e#6#89#0#PHP" expanded="true" />
+                <element signature="e#122#148#0#PHP" expanded="true" />
+                <element signature="e#11774#14700#0#PHP" expanded="false" />
+                <element signature="e#14807#18597#0#PHP" expanded="false" />
+                <element signature="e#15565#15825#0#PHP" expanded="false" />
+                <element signature="e#18704#22418#0#PHP" expanded="false" />
+                <element signature="e#22537#26242#0#PHP" expanded="false" />
+                <element signature="e#26373#30078#0#PHP" expanded="false" />
+                <element signature="e#30197#33902#0#PHP" expanded="false" />
+                <element signature="e#34011#67404#0#PHP" expanded="false" />
+                <element signature="e#34420#34714#0#PHP" expanded="false" />
+                <element signature="e#34571#34714#0#PHP" expanded="false" />
+                <element signature="e#34723#35017#0#PHP" expanded="false" />
+                <element signature="e#34874#35017#0#PHP" expanded="false" />
+                <element signature="e#35026#35320#0#PHP" expanded="false" />
+                <element signature="e#35177#35320#0#PHP" expanded="false" />
+                <element signature="e#35329#35623#0#PHP" expanded="false" />
+                <element signature="e#35480#35623#0#PHP" expanded="false" />
+                <element signature="e#35632#35926#0#PHP" expanded="false" />
+                <element signature="e#35783#35926#0#PHP" expanded="false" />
+                <element signature="e#35935#36229#0#PHP" expanded="false" />
+                <element signature="e#36086#36229#0#PHP" expanded="false" />
+                <element signature="e#36238#36532#0#PHP" expanded="false" />
+                <element signature="e#36389#36532#0#PHP" expanded="false" />
+                <element signature="e#36541#36835#0#PHP" expanded="false" />
+                <element signature="e#36692#36835#0#PHP" expanded="false" />
+                <element signature="e#36844#37138#0#PHP" expanded="false" />
+                <element signature="e#36995#37138#0#PHP" expanded="false" />
+                <element signature="e#37298#37441#0#PHP" expanded="false" />
+                <element signature="e#53651#65245#0#PHP" expanded="false" />
+                <element signature="e#56036#58278#0#PHP" expanded="false" />
+                <element signature="e#58343#60572#0#PHP" expanded="false" />
+                <element signature="e#60636#62938#0#PHP" expanded="false" />
+                <element signature="e#63003#65231#0#PHP" expanded="false" />
+                <element signature="e#67922#68184#0#PHP" expanded="false" />
+                <element signature="e#68048#68184#0#PHP" expanded="false" />
+                <element signature="e#68193#68455#0#PHP" expanded="false" />
+                <element signature="e#68319#68455#0#PHP" expanded="false" />
+                <element signature="e#68464#68726#0#PHP" expanded="false" />
+                <element signature="e#68590#68726#0#PHP" expanded="false" />
+                <element signature="e#68735#68997#0#PHP" expanded="false" />
+                <element signature="e#68861#68997#0#PHP" expanded="false" />
+                <element signature="e#69006#69268#0#PHP" expanded="false" />
+                <element signature="e#69132#69268#0#PHP" expanded="false" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="playlist.html.twig" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/AppBundle/Resources/views/Default/playlist.html.twig">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="572">
+              <caret line="26" column="92" lean-forward="false" selection-start-line="26" selection-start-column="92" selection-end-line="26" selection-end-column="92" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="all.js" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/web/assets/js/all.js">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="572">
+              <caret line="26" column="21" lean-forward="false" selection-start-line="26" selection-start-column="21" selection-end-line="26" selection-end-column="21" />
+              <folding>
+                <element signature="n#!!doc" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="base.html.twig" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/AppBundle/Resources/views/base.html.twig">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="642">
+              <caret line="66" column="77" lean-forward="false" selection-start-line="66" selection-start-column="77" selection-end-line="66" selection-end-column="77" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="config.yml" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/app/config/config.yml">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="440">
-              <caret line="68" column="1" lean-forward="false" selection-start-line="68" selection-start-column="1" selection-end-line="68" selection-end-column="1" />
+            <state relative-caret-position="1496">
+              <caret line="68" column="5" lean-forward="false" selection-start-line="68" selection-start-column="5" selection-end-line="68" selection-end-column="32" />
               <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="afficherpartie.html.twig" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/app/Resources/views/joueur/afficherpartie.html.twig">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="602">
+              <caret line="378" column="67" lean-forward="false" selection-start-line="378" selection-start-column="67" selection-end-line="378" selection-end-column="67" />
+              <folding>
+                <element signature="e#7590#9166#0#HTML" expanded="false" />
+                <element signature="e#9183#9579#0#HTML" expanded="false" />
+                <element signature="e#9596#9991#0#HTML" expanded="false" />
+                <element signature="e#10008#11459#0#HTML" expanded="false" />
+                <element signature="e#11476#12915#0#HTML" expanded="false" />
+                <element signature="e#17731#18135#0#HTML" expanded="false" />
+              </folding>
             </state>
           </provider>
         </entry>
@@ -44,8 +153,8 @@
       <file leaf-file-name="parameters.yml" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/app/config/parameters.yml">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="264">
-              <caret line="12" column="4" lean-forward="false" selection-start-line="12" selection-start-column="4" selection-end-line="12" selection-end-column="15" />
+            <state relative-caret-position="132">
+              <caret line="6" column="27" lean-forward="false" selection-start-line="6" selection-start-column="27" selection-end-line="6" selection-end-column="27" />
               <folding />
             </state>
           </provider>
@@ -54,8 +163,8 @@
       <file leaf-file-name="parameters.yml.dist" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/app/config/parameters.yml.dist">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="0">
-              <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+            <state relative-caret-position="396">
+              <caret line="18" column="28" lean-forward="false" selection-start-line="18" selection-start-column="28" selection-end-line="18" selection-end-column="28" />
               <folding />
             </state>
           </provider>
@@ -73,11 +182,6 @@
   </component>
   <component name="FindInProjectRecents">
     <findStrings>
-      <find>poin</find>
-      <find>cat1</find>
-      <find>-=</find>
-      <find>radio</find>
-      <find>j1</find>
       <find>$precedenteValeur &lt;= $valeur_carte_ajoutee</find>
       <find>$plateau['pointj1']</find>
       <find>$plateau['pointj2']</find>
@@ -103,6 +207,11 @@
       <find>setFin</find>
       <find>100%</find>
       <find>table</find>
+      <find>form</find>
+      <find>$categorie_carte_ajoutee</find>
+      <find>update</find>
+      <find>4</find>
+      <find>dump</find>
     </findStrings>
   </component>
   <component name="Git.Settings">
@@ -111,7 +220,6 @@
   <component name="IdeDocumentHistory">
     <option name="CHANGED_PATHS">
       <list>
-        <option value="$PROJECT_DIR$/src/AppBundle/Resources/views/joueur/addpartie.html.twig" />
         <option value="$PROJECT_DIR$/src/AppBundle/Resources/views/joueur/index.html.twig" />
         <option value="$PROJECT_DIR$/src/AppBundle/Resources/views/joueur/mesparties.html.twig" />
         <option value="$PROJECT_DIR$/src/AppBundle/Resources/views/joueur/partie.html.twig" />
@@ -150,18 +258,19 @@
         <option value="$PROJECT_DIR$/src/AppBundle/Entity/Parties.php" />
         <option value="$PROJECT_DIR$/src/AppBundle/Controller/DefaultController.php" />
         <option value="$PROJECT_DIR$/app/Resources/views/joueur/mesparties.html.twig" />
-        <option value="$PROJECT_DIR$/src/AppBundle/Controller/JoueurController.php" />
         <option value="$PROJECT_DIR$/web/assets/css/styles.css" />
         <option value="$PROJECT_DIR$/src/AppBundle/Resources/views/Default/hello.html.twig" />
-        <option value="$PROJECT_DIR$/app/Resources/views/joueur/afficherpartie.html.twig" />
         <option value="$PROJECT_DIR$/app/Resources/views/joueur/index.html.twig" />
-        <option value="$PROJECT_DIR$/src/AppBundle/Resources/views/Default/playlist.html.twig" />
         <option value="$PROJECT_DIR$/src/AppBundle/Resources/views/Default/classement.html.twig" />
         <option value="$PROJECT_DIR$/app/Resources/views/base.html.twig" />
-        <option value="$PROJECT_DIR$/src/AppBundle/Resources/views/base.html.twig" />
         <option value="$PROJECT_DIR$/app/Resources/FOSUserBundle/views/layout.html.twig" />
         <option value="$PROJECT_DIR$/app/config/parameters.yml" />
         <option value="$PROJECT_DIR$/app/config/config.yml" />
+        <option value="$PROJECT_DIR$/app/config/parameters.yml.dist" />
+        <option value="$PROJECT_DIR$/app/Resources/views/joueur/afficherpartie.html.twig" />
+        <option value="$PROJECT_DIR$/src/AppBundle/Controller/JoueurController.php" />
+        <option value="$PROJECT_DIR$/src/AppBundle/Resources/views/Default/playlist.html.twig" />
+        <option value="$PROJECT_DIR$/src/AppBundle/Resources/views/base.html.twig" />
       </list>
     </option>
   </component>
@@ -237,8 +346,6 @@
       <foldersAlwaysOnTop value="true" />
     </navigator>
     <panes>
-      <pane id="Scope" />
-      <pane id="Scratches" />
       <pane id="ProjectPane">
         <subPane>
           <PATH>
@@ -262,6 +369,24 @@
             </PATH_ELEMENT>
             <PATH_ELEMENT>
               <option name="myItemId" value="web" />
+              <option name="myItemType" value="com.jetbrains.php.projectView.PhpTreeStructureProvider$1" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="jeu_2" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="jeu_2" />
+              <option name="myItemType" value="com.jetbrains.php.projectView.PhpTreeStructureProvider$1" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="web" />
+              <option name="myItemType" value="com.jetbrains.php.projectView.PhpTreeStructureProvider$1" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="assets" />
               <option name="myItemType" value="com.jetbrains.php.projectView.PhpTreeStructureProvider$1" />
             </PATH_ELEMENT>
           </PATH>
@@ -641,6 +766,8 @@
           </PATH>
         </subPane>
       </pane>
+      <pane id="Scope" />
+      <pane id="Scratches" />
     </panes>
   </component>
   <component name="PropertiesComponent">
@@ -769,12 +896,13 @@
       <workItem from="1491982873720" duration="30385000" />
       <workItem from="1492169716804" duration="16682000" />
       <workItem from="1492368593369" duration="15526000" />
-      <workItem from="1493031245383" duration="19905000" />
+      <workItem from="1493031245383" duration="25404000" />
+      <workItem from="1493192076050" duration="4957000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="294922000" />
+    <option name="totallyTimeSpent" value="305378000" />
   </component>
   <component name="TodoView">
     <todo-panel id="selected-file">
@@ -789,7 +917,7 @@
     <frame x="-9" y="-9" width="1938" height="1048" extended-state="7" />
     <editor active="true" />
     <layout>
-      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.12943073" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
+      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.095059074" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
       <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.16870144" sideWeight="0.5041152" order="7" side_tool="true" content_ui="tabs" />
       <window_info id="Database" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
@@ -835,25 +963,11 @@
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
-      <breakpoints>
-        <line-breakpoint enabled="true" type="php">
-          <url>file://$PROJECT_DIR$/src/AppBundle/Controller/JoueurController.php</url>
-          <line>1039</line>
-          <option name="timeStamp" value="10" />
-        </line-breakpoint>
-      </breakpoints>
-      <option name="time" value="34" />
+      <option name="time" value="37" />
     </breakpoint-manager>
     <watches-manager />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/web/app_dev.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="176">
-          <caret line="9" column="0" lean-forward="false" selection-start-line="8" selection-start-column="0" selection-end-line="9" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/app/config/services.yml">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="418">
@@ -1002,10 +1116,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="0">
           <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-          <folding>
-            <element signature="e#7#259#0#PHP" expanded="false" />
-            <element signature="e#295#334#0#PHP" expanded="false" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -1013,7 +1123,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="0">
           <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -1021,7 +1130,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="154">
           <caret line="7" column="32" lean-forward="false" selection-start-line="7" selection-start-column="32" selection-end-line="7" selection-end-column="32" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -1048,9 +1156,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="330">
           <caret line="17" column="481" lean-forward="false" selection-start-line="17" selection-start-column="477" selection-end-line="17" selection-end-column="481" />
-          <folding>
-            <element signature="e#0#44#0" expanded="false" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -1058,7 +1163,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="154">
           <caret line="7" column="38" lean-forward="false" selection-start-line="7" selection-start-column="38" selection-end-line="7" selection-end-column="38" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -1066,7 +1170,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="132">
           <caret line="6" column="69" lean-forward="false" selection-start-line="6" selection-start-column="69" selection-end-line="6" selection-end-column="69" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -1100,7 +1203,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="44">
           <caret line="2" column="0" lean-forward="false" selection-start-line="2" selection-start-column="0" selection-end-line="2" selection-end-column="16" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -1108,7 +1210,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="22">
           <caret line="1" column="34" lean-forward="false" selection-start-line="1" selection-start-column="0" selection-end-line="2" selection-end-column="0" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -1116,7 +1217,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="44">
           <caret line="2" column="0" lean-forward="false" selection-start-line="2" selection-start-column="0" selection-end-line="11" selection-end-column="12" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -1124,7 +1224,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="88">
           <caret line="4" column="0" lean-forward="false" selection-start-line="4" selection-start-column="0" selection-end-line="28" selection-end-column="0" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -1132,119 +1231,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="4790">
           <caret line="693" column="1" lean-forward="false" selection-start-line="693" selection-start-column="1" selection-end-line="693" selection-end-column="1" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/AppBundle/Controller/JoueurController.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="335">
-          <caret line="29" column="94" lean-forward="false" selection-start-line="29" selection-start-column="94" selection-end-line="29" selection-end-column="94" />
-          <folding>
-            <element signature="e#511#565#0#PHP" expanded="false" />
-            <element signature="e#834#895#0#PHP" expanded="false" />
-            <element signature="e#1221#1289#0#PHP" expanded="false" />
-            <element signature="e#1613#1703#0#PHP" expanded="false" />
-            <element signature="e#1708#3854#0#PHP" expanded="false" />
-            <element signature="e#2040#2124#0#PHP" expanded="false" />
-            <element signature="e#2203#2288#0#PHP" expanded="false" />
-            <element signature="e#2367#2465#0#PHP" expanded="false" />
-            <element signature="e#3859#3952#0#PHP" expanded="false" />
-            <element signature="e#3957#11673#0#PHP" expanded="false" />
-            <element signature="e#4892#5186#0#PHP" expanded="false" />
-            <element signature="e#5043#5186#0#PHP" expanded="false" />
-            <element signature="e#5195#5489#0#PHP" expanded="false" />
-            <element signature="e#5346#5489#0#PHP" expanded="false" />
-            <element signature="e#5498#5792#0#PHP" expanded="false" />
-            <element signature="e#5649#5792#0#PHP" expanded="false" />
-            <element signature="e#5801#6095#0#PHP" expanded="false" />
-            <element signature="e#5952#6095#0#PHP" expanded="false" />
-            <element signature="e#6104#6398#0#PHP" expanded="false" />
-            <element signature="e#6255#6398#0#PHP" expanded="false" />
-            <element signature="e#6473#6767#0#PHP" expanded="false" />
-            <element signature="e#6624#6767#0#PHP" expanded="false" />
-            <element signature="e#6776#7070#0#PHP" expanded="false" />
-            <element signature="e#6927#7070#0#PHP" expanded="false" />
-            <element signature="e#7079#7373#0#PHP" expanded="false" />
-            <element signature="e#7230#7373#0#PHP" expanded="false" />
-            <element signature="e#7382#7676#0#PHP" expanded="false" />
-            <element signature="e#7533#7676#0#PHP" expanded="false" />
-            <element signature="e#7685#7979#0#PHP" expanded="false" />
-            <element signature="e#7836#7979#0#PHP" expanded="false" />
-            <element signature="e#11678#11769#0#PHP" expanded="false" />
-            <element signature="e#11774#14700#0#PHP" expanded="false" />
-            <element signature="e#14705#14800#0#PHP" expanded="false" />
-            <element signature="e#14805#22846#0#PHP" expanded="false" />
-            <element signature="e#15751#15886#0#PHP" expanded="false" />
-            <element signature="e#15895#16169#0#PHP" expanded="false" />
-            <element signature="e#16034#16169#0#PHP" expanded="false" />
-            <element signature="e#16178#16452#0#PHP" expanded="false" />
-            <element signature="e#16693#17010#0#PHP" expanded="false" />
-            <element signature="e#17057#17362#0#PHP" expanded="false" />
-            <element signature="e#17407#17710#0#PHP" expanded="false" />
-            <element signature="e#17755#18059#0#PHP" expanded="false" />
-            <element signature="e#18104#18408#0#PHP" expanded="false" />
-            <element signature="e#19455#19575#0#PHP" expanded="false" />
-            <element signature="e#19635#19755#0#PHP" expanded="false" />
-            <element signature="e#19815#19935#0#PHP" expanded="false" />
-            <element signature="e#19995#20115#0#PHP" expanded="false" />
-            <element signature="e#20458#21965#0#PHP" expanded="false" />
-            <element signature="e#22852#22939#0#PHP" expanded="false" />
-            <element signature="e#22944#60668#0#PHP" expanded="false" />
-            <element signature="e#23353#23647#0#PHP" expanded="false" />
-            <element signature="e#23656#23950#0#PHP" expanded="false" />
-            <element signature="e#23807#23950#0#PHP" expanded="false" />
-            <element signature="e#23959#24253#0#PHP" expanded="false" />
-            <element signature="e#24110#24253#0#PHP" expanded="false" />
-            <element signature="e#24262#24556#0#PHP" expanded="false" />
-            <element signature="e#24413#24556#0#PHP" expanded="false" />
-            <element signature="e#24565#24859#0#PHP" expanded="false" />
-            <element signature="e#24716#24859#0#PHP" expanded="false" />
-            <element signature="e#24868#25162#0#PHP" expanded="false" />
-            <element signature="e#25019#25162#0#PHP" expanded="false" />
-            <element signature="e#25171#25465#0#PHP" expanded="false" />
-            <element signature="e#25322#25465#0#PHP" expanded="false" />
-            <element signature="e#25474#25768#0#PHP" expanded="false" />
-            <element signature="e#25625#25768#0#PHP" expanded="false" />
-            <element signature="e#25777#26071#0#PHP" expanded="false" />
-            <element signature="e#25928#26071#0#PHP" expanded="false" />
-            <element signature="e#26080#26374#0#PHP" expanded="false" />
-            <element signature="e#26231#26374#0#PHP" expanded="false" />
-            <element signature="e#26383#26645#0#PHP" expanded="false" />
-            <element signature="e#26509#26645#0#PHP" expanded="false" />
-            <element signature="e#26654#26916#0#PHP" expanded="false" />
-            <element signature="e#26780#26916#0#PHP" expanded="false" />
-            <element signature="e#26925#27187#0#PHP" expanded="false" />
-            <element signature="e#27051#27187#0#PHP" expanded="false" />
-            <element signature="e#27196#27458#0#PHP" expanded="false" />
-            <element signature="e#27322#27458#0#PHP" expanded="false" />
-            <element signature="e#27467#27729#0#PHP" expanded="false" />
-            <element signature="e#27593#27729#0#PHP" expanded="false" />
-            <element signature="e#30653#31388#0#PHP" expanded="false" />
-            <element signature="e#32444#34686#0#PHP" expanded="false" />
-            <element signature="e#32961#33695#0#PHP" expanded="false" />
-            <element signature="e#34750#37100#0#PHP" expanded="false" />
-            <element signature="e#35253#36061#0#PHP" expanded="false" />
-            <element signature="e#37163#39466#0#PHP" expanded="false" />
-            <element signature="e#37665#38474#0#PHP" expanded="false" />
-            <element signature="e#39530#41762#0#PHP" expanded="false" />
-            <element signature="e#40031#40767#0#PHP" expanded="false" />
-            <element signature="e#42194#43631#0#PHP" expanded="false" />
-            <element signature="e#46021#46756#0#PHP" expanded="false" />
-            <element signature="e#47813#50055#0#PHP" expanded="false" />
-            <element signature="e#48330#49064#0#PHP" expanded="false" />
-            <element signature="e#50120#52349#0#PHP" expanded="false" />
-            <element signature="e#50623#51358#0#PHP" expanded="false" />
-            <element signature="e#52413#54715#0#PHP" expanded="false" />
-            <element signature="e#52915#53723#0#PHP" expanded="false" />
-            <element signature="e#54780#57008#0#PHP" expanded="false" />
-            <element signature="e#55281#56016#0#PHP" expanded="false" />
-            <element signature="e#57074#58510#0#PHP" expanded="false" />
-            <element signature="e#60674#60912#0#PHP" expanded="false" />
-            <element signature="e#60917#61017#0#PHP" expanded="false" />
-            <element signature="e#61022#61424#0#PHP" expanded="false" />
-            <element signature="e#61429#61602#0#PHP" expanded="false" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -1252,15 +1238,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="418">
           <caret line="19" column="0" lean-forward="false" selection-start-line="19" selection-start-column="0" selection-end-line="19" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/AppBundle/Resources/views/Default/playlist.html.twig">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="176">
-          <caret line="8" column="0" lean-forward="false" selection-start-line="8" selection-start-column="0" selection-end-line="8" selection-end-column="0" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -1268,15 +1245,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="66">
           <caret line="3" column="23" lean-forward="false" selection-start-line="3" selection-start-column="23" selection-end-line="3" selection-end-column="23" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/Resources/views/joueur/afficherpartie.html.twig">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="154">
-          <caret line="7" column="20" lean-forward="false" selection-start-line="7" selection-start-column="20" selection-end-line="7" selection-end-column="20" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -1284,15 +1252,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="554">
           <caret line="52" column="0" lean-forward="false" selection-start-line="52" selection-start-column="0" selection-end-line="52" selection-end-column="58" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/AppBundle/Resources/views/base.html.twig">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="682">
-          <caret line="54" column="0" lean-forward="false" selection-start-line="54" selection-start-column="0" selection-end-line="54" selection-end-column="0" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -1300,7 +1259,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="718">
           <caret line="39" column="0" lean-forward="false" selection-start-line="39" selection-start-column="0" selection-end-line="39" selection-end-column="0" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -1308,31 +1266,124 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="558">
           <caret line="48" column="62" lean-forward="false" selection-start-line="48" selection-start-column="62" selection-end-line="48" selection-end-column="62" />
-          <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/app/config/parameters.yml.dist">
+    <entry file="file://$PROJECT_DIR$/app/config/config.yml">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="0">
-          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+        <state relative-caret-position="1496">
+          <caret line="68" column="5" lean-forward="false" selection-start-line="68" selection-start-column="5" selection-end-line="68" selection-end-column="32" />
           <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/app/config/parameters.yml">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="264">
-          <caret line="12" column="4" lean-forward="false" selection-start-line="12" selection-start-column="4" selection-end-line="12" selection-end-column="15" />
+        <state relative-caret-position="132">
+          <caret line="6" column="27" lean-forward="false" selection-start-line="6" selection-start-column="27" selection-end-line="6" selection-end-column="27" />
           <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/app/config/config.yml">
+    <entry file="file://$PROJECT_DIR$/app/config/parameters.yml.dist">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="440">
-          <caret line="68" column="1" lean-forward="false" selection-start-line="68" selection-start-column="1" selection-end-line="68" selection-end-column="1" />
+        <state relative-caret-position="396">
+          <caret line="18" column="28" lean-forward="false" selection-start-line="18" selection-start-column="28" selection-end-line="18" selection-end-column="28" />
           <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/Resources/views/joueur/afficherpartie.html.twig">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="602">
+          <caret line="378" column="67" lean-forward="false" selection-start-line="378" selection-start-column="67" selection-end-line="378" selection-end-column="67" />
+          <folding>
+            <element signature="e#7590#9166#0#HTML" expanded="false" />
+            <element signature="e#9183#9579#0#HTML" expanded="false" />
+            <element signature="e#9596#9991#0#HTML" expanded="false" />
+            <element signature="e#10008#11459#0#HTML" expanded="false" />
+            <element signature="e#11476#12915#0#HTML" expanded="false" />
+            <element signature="e#17731#18135#0#HTML" expanded="false" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/AppBundle/Controller/JoueurController.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="238">
+          <caret line="1582" column="81" lean-forward="false" selection-start-line="1582" selection-start-column="81" selection-end-line="1582" selection-end-column="81" />
+          <folding>
+            <element signature="e#6#89#0#PHP" expanded="true" />
+            <element signature="e#122#148#0#PHP" expanded="true" />
+            <element signature="e#11774#14700#0#PHP" expanded="false" />
+            <element signature="e#14807#18597#0#PHP" expanded="false" />
+            <element signature="e#15565#15825#0#PHP" expanded="false" />
+            <element signature="e#18704#22418#0#PHP" expanded="false" />
+            <element signature="e#22537#26242#0#PHP" expanded="false" />
+            <element signature="e#26373#30078#0#PHP" expanded="false" />
+            <element signature="e#30197#33902#0#PHP" expanded="false" />
+            <element signature="e#34011#67404#0#PHP" expanded="false" />
+            <element signature="e#34420#34714#0#PHP" expanded="false" />
+            <element signature="e#34571#34714#0#PHP" expanded="false" />
+            <element signature="e#34723#35017#0#PHP" expanded="false" />
+            <element signature="e#34874#35017#0#PHP" expanded="false" />
+            <element signature="e#35026#35320#0#PHP" expanded="false" />
+            <element signature="e#35177#35320#0#PHP" expanded="false" />
+            <element signature="e#35329#35623#0#PHP" expanded="false" />
+            <element signature="e#35480#35623#0#PHP" expanded="false" />
+            <element signature="e#35632#35926#0#PHP" expanded="false" />
+            <element signature="e#35783#35926#0#PHP" expanded="false" />
+            <element signature="e#35935#36229#0#PHP" expanded="false" />
+            <element signature="e#36086#36229#0#PHP" expanded="false" />
+            <element signature="e#36238#36532#0#PHP" expanded="false" />
+            <element signature="e#36389#36532#0#PHP" expanded="false" />
+            <element signature="e#36541#36835#0#PHP" expanded="false" />
+            <element signature="e#36692#36835#0#PHP" expanded="false" />
+            <element signature="e#36844#37138#0#PHP" expanded="false" />
+            <element signature="e#36995#37138#0#PHP" expanded="false" />
+            <element signature="e#37298#37441#0#PHP" expanded="false" />
+            <element signature="e#53651#65245#0#PHP" expanded="false" />
+            <element signature="e#56036#58278#0#PHP" expanded="false" />
+            <element signature="e#58343#60572#0#PHP" expanded="false" />
+            <element signature="e#60636#62938#0#PHP" expanded="false" />
+            <element signature="e#63003#65231#0#PHP" expanded="false" />
+            <element signature="e#67922#68184#0#PHP" expanded="false" />
+            <element signature="e#68048#68184#0#PHP" expanded="false" />
+            <element signature="e#68193#68455#0#PHP" expanded="false" />
+            <element signature="e#68319#68455#0#PHP" expanded="false" />
+            <element signature="e#68464#68726#0#PHP" expanded="false" />
+            <element signature="e#68590#68726#0#PHP" expanded="false" />
+            <element signature="e#68735#68997#0#PHP" expanded="false" />
+            <element signature="e#68861#68997#0#PHP" expanded="false" />
+            <element signature="e#69006#69268#0#PHP" expanded="false" />
+            <element signature="e#69132#69268#0#PHP" expanded="false" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/AppBundle/Resources/views/Default/playlist.html.twig">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="572">
+          <caret line="26" column="92" lean-forward="false" selection-start-line="26" selection-start-column="92" selection-end-line="26" selection-end-column="92" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/AppBundle/Resources/views/base.html.twig">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="642">
+          <caret line="66" column="77" lean-forward="false" selection-start-line="66" selection-start-column="77" selection-end-line="66" selection-end-column="77" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/web/assets/js/all.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="572">
+          <caret line="26" column="21" lean-forward="false" selection-start-line="26" selection-start-column="21" selection-end-line="26" selection-end-column="21" />
+          <folding>
+            <element signature="n#!!doc" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>
