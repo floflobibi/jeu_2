@@ -51,68 +51,31 @@
         <form name="form1" action="{{ path('poser_partie', {id:partie.id}) }}" method="get" id="1">
 
             <div>
-                <h2>Cartes du joueur 1</h2>
+                <h2>Cartes adverses</h2>
                 <table border="solid">
-                    <tr>
-                        <td>Vos cartes</td>
-                        {% for carte in plateau.mainJ1 %}
-                            {% if user.id==partie.joueur1.id %}
-                                <td>
-                                    <img src="{{asset('assets/img/cartes/'~cartes[carte].id~'.png') }}" alt="cartes" width="100">
-                                </td>
-                            {% elseif user.id==partie.joueur2.id %}
-                                <td>
-                                    <img src="{{asset('assets/img/back.png') }}" alt="cartes" width="100">
-                                </td>
-                            {% endif %}
-                        {% endfor %}
-                    </tr>
-
                     {% if user.id==partie.joueur1.id %}
-                        <tr>
-                            <td>Les placer</td>
-                            {% for carte in plateau.mainJ1 %}
-
-                                <td>
-                                    <input name="cartecheck" value="{{ cartes[carte].id }}" required type="radio">
-                                </td>
-
-                            {% endfor %}
-                        </tr>
-                    {% endif %}
-
-                </table>
-            </div>
-
-
-            <div>
-                <h2>Cartes du joueur 2</h2>
-                <table border="solid">
                     <tr>
                         <td>Vos cartes</td>
                         {% for carte in plateau.mainJ2 %}
-                            {% if user.id==partie.joueur2.id %}
-                                <td>{{ cartes[carte].categorie.libelle }}
-                                    <img src="{{asset('assets/img/cartes/'~cartes[carte].id~'.png') }}" alt="cartes" width="100">
-                                </td>
-                            {% elseif user.id==partie.joueur1.id %}
-                                <td><img src="{{asset('assets/img/back.png') }}" alt="cartes" width="100"></td>
-                            {% endif %}
+                            <td>
+                                <img src="{{asset('assets/img/back.png') }}" alt="cartes" width="100">
+                            </td>
                         {% endfor %}
                     </tr>
+                    {% endif %}
                     {% if user.id==partie.joueur2.id %}
                         <tr>
-                            <td>Les placer</td>
-                            {% for carte in plateau.mainJ2 %}
-
-                                <td><input name="cartecheck" value="{{ cartes[carte].id }}" required type="radio"></td>
-
+                            <td>Vos cartes</td>
+                            {% for carte in plateau.mainJ1 %}
+                                <td><img src="{{asset('assets/img/back.png') }}" alt="cartes" width="100"></td>
                             {% endfor %}
                         </tr>
                     {% endif %}
 
                 </table>
             </div>
+
+
 
             <hr>
             <table border="solid">
@@ -153,32 +116,32 @@
                     <td>
                         {% for carte in plateau.poseesj1_cat1 %}
 
-                            <img src="{{asset('assets/img/cartes/'~cartes[carte].id~'.png') }}" alt="cartes" width="100">
+                           <p>{{ cartes[carte].valeur}}</p>
 
                         {% endfor %}
                     </td>
                     <td>
                         {% for carte in plateau.poseesj1_cat2 %}
 
-                            <img src="{{asset('assets/img/cartes/'~cartes[carte].id~'.png') }}" alt="cartes" width="100">
+                            <p>{{ cartes[carte].valeur}}</p>
 
                         {% endfor %}
                     </td>
                     <td>
                         {% for carte in plateau.poseesj1_cat3 %}
-                            <img src="{{asset('assets/img/cartes/'~cartes[carte].id~'.png') }}" alt="cartes" width="100">
+                            <p>{{ cartes[carte].valeur}}</p>
                         {% endfor %}
                     </td>
                     <td>
                         {% for carte in plateau.poseesj1_cat4 %}
                             {% if cartes[carte].getCategorie().id == '4' %}
-                                <img src="{{asset('assets/img/cartes/'~cartes[carte].id~'.png') }}" alt="cartes" width="100">
+                                <p>{{ cartes[carte].valeur}}</p>
                             {% endif %}
                         {% endfor %}
                     </td>
                     <td>
                         {% for carte in plateau.poseesj1_cat5 %}
-                            <img src="{{asset('assets/img/cartes/'~cartes[carte].id~'.png') }}" alt="cartes" width="100">
+                            <p>{{ cartes[carte].valeur}}</p>
                         {% endfor %}
                     </td>
 
@@ -203,27 +166,27 @@
                     <td>Cartes posées par J2</td>
                     <td>
                         {% for carte in plateau.poseesj2_cat1 %}
-                            <img src="{{asset('assets/img/cartes/'~cartes[carte].id~'.png') }}" alt="cartes" width="100">
+                            <p>{{ cartes[carte].valeur}}</p>
                         {% endfor %}
                     </td>
                     <td>
                         {% for carte in plateau.poseesj2_cat2 %}
-                            <img src="{{asset('assets/img/cartes/'~cartes[carte].id~'.png') }}" alt="cartes" width="100">
+                            <p>{{ cartes[carte].valeur}}</p>
                         {% endfor %}
                     </td>
                     <td>
                         {% for carte in plateau.poseesj2_cat3 %}
-                            <img src="{{asset('assets/img/cartes/'~cartes[carte].id~'.png') }}" alt="cartes" width="100">
+                            <p>{{ cartes[carte].valeur}}</p>
                         {% endfor %}
                     </td>
                     <td>
                         {% for carte in plateau.poseesj2_cat4 %}
-                            <img src="{{asset('assets/img/cartes/'~cartes[carte].id~'.png') }}" alt="cartes" width="100">
+                            <p>{{ cartes[carte].valeur}}</p>
                         {% endfor %}
                     </td>
                     <td>
                         {% for carte in plateau.poseesj2_cat5 %}
-                            <img src="{{asset('assets/img/cartes/'~cartes[carte].id~'.png') }}" alt="cartes" width="100">
+                            <p>{{ cartes[carte].valeur}}</p>
                         {% endfor %}
                     </td>
                 </tr>
@@ -281,9 +244,6 @@
                 {% endif %}
             </tr>
         </table>
-
-        </form>
-        <form name="form2" action="{{ path('defausser1_partie', {id:partie.id}) }}" method="get" id="2">
             <table border="solid">
                 <tr>
                     <td>Récupérer Défausse</td>
@@ -303,6 +263,56 @@
 
                 </tr>
             </table>
+            <hr>
+
+            <div>
+                <h2>Vos cartes</h2>
+                <table border="solid">
+                    {% if user.id==partie.joueur2.id %}
+                    <tr>
+                        <td>Vos cartes</td>
+                        {% for carte in plateau.mainJ2 %}
+                            {% if user.id==partie.joueur2.id %}
+                                <td>{{ cartes[carte].categorie.libelle }}
+                                    <img src="{{asset('assets/img/cartes/'~cartes[carte].id~'.png') }}" alt="cartes" width="100">
+                                </td>
+                            {% endif %}
+                        {% endfor %}
+                    </tr>
+                        <tr>
+                            <td>Les placer</td>
+                            {% for carte in plateau.mainJ2 %}
+                                <td><input name="cartecheck" value="{{ cartes[carte].id }}" required type="radio"></td>
+                            {% endfor %}
+                        </tr>
+                    {% endif %}
+                    {% if user.id==partie.joueur1.id %}
+                        <tr>
+                            <td>Vos cartes</td>
+                            {% for carte in plateau.mainJ1 %}
+                                {% if user.id==partie.joueur1.id %}
+                                    <td>
+                                        <img src="{{asset('assets/img/cartes/'~cartes[carte].id~'.png') }}" alt="cartes" width="100">
+                                    </td>
+                                {% endif %}
+                            {% endfor %}
+                        </tr>
+
+
+                        <tr>
+                            <td>Les placer</td>
+                            {% for carte in plateau.mainJ1 %}
+
+                                <td>
+                                    <input name="cartecheck" value="{{ cartes[carte].id }}" required type="radio">
+                                </td>
+
+                            {% endfor %}
+                        </tr>
+                    {% endif %}
+
+                </table>
+            </div>
         </form>
         <hr>
         <div>
@@ -356,28 +366,28 @@
             }
             function OnButton6()
             {
-                document.form2.action = "{{ path('defausser1_partie', {id:partie.id}) }}";
-                document.form2.submit();
+                document.form1.action = "{{ path('defausser1_partie', {id:partie.id}) }}";
+                document.form1.submit();
             }
             function OnButton7()
             {
-                document.form2.action = "{{ path('defausser2_partie', {id:partie.id}) }}";
-                document.form2.submit();
+                document.form1.action = "{{ path('defausser2_partie', {id:partie.id}) }}";
+                document.form1.submit();
             }
             function OnButton8()
             {
-                document.form2.action = "{{ path('defausser3_partie', {id:partie.id}) }}";
-                document.form2.submit();
+                document.form1.action = "{{ path('defausser3_partie', {id:partie.id}) }}";
+                document.form1.submit();
             }
             function OnButton9()
             {
-                document.form2.action = "{{ path('defausser4_partie', {id:partie.id}) }}";
-                document.form2.submit();
+                document.form1.action = "{{ path('defausser4_partie', {id:partie.id}) }}";
+                document.form1.submit();
             }
             function OnButton10()
             {
-                document.form2.action = "{{ path('defausser5_partie', {id:partie.id}) }}";
-                document.form2.submit();
+                document.form1.action = "{{ path('defausser5_partie', {id:partie.id}) }}";
+                document.form1.submit();
             }
         </script>
     </div>

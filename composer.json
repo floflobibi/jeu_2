@@ -24,7 +24,9 @@
         "incenteev/composer-parameter-handler": "^2.0",
         "friendsofsymfony/user-bundle": "~2.0@dev",
         "javiereguiluz/easyadmin-bundle": "^1.16",
-        "swiftmailer/swiftmailer": "^5.4"
+        "swiftmailer/swiftmailer": "^5.4",
+        "knplabs/knp-paginator-bundle": "^2.5",
+        "discutea/forum-bundle": "^1.0"
     },
     "require-dev": {
         "sensio/generator-bundle": "^3.0",

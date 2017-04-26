@@ -355,7 +355,7 @@
         name: "Sunhawk - She Snake Shuffle",
         srcs: [
           {
-            src: "web/assets/music/shesnake.mp3",
+            src: "http://localhost/projet/jeu_2/web/assets/music/shesnake.mp3",
             type: "audio/mp3"
           }
         ]
