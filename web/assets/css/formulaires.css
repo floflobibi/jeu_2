@@ -1,3 +1,8 @@
+@font-face {
+    font-family: Avenir;
+    src: url("../font/AvenirNextLTPro-Regular.otf") format("opentype");
+}
+
 #formulaire {
     text-align: center;
     width: 400px;
@@ -25,7 +30,7 @@ input {
 
 }
 #formulaire_layout{
-    background-color: #2f2f2f;
+    background-color:#fff;
     padding: 10px;
     margin-top: 130px;
     width: 600px;
@@ -33,7 +38,8 @@ input {
     margin-left: auto;
     font-size: 15px;
     border-radius: 5%;
-    color: white;
+    box-shadow: 0 0 2em #212121;
+    color: #333333;
     font-family: Avenir;
 
 }
@@ -179,4 +185,8 @@ button a {
     color: green;
     text-align: center;
     border-radius:50px ;
+}
+
+body{
+    background: url("../img/backform.png") no-repeat;
 }

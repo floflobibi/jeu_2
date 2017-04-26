@@ -1,6 +1,6 @@
 @font-face {
     font-family: Avenir;
-    src: url("AV.otf") format("opentype");
+    src: url("../font/AvenirNextLTPro-Regular.otf") format("opentype");
 }
 
 .title{

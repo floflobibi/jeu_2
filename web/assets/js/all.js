@@ -352,29 +352,86 @@
     songs: [
       {
         image: "images/sunhawk-small@2x.jpg",
-        name: "Sunhawk - She Snake Shuffle",
+        name: "Stevie Wonder - Supersition",
         srcs: [
           {
-            src: "http://localhost/projet/jeu_2/web/assets/music/shesnake.mp3",
+            src: "http://195.83.128.55/~mmi15b02/playlist/1.mp3",
             type: "audio/mp3"
           }
         ]
-      }, {
+      },
+      {
         image: "images/sunhawk-small-2@2x.jpg",
-        name: "Sunhawk - Shotgun Love",
-        srcs: [
+        name: "Biggie Ft 2pac Ft The Beatles - Let It Be -REMIX-",
+        srcs:
+        [
           {
-            src: "web/assets/music/shotgunlove.mp3",
+            src: "http://195.83.128.55/~mmi15b02/playlist/2.mp3",
             type: "audio/mp3"
-          }, {
-            src: "web/assets/music/shotgunlove.m4a",
-            type: "audio/mp4"
-          }, {
-            src: "web/assets/music/shotgunlove.ogg",
-            type: "audio/ogg"
           }
         ]
-      }
+      },
+        //Nouvelle musique
+        {
+            image: "images/sunhawk-small-2@2x.jpg",
+            name: "Bob Marley - Jammin (Kungs Remix)",
+            srcs:
+                [
+                    {
+                        src: "http://195.83.128.55/~mmi15b02/playlist/3.mp3",
+                        type: "audio/mp3"
+                    }
+                ]
+        },
+        //
+        {
+            image: "images/sunhawk-small-2@2x.jpg",
+            name: "Hey Joe - Jimi Hendrix - Toilet Blues Cover",
+            srcs:
+                [
+                    {
+                        src: "http://195.83.128.55/~mmi15b02/playlist/4.mp3",
+                        type: "audio/mp3"
+                    }
+                ]
+        },
+        ///
+        {
+            image: "images/sunhawk-small-2@2x.jpg",
+            name: "Michael Jackson - Love Never Felt So Good (Master Chic Mix)",
+            srcs:
+                [
+                    {
+                        src: "http://195.83.128.55/~mmi15b02/playlist/5.mp3",
+                        type: "audio/mp3"
+                    }
+                ]
+        },
+        ///
+        {
+            image: "images/sunhawk-small-2@2x.jpg",
+            name: "Moonlight - Steven Sharp Nelson - Electric cello (inspired by Beethoven's Moonlight Sonata)",
+            srcs:
+                [
+                    {
+                        src: "http://195.83.128.55/~mmi15b02/playlist/6.mp3",
+                        type: "audio/mp3"
+                    }
+                ]
+        },
+        ///
+        {
+            image: "images/sunhawk-small-2@2x.jpg",
+            name: "Rolling Stones - Miss You (Remix ft Dr Dre  )",
+            srcs:
+                [
+                    {
+                        src: "http://195.83.128.55/~mmi15b02/playlist/7.mp3",
+                        type: "audio/mp3"
+                    }
+                ]
+        }
+        ///
     ]
   });
 
