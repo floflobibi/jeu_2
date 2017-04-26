@@ -1,0 +1,23 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+    <style>
+        .notice{
+            text-align: center;
+        }
+    </style>
+    <div class="container">
+        <div class="row">
+            <div class="col-md-6 notice">
+                <img src="{{asset('assets/img/cartes/notice1.png') }}" alt="notice" width="400px">
+                <img src="{{asset('assets/img/cartes/notice2.png') }}" alt="notice" width="400px">
+            </div>
+
+            <div class="col-md-6 notice">
+                <img src="{{asset('assets/img/cartes/notice3.png') }}" alt="notice" width="400px">
+                <img src="{{asset('assets/img/cartes/notice4.png') }}" alt="notice" width="400px">
+            </div>
+
+        </div>
+    </div>
+{% endblock %}

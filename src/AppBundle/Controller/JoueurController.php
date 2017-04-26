@@ -49,6 +49,20 @@ class JoueurController extends Controller
         $joueurs = $this->getDoctrine()->getRepository('AppBundle:User')->findAll();
         return $this->render("joueur/addpartie.html.twig", ['user' => $user, 'joueurs' => $joueurs]);
     }
+    //////////
+
+    /**
+     * @Route("/notice", name="notice")
+     */
+    public function noticeAction()
+    {
+
+        return $this->render("joueur/notice.html.twig");
+    }
+
+
+    ////////////
+
     /**
      * @param User $id
      * @Route("/inviter/{joueur}", name="creer_partie")
@@ -665,9 +679,6 @@ class JoueurController extends Controller
         //return $this->render(':joueur:defausser.html.twig', ['useridj1' => $idjoueur1,'useridj2' => $idjoueur2 ,'idd' => $idd,'cartes' => $cartes, 'partie' => $id, 'user' => $user, 'plateau' => $plateau, 'tour' => $tour, 'situation' => $situation, 'parte' =>'$partie']);
         return $this->redirectToRoute('afficher_partie', ['id' => $id->getId()]);
     }
-
-//////////
-//////////
 
     /**
      * @param Parties $id
