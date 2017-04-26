@@ -355,7 +355,7 @@
         name: "Sunhawk - She Snake Shuffle",
         srcs: [
           {
-            src: "../music/shesnake.mp3",
+            src: "shesnake.mp3",
             type: "audio/mp3"
           }
         ]
@@ -364,13 +364,13 @@
         name: "Sunhawk - Shotgun Love",
         srcs: [
           {
-            src: "../music/shotgunlove.mp3",
+            src: "shotgunlove.mp3",
             type: "audio/mp3"
           }, {
-            src: "../music/shotgunlove.m4a",
+            src: "shotgunlove.m4a",
             type: "audio/mp4"
           }, {
-            src: "../music/ShotgunLove.ogg",
+            src: "shotgunlove.ogg",
             type: "audio/ogg"
           }
         ]
