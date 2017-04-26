@@ -32,7 +32,6 @@ libs/jquery/1.3.0/jquery.min.js"></script>
     </label>
 
     <nav id="menu">
-        <a href="{{ path('homepage') }}">Le jeu</a>
         <a href="{{ path('notice') }}">Notice</a>
         {% if is_granted("IS_AUTHENTICATED_REMEMBERED") %}
             <a href="{{ path('joueur_homepage') }}">Mon espace joueur</a>
@@ -48,10 +47,16 @@ libs/jquery/1.3.0/jquery.min.js"></script>
         {% endif %}
         <a href="{{ path('classement') }}">Classement</a>
         <a href="{{ path('playlist') }}">Playlist</a>
+        {% if is_granted("IS_AUTHENTICATED_REMEMBERED") %}
+            <a href="{{ path('discutea_forum_homepage') }}">Forum</a>
+        {% endif %}
+        {% if is_granted('ROLE_ADMIN') %}
+            <a href="{{ path('discutea_forum_admin_dashboard') }}">Admin du forum</a>
+        {% endif %}
     </nav>
 
 </div>
-<img class="logo" src="{{asset('assets/img/logo.png') }}">
+<a href="{{ path('homepage') }}"><img class="logo" src="{{asset('assets/img/logo.png') }}"></a>
 
 
 {% block body %}{% endblock %}
