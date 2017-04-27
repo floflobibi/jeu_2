@@ -4,13 +4,9 @@
     <div class="container mesparties">
         <div class="row">
             <h1>Espace joueur: {{ user.username }}</h1>
-            <h2>Mes parties en cours</h2>
+
         </div>
-
-        <h1>Espace joueur: {{ user.nom }}</h1>
-
-    <h2>Créer une nouvelle partie</h2>
-
+        
     <table class="table">
         {% for joueur in joueurs if joueur.username != user.username %}
             <tr>
