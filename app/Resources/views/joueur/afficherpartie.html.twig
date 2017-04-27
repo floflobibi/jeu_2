@@ -1,326 +1,21 @@
 {% extends 'base.html.twig' %}
 
 {% block body %}
-    <div class="container">
+    <div class="containerr">
     <div id="divarefresh">
-        <h1>Partie entre {{ partie.joueur1.username }} et {{ partie.joueur2.username }}</h1>
-        <h2>{{ user.id }} - {{ tour }}</h2>
-        {% if tour==user.id %}
-            <h2>A toi de jouer !</h2>
-        {% else %}
-            <h2>C'est au tour de votre adversaire</h2>
-        {% endif %}
-        <div>
-            <hr>
-            <h3>Informations :</h3>
-            {% if partie.joueur1.id==user.id %}
-                {% if infosj1 == 1 %}
-                    <p>Pas d'informations</p>
-                {% elseif infosj1 == 2 %}
-                    <p>Vous ne pouvez pas placer une carte dans une catégorie si la valeur de la précédente est supérieur à celle que vous essayez de poser.</p>
-                {% elseif infosj1 == 3 %}
-                    <p>Il n'y aucune carte dans cette défausse. Choissez une autre défausse ou la pioche.</p>
-                {% elseif infosj1 == 4 %}
-                {% endif %}
-            {% endif %}
+        <div class="haut">
+            <h1>Partie entre {{ partie.joueur1.username }} et {{ partie.joueur2.username }}</h1>
 
-            {% if partie.joueur2.id==user.id %}
-                {% if infosj2 == 1 %}
-                    <p>Pas d'informations</p>
-                {% elseif infosj2 == 2 %}
-                    <p>Vous ne pouvez pas placer une carte dans une catégorie si la valeur de la précédente est supérieur à celle que vous essayez de poser.</p>
-                {% elseif infosj2 == 3 %}
-                    <p>Il n'y aucune carte dans cette défausse. Choissez une autre défausse ou la pioche.</p>
-                {% elseif infosj2 == 4 %}
-                {% endif %}
-            {% endif %}
-            <hr>
-
-
-            {% if tour==user.id and (nbcartesj1<8 or nbcartesj2<8) %}
-                <p>Vous ne pouvez poser qu'une seule carte à la fois. Veuillez piocher.</p>
-            {% elseif tour==user.id and (nbcartesj1>7 or nbcartesj2>7) %}
-               <p>Selectionnez une carte, et posez là</p>
+            {% if tour==user.id %}
+                <h2 class="top">A toi de jouer !</h2>
             {% else %}
-                <p>Ce n'est pas à vous de poser votre carte</p>
+                <h2 class="top"><strong>'est au tour de votre adversaire</strong></h2>
             {% endif %}
 
-
-        </div>
-
-        <form name="form1" action="{{ path('poser_partie', {id:partie.id}) }}" method="get" id="1">
-
-            <div>
-                <h2>Cartes adverses</h2>
-                <table border="solid">
-                    {% if user.id==partie.joueur1.id %}
-                    <tr>
-                        <td>Vos cartes</td>
-                        {% for carte in plateau.mainJ2 %}
-                            <td>
-                                <img src="{{asset('assets/img/back.png') }}" alt="cartes" width="100">
-                            </td>
-                        {% endfor %}
-                    </tr>
-                    {% endif %}
-                    {% if user.id==partie.joueur2.id %}
-                        <tr>
-                            <td>Vos cartes</td>
-                            {% for carte in plateau.mainJ1 %}
-                                <td><img src="{{asset('assets/img/back.png') }}" alt="cartes" width="100"></td>
-                            {% endfor %}
-                        </tr>
-                    {% endif %}
-
-                </table>
-            </div>
-
-
-
-            <hr>
-            <table border="solid">
-                <tr>
-                    <td>Catégories</td>
-                    <td>Cordes</td>
-                    <td>Clavier</td>
-                    <td>Bois</td>
-                    <td>Cuivre</td>
-                    <td>Percussion</td>
-                </tr>
-                <tr>
-                    <td>Poser</td>
-                    {% if tour==user.id %}
-                        {% if tour==partie.joueur1.id and nbcartesj1>7  %}
-                    <td><button  type="button" class="btn btn-default" value="1" name="categorieecheck" class="piocher-btn" onclick="return OnButton0();"> Poser une carte </button></td>
-                    <td><button  type="button" class="btn btn-default" value="2" name="categorieecheck" class="piocher-btn" onclick="return OnButton0();"> Poser une carte </button></td>
-                    <td><button  type="button" class="btn btn-default" value="3" name="categorieecheck" class="piocher-btn" onclick="return OnButton0();"> Poser une carte </button></td>
-                    <td><button  type="button" class="btn btn-default" value="4" name="categorieecheck" class="piocher-btn" onclick="return OnButton0();"> Poser une carte </button></td>
-                    <td><button  type="button" class="btn btn-default" value="5" name="categorieecheck" class="piocher-btn" onclick="return OnButton0();"> Poser une carte </button></td>
-                        {% elseif tour==partie.joueur2.id and nbcartesj2>7 %}
-                    <td><button  type="button" class="btn btn-default" value="1" name="categorieecheck" class="piocher-btn" onclick="return OnButton0();"> Poser une carte </button></td>
-                    <td><button  type="button" class="btn btn-default" value="2" name="categorieecheck" class="piocher-btn" onclick="return OnButton0();"> Poser une carte </button></td>
-                    <td><button  type="button" class="btn btn-default" value="3" name="categorieecheck" class="piocher-btn" onclick="return OnButton0();"> Poser une carte </button></td>
-                    <td><button  type="button" class="btn btn-default" value="4" name="categorieecheck" class="piocher-btn" onclick="return OnButton0();"> Poser une carte </button></td>
-                    <td><button  type="button" class="btn btn-default" value="5" name="categorieecheck" class="piocher-btn" onclick="return OnButton0();"> Poser une carte </button></td>
-                        {% endif %}
-                    {% else %}
-                        <td> </td>
-                        <td> </td>
-                        <td> </td>
-                        <td> </td>
-                        <td> </td>
-                    {% endif %}
-                </tr>
-                <tr>
-                    <td>Cartes posées par J1</td>
-                    <td>
-                        {% for carte in plateau.poseesj1_cat1 %}
-
-                           <p>{{ cartes[carte].valeur}}</p>
-
-                        {% endfor %}
-                    </td>
-                    <td>
-                        {% for carte in plateau.poseesj1_cat2 %}
-
-                            <p>{{ cartes[carte].valeur}}</p>
-
-                        {% endfor %}
-                    </td>
-                    <td>
-                        {% for carte in plateau.poseesj1_cat3 %}
-                            <p>{{ cartes[carte].valeur}}</p>
-                        {% endfor %}
-                    </td>
-                    <td>
-                        {% for carte in plateau.poseesj1_cat4 %}
-                            {% if cartes[carte].getCategorie().id == '4' %}
-                                <p>{{ cartes[carte].valeur}}</p>
-                            {% endif %}
-                        {% endfor %}
-                    </td>
-                    <td>
-                        {% for carte in plateau.poseesj1_cat5 %}
-                            <p>{{ cartes[carte].valeur}}</p>
-                        {% endfor %}
-                    </td>
-
-                </tr>
-                <tr>
-                    <td>Points du joueur 1 : <strong>{{ plateau.pointj1 }}</strong> </td>
-                    <td>{{ plateau.pointj1_cat1 }}</td>
-                    <td>{{ plateau.pointj1_cat2 }}</td>
-                    <td>{{ plateau.pointj1_cat3 }}</td>
-                    <td>{{ plateau.pointj1_cat4 }}</td>
-                    <td>{{ plateau.pointj1_cat5 }}</td>
-                </tr>
-                <tr>
-                    <td>Points du joueur 2 : <strong>{{ plateau.pointj2 }}</strong></td>
-                    <td>{{ plateau.pointj2_cat1 }}</td>
-                    <td>{{ plateau.pointj2_cat2 }}</td>
-                    <td>{{ plateau.pointj2_cat3 }}</td>
-                    <td>{{ plateau.pointj2_cat4 }}</td>
-                    <td>{{ plateau.pointj2_cat5 }}</td>
-                </tr>
-                <tr>
-                    <td>Cartes posées par J2</td>
-                    <td>
-                        {% for carte in plateau.poseesj2_cat1 %}
-                            <p>{{ cartes[carte].valeur}}</p>
-                        {% endfor %}
-                    </td>
-                    <td>
-                        {% for carte in plateau.poseesj2_cat2 %}
-                            <p>{{ cartes[carte].valeur}}</p>
-                        {% endfor %}
-                    </td>
-                    <td>
-                        {% for carte in plateau.poseesj2_cat3 %}
-                            <p>{{ cartes[carte].valeur}}</p>
-                        {% endfor %}
-                    </td>
-                    <td>
-                        {% for carte in plateau.poseesj2_cat4 %}
-                            <p>{{ cartes[carte].valeur}}</p>
-                        {% endfor %}
-                    </td>
-                    <td>
-                        {% for carte in plateau.poseesj2_cat5 %}
-                            <p>{{ cartes[carte].valeur}}</p>
-                        {% endfor %}
-                    </td>
-                </tr>
-                <tr>
-                    <td>Defausse</td>
-                    <td>
-                        {% for carte in plateau.defausse_cat1 %}
-                            <img src="{{asset('assets/img/cartes/'~cartes[carte].id~'.png') }}" alt="cartes" width="100">
-                        {% endfor %}
-                    </td>
-                    <td>
-                        {% for carte in plateau.defausse_cat2 %}
-                            <img src="{{asset('assets/img/cartes/'~cartes[carte].id~'.png') }}" alt="cartes" width="100">
-                        {% endfor %}
-                    </td>
-                    <td>
-                        {% for carte in plateau.defausse_cat3 %}
-                            <img src="{{asset('assets/img/cartes/'~cartes[carte].id~'.png') }}" alt="cartes" width="100">
-                        {% endfor %}
-                    </td>
-                    <td>
-                        {% for carte in plateau.defausse_cat4 %}
-                            <img src="{{asset('assets/img/cartes/'~cartes[carte].id~'.png') }}" alt="cartes" width="100">
-                        {% endfor %}
-                    </td>
-                    <td>
-                        {% for carte in plateau.defausse_cat5 %}
-                            <img src="{{asset('assets/img/cartes/'~cartes[carte].id~'.png') }}" alt="cartes" width="100">
-                        {% endfor %}
-                    </td>
-                </tr>
-
-            <tr>
-                <td>Poser Défausse</td>
-                {% if tour==user.id %}
-                    {% if tour==partie.joueur1.id and nbcartesj1>7  %}
-                        <td><button  type="button" class="btn btn-default" value="6" name="categorieecheck" onclick="return OnButton3();"> Poser une carte </button></td>
-                        <td><button  type="button" class="btn btn-default" value="7" name="categorieecheck" onclick="return OnButton3();"> Poser une carte </button></td>
-                        <td><button  type="button" class="btn btn-default" value="8" name="categorieecheck" onclick="return OnButton3();"> Poser une carte </button></td>
-                        <td><button  type="button" class="btn btn-default" value="9" name="categorieecheck" onclick="return OnButton3();"> Poser une carte </button></td>
-                        <td><button  type="button" class="btn btn-default" value="10" name="categorieecheck" onclick="return OnButton3();"> Poser une carte </button></td>
-                    {% elseif tour==partie.joueur2.id and nbcartesj2>7 %}
-                        <td><button  type="button" class="btn btn-default" value="6" name="categorieecheck" onclick="return OnButton3();"> Poser une carte </button></td>
-                        <td><button  type="button" class="btn btn-default" value="7" name="categorieecheck" onclick="return OnButton3();"> Poser une carte </button></td>
-                        <td><button  type="button" class="btn btn-default" value="8" name="categorieecheck" onclick="return OnButton3();"> Poser une carte </button></td>
-                        <td><button  type="button" class="btn btn-default" value="9" name="categorieecheck" onclick="return OnButton3();"> Poser une carte </button></td>
-                        <td><button  type="button" class="btn btn-default" value="10" name="categorieecheck" onclick="return OnButton3();"> Poser une carte </button></td>
-                    {% endif %}
-                {% else %}
-                    <td> </td>
-                    <td> </td>
-                    <td> </td>
-                    <td> </td>
-                    <td> </td>
-                {% endif %}
-            </tr>
-        </table>
-            <table border="solid">
-                <tr>
-                    <td>Récupérer Défausse</td>
-                    {% if tour==user.id and (nbcartesj1<8 or nbcartesj2<8) %}
-                        {% if nbcartespioche>0 %}
-                        <td><button  type="button" class="btn btn-default" value="1" name="defausse" class="piocher-btn" onclick="return OnButton6();"> Defausser une carte </button></td>
-                        <td><button  type="button" class="btn btn-default" value="2" name="defausse" class="piocher-btn" onclick="return OnButton7();"> Defausser une carte </button></td>
-                        <td><button  type="button" class="btn btn-default" value="3" name="defausse" class="piocher-btn" onclick="return OnButton8();"> Defausser une carte </button></td>
-                        <td><button  type="button" class="btn btn-default" value="4" name="defausse" class="piocher-btn" onclick="return OnButton9();"> Defausser une carte </button></td>
-                        <td><button  type="button" class="btn btn-default" value="5" name="defausse" class="piocher-btn" onclick="return OnButton10();"> Defausser une carte </button></td>
-                    {% endif %}
-                    {% elseif tour==user.id and (nbcartesj1>7 or nbcartesj2>7) %}
-                         <td></td><td></td><td></td><td></td><td></td>
-                    {% else %}
-                        <p>Ce n'est pas votre tour</p>
-                    {% endif %}
-
-                </tr>
-            </table>
-            <hr>
-
-            <div>
-                <h2>Vos cartes</h2>
-                <table border="solid">
-                    {% if user.id==partie.joueur2.id %}
-                    <tr>
-                        <td>Vos cartes</td>
-                        {% for carte in plateau.mainJ2 %}
-                            {% if user.id==partie.joueur2.id %}
-                                <td>{{ cartes[carte].categorie.libelle }}
-                                    <img src="{{asset('assets/img/cartes/'~cartes[carte].id~'.png') }}" alt="cartes" width="100">
-                                </td>
-                            {% endif %}
-                        {% endfor %}
-                    </tr>
-                        <tr>
-                            <td>Les placer</td>
-                            {% for carte in plateau.mainJ2 %}
-                                <td><input name="cartecheck" value="{{ cartes[carte].id }}" required type="radio"></td>
-                            {% endfor %}
-                        </tr>
-                    {% endif %}
-                    {% if user.id==partie.joueur1.id %}
-                        <tr>
-                            <td>Vos cartes</td>
-                            {% for carte in plateau.mainJ1 %}
-                                {% if user.id==partie.joueur1.id %}
-                                    <td>
-                                        <img src="{{asset('assets/img/cartes/'~cartes[carte].id~'.png') }}" alt="cartes" width="100">
-                                    </td>
-                                {% endif %}
-                            {% endfor %}
-                        </tr>
-
-
-                        <tr>
-                            <td>Les placer</td>
-                            {% for carte in plateau.mainJ1 %}
-
-                                <td>
-                                    <input name="cartecheck" value="{{ cartes[carte].id }}" required type="radio">
-                                </td>
-
-                            {% endfor %}
-                        </tr>
-                    {% endif %}
-
-                </table>
-            </div>
-        </form>
-        <hr>
-        <div>
-            <h2>Pioche</h2>
-            <div>
+            <div class="pioche">
                 {% if tour==user.id and (nbcartesj1<8 or nbcartesj2<8) %}
                     {% if nbcartespioche>0 %}
-                        <a href="{{ path('piocher_partie', {id:partie.id}) }}"><button>Récupérer depuis la pioche</button></a>
+                        <a href="{{ path('piocher_partie', {id:partie.id}) }}"><button class="pio">Récupérer depuis la pioche</button></a>
 
                     {% else %}
                         <p>Fin du game</p>
@@ -331,68 +26,541 @@
                     <p>Ce n'est pas à vous de piocher</p>
                 {% endif %}
                 <br>
-                Cartes restants à j1 : {{ nbcartesj1 }} <br>
-                Cartes restants à j2 : {{ nbcartesj2 }} <br>
-                Cartes restants dans la pioche : {{ nbcartespioche }} <br>
-
+                <div class="rest">
+                    Cartes restants à j1 : {{ nbcartesj1 }} <br>
+                    Cartes restants à j2 : {{ nbcartesj2 }} <br>
+                    Cartes restants dans la pioche : {{ nbcartespioche }} <br></div>
             </div>
+
+            <form name="form1" action="{{ path('poser_partie', {id:partie.id}) }}" method="get" id="1">
+                <div class="inff">
+                    <div class="haut">
+                        {% if partie.joueur1.id==user.id %}
+                            {% if infosj1 == 1 %}
+                                <p>Pas d'informations</p>
+                            {% elseif infosj1 == 2 %}
+                                <p>Vous ne pouvez pas placer une carte dans une catégorie si la valeur de la précédente est supérieur à celle que vous essayez de poser.</p>
+                            {% elseif infosj1 == 3 %}
+                                <p>Il n'y aucune carte dans cette défausse. Choissez une autre défausse ou la pioche.</p>
+                            {% elseif infosj1 == 4 %}
+                            {% endif %}
+                        {% endif %}
+
+                        {% if partie.joueur2.id==user.id %}
+                            {% if infosj2 == 1 %}
+                                <p>Pas d'informations</p>
+                            {% elseif infosj2 == 2 %}
+                                <p>Vous ne pouvez pas placer une carte dans une catégorie si la valeur de la précédente est supérieur à celle que vous essayez de poser.</p>
+                            {% elseif infosj2 == 3 %}
+                                <p>Il n'y aucune carte dans cette défausse. Choissez une autre défausse ou la pioche.</p>
+                            {% elseif infosj2 == 4 %}
+                            {% endif %}
+                        {% endif %}
+
+
+
+                        {% if tour==user.id and (nbcartesj1<8 or nbcartesj2<8) %}
+                            <p>Vous ne pouvez poser qu'une seule carte à la fois. Veuillez piocher.</p>
+                        {% elseif tour==user.id and (nbcartesj1>7 or nbcartesj2>7) %}
+                            <p>Selectionnez une carte, et posez là</p>
+                        {% else %}
+                            <p>Ce n'est pas à vous de poser votre carte</p>
+                        {% endif %}
+
+
+                    </div>
+                </div>
+                <div class="carteshaut">
+
+                    {% if user.id==partie.joueur1.id %}
+
+                        {% for carte in plateau.mainJ2 %}
+
+                            <img class="fix" src="{{asset('assets/img/back.png') }}" alt="cartes" width="100">
+
+                        {% endfor %}
+
+                    {% endif %}
+                    {% if user.id==partie.joueur2.id %}
+
+
+                        {% for carte in plateau.mainJ1 %}
+
+                            <img class="fix" src="{{asset('assets/img/back.png') }}" alt="cartes" width="100">
+                        {% endfor %}
+
+                    {% endif %}
+
+                </div>
+
+                <table border="0" cellspacing="0" cellpadding="0">
+                    <tr>
+                        <td>Poser</td>
+                        {% if tour==user.id %}
+                            {% if user.id==partie.joueur1.id and nbcartesj1>7  %}
+                                <td><button  type="button" class="btn btn-default" value="1" name="categorieecheck" class="piocher-btn" onclick="return OnButton0();"> Poser une carte </button></td>
+                                <td><button  type="button" class="btn btn-default" value="2" name="categorieecheck" class="piocher-btn" onclick="return OnButton0();"> Poser une carte </button></td>
+                                <td><button  type="button" class="btn btn-default" value="3" name="categorieecheck" class="piocher-btn" onclick="return OnButton0();"> Poser une carte </button></td>
+                                <td><button  type="button" class="btn btn-default" value="4" name="categorieecheck" class="piocher-btn" onclick="return OnButton0();"> Poser une carte </button></td>
+                                <td><button  type="button" class="btn btn-default" value="5" name="categorieecheck" class="piocher-btn" onclick="return OnButton0();"> Poser une carte </button></td>
+                            {% elseif user.id==partie.joueur2.id and nbcartesj2>7 %}
+                                <td><button  type="button" class="btn btn-default" value="1" name="categorieecheck" class="piocher-btn" onclick="return OnButton0();"> Poser une carte </button></td>
+                                <td><button  type="button" class="btn btn-default" value="2" name="categorieecheck" class="piocher-btn" onclick="return OnButton0();"> Poser une carte </button></td>
+                                <td><button  type="button" class="btn btn-default" value="3" name="categorieecheck" class="piocher-btn" onclick="return OnButton0();"> Poser une carte </button></td>
+                                <td><button  type="button" class="btn btn-default" value="4" name="categorieecheck" class="piocher-btn" onclick="return OnButton0();"> Poser une carte </button></td>
+                                <td><button  type="button" class="btn btn-default" value="5" name="categorieecheck" class="piocher-btn" onclick="return OnButton0();"> Poser une carte </button></td>
+                            {% endif %}
+                        {% else %}
+                            <td> </td>
+                            <td> </td>
+                            <td> </td>
+                            <td> </td>
+                            <td> </td>
+                        {% endif %}
+                    </tr>
+                    {% if partie.joueur2.id==user.id %}
+                    <tr>
+                        <td>Points du joueur 1 : <strong>{{ plateau.pointj1 }}</strong> </td>
+                        <td>{{ plateau.pointj1_cat1 }}</td>
+                        <td>{{ plateau.pointj1_cat2 }}</td>
+                        <td>{{ plateau.pointj1_cat3 }}</td>
+                        <td>{{ plateau.pointj1_cat4 }}</td>
+                        <td>{{ plateau.pointj1_cat5 }}</td>
+                    </tr>
+                    <tr>
+
+                        <td>Cartes posées par J1</td>
+                        <td>
+                            {% for carte in plateau.poseesj1_cat1 %}
+                                {% if cartes[carte].valeur!=0 %}
+
+                                    <div class="r1"> <p>{{ cartes[carte].valeur}}</p></div>
+                                {% else %}
+                                    <div class="r1"><p>Extra</p></div>
+                                {% endif %}
+
+                            {% endfor %}
+                        </td>
+                        <td>
+                            {% for carte in plateau.poseesj1_cat2 %}
+                                {% if cartes[carte].valeur!=0 %}
+
+                                    <div class="r2"> <p>{{ cartes[carte].valeur}}</p></div>
+                                {% else %}
+                                    <div class="r2"><p>Extra</p></div>
+                                {% endif %}
+
+                            {% endfor %}
+                        </td>
+                        <td>
+                            {% for carte in plateau.poseesj1_cat3 %}
+                                {% if cartes[carte].valeur!=0 %}
+
+                                    <div class="r3"> <p>{{ cartes[carte].valeur}}</p></div>
+                                {% else %}
+                                    <div class="r3"> <p>Extra</p></div>
+                                {% endif %}
+                            {% endfor %}
+                        </td>
+                        <td>
+                            {% for carte in plateau.poseesj1_cat4 %}
+                                {% if cartes[carte].getCategorie().id == '4' %}
+                                    {% if cartes[carte].valeur!=0 %}
+
+                                        <div class="r4"> <p>{{ cartes[carte].valeur}}</p></div>
+                                    {% else %}
+                                        <div class="r4"> <p>Extra</p></div>
+                                    {% endif %}
+                                {% endif %}
+                            {% endfor %}
+                        </td>
+                        <td>
+                            {% for carte in plateau.poseesj1_cat5 %}
+                                {% if cartes[carte].valeur!=0 %}
+
+                                    <div class="r5"> <p>{{ cartes[carte].valeur}}</p></div>
+                                {% else %}
+                                    <div class="r5"> <p>Extra</p></div>
+                                {% endif %}
+                            {% endfor %}
+                        </td>
+                    </tr>
+                        {% else %}
+
+                    <tr><td>Points du joueur 2 : <strong>{{ plateau.pointj2 }}</strong></td>
+                        <td>{{ plateau.pointj2_cat1 }}</td>
+                        <td>{{ plateau.pointj2_cat2 }}</td>
+                        <td>{{ plateau.pointj2_cat3 }}</td>
+                        <td>{{ plateau.pointj2_cat4 }}</td>
+                        <td>{{ plateau.pointj2_cat5 }}</td>
+                    </tr>
+                            <tr>
+
+
+                            <td>Cartes posées par J2</td>
+                            <td>
+                                {% for carte in plateau.poseesj2_cat1 %}
+                                    {% if cartes[carte].valeur!=0 %}
+
+                                        <div class="r1"> <p>{{ cartes[carte].valeur}}</p></div>
+                                    {% else %}
+                                        <div class="r1"><p>Extra</p></div>
+                                    {% endif %}
+                                {% endfor %}
+                            </td>
+                            <td>
+                                {% for carte in plateau.poseesj2_cat2 %}
+                                    {% if cartes[carte].valeur!=0 %}
+
+                                        <div class="r2"> <p>{{ cartes[carte].valeur}}</p></div>
+                                    {% else %}
+                                        <div class="r2"><p>Extra</p></div>
+                                    {% endif %}
+                                {% endfor %}
+                            </td>
+                            <td>
+                                {% for carte in plateau.poseesj2_cat3 %}
+                                    {% if cartes[carte].valeur!=0 %}
+
+                                        <<div class="r3"> <p>{{ cartes[carte].valeur}}</p></div>
+                                    {% else %}
+                                        <div class="r3"><p>Extra</p></div>
+                                    {% endif %}
+                                {% endfor %}
+                            </td>
+                            <td>
+                                {% for carte in plateau.poseesj2_cat4 %}
+                                    {% if cartes[carte].valeur!=0 %}
+
+                                        <div class="r4"> <p>{{ cartes[carte].valeur}}</p></div>
+                                    {% else %}
+                                        <div class="r4"><p>Extra</p></div>
+                                    {% endif %}
+                                {% endfor %}
+                            </td>
+                            <td>
+                                {% for carte in plateau.poseesj2_cat5 %}
+                                    {% if cartes[carte].valeur!=0 %}
+
+                                        <div class="r5"> <p>{{ cartes[carte].valeur}}</p></div>
+                                    {% else %}
+                                        <div class="r5"><p>Extra</p></div>
+                                    {% endif %}
+                                {% endfor %}
+                            </td>
+                        {% endif %}
+
+
+                    </tr>
+
+                    <tr>
+                        <td>Defausse</td>
+                        <td>
+                            <div class="def1">
+                                {% for carte in plateau.defausse_cat1 %}
+                                    <div class="r1">{{ cartes[carte].valeur}}</div>
+                                {% endfor %}
+                            </div>
+                        </td>
+                        <td>
+                            <div class="def2">
+                                {% for carte in plateau.defausse_cat2 %}
+                                    <div class="r2">{{ cartes[carte].valeur}}</div>
+                                {% endfor %}
+                            </div>
+                        </td>
+                        <td>
+                            <div class="def3">
+                                {% for carte in plateau.defausse_cat3 %}
+                                    <div class="r3">{{ cartes[carte].valeur}}</div>
+                                {% endfor %}
+                            </div>
+                        </td>
+                        <td>
+                            <div class="def4">
+                                {% for carte in plateau.defausse_cat4 %}
+                                    <div class="r4">{{ cartes[carte].valeur}}</div>
+                                {% endfor %}
+                            </div>
+                        </td>
+                        <td>
+                            <div class="def5">
+                                {% for carte in plateau.defausse_cat5 %}
+                                    <div class="r5">{{ cartes[carte].valeur}}</div>
+                                {% endfor %}
+                            </div>
+                        </td>
+                    </tr>
+                    <tr>{% if partie.joueur2.id==user.id %}
+                        <td>Points du joueur 2 : <strong>{{ plateau.pointj2 }}</strong></td>
+                        <td>{{ plateau.pointj2_cat1 }}</td>
+                        <td>{{ plateau.pointj2_cat2 }}</td>
+                        <td>{{ plateau.pointj2_cat3 }}</td>
+                        <td>{{ plateau.pointj2_cat4 }}</td>
+                        <td>{{ plateau.pointj2_cat5 }}</td>
+                    </tr>
+                    <tr>
+
+                        <td>Cartes posées par J2</td>
+                        <td>
+                            {% for carte in plateau.poseesj2_cat1 %}
+                                {% if cartes[carte].valeur!=0 %}
+
+                                    <div class="r1"> <p>{{ cartes[carte].valeur}}</p></div>
+                                {% else %}
+                                    <div class="r1"><p>Extra</p></div>
+                                {% endif %}
+                            {% endfor %}
+                        </td>
+                        <td>
+                            {% for carte in plateau.poseesj2_cat2 %}
+                                {% if cartes[carte].valeur!=0 %}
+
+                                    <div class="r2"> <p>{{ cartes[carte].valeur}}</p></div>
+                                {% else %}
+                                    <div class="r2"><p>Extra</p></div>
+                                {% endif %}
+                            {% endfor %}
+                        </td>
+                        <td>
+                            {% for carte in plateau.poseesj2_cat3 %}
+                                {% if cartes[carte].valeur!=0 %}
+
+                                    <<div class="r3"> <p>{{ cartes[carte].valeur}}</p></div>
+                                {% else %}
+                                    <div class="r3"><p>Extra</p></div>
+                                {% endif %}
+                            {% endfor %}
+                        </td>
+                        <td>
+                            {% for carte in plateau.poseesj2_cat4 %}
+                                {% if cartes[carte].valeur!=0 %}
+
+                                    <div class="r4"> <p>{{ cartes[carte].valeur}}</p></div>
+                                {% else %}
+                                    <div class="r4"><p>Extra</p></div>
+                                {% endif %}
+                            {% endfor %}
+                        </td>
+                        <td>
+                            {% for carte in plateau.poseesj2_cat5 %}
+                                {% if cartes[carte].valeur!=0 %}
+
+                                    <div class="r5"> <p>{{ cartes[carte].valeur}}</p></div>
+                                {% else %}
+                                    <div class="r5"><p>Extra</p></div>
+                                {% endif %}
+                            {% endfor %}
+                        </td>
+                        {% else %}
+
+                        <td>Points du joueur 1 : <strong>{{ plateau.pointj1 }}</strong> </td>
+                        <td>{{ plateau.pointj1_cat1 }}</td>
+                        <td>{{ plateau.pointj1_cat2 }}</td>
+                        <td>{{ plateau.pointj1_cat3 }}</td>
+                        <td>{{ plateau.pointj1_cat4 }}</td>
+                        <td>{{ plateau.pointj1_cat5 }}</td>
+                    </tr>
+                    <tr>
+                            <td>Cartes posées par J1</td>
+                            <td>
+                                {% for carte in plateau.poseesj1_cat1 %}
+                                    {% if cartes[carte].valeur!=0 %}
+
+                                        <div class="r1"> <p>{{ cartes[carte].valeur}}</p></div>
+                                    {% else %}
+                                        <div class="r1"><p>Extra</p></div>
+                                    {% endif %}
+
+                                {% endfor %}
+                            </td>
+                            <td>
+                                {% for carte in plateau.poseesj1_cat2 %}
+                                    {% if cartes[carte].valeur!=0 %}
+
+                                        <div class="r2"> <p>{{ cartes[carte].valeur}}</p></div>
+                                    {% else %}
+                                        <div class="r2"><p>Extra</p></div>
+                                    {% endif %}
+
+                                {% endfor %}
+                            </td>
+                            <td>
+                                {% for carte in plateau.poseesj1_cat3 %}
+                                    {% if cartes[carte].valeur!=0 %}
+
+                                        <div class="r3"> <p>{{ cartes[carte].valeur}}</p></div>
+                                    {% else %}
+                                        <div class="r3"> <p>Extra</p></div>
+                                    {% endif %}
+                                {% endfor %}
+                            </td>
+                            <td>
+                                {% for carte in plateau.poseesj1_cat4 %}
+                                    {% if cartes[carte].getCategorie().id == '4' %}
+                                        {% if cartes[carte].valeur!=0 %}
+
+                                            <div class="r4"> <p>{{ cartes[carte].valeur}}</p></div>
+                                        {% else %}
+                                            <div class="r4"> <p>Extra</p></div>
+                                        {% endif %}
+                                    {% endif %}
+                                {% endfor %}
+                            </td>
+                            <td>
+                                {% for carte in plateau.poseesj1_cat5 %}
+                                    {% if cartes[carte].valeur!=0 %}
+
+                                        <div class="r5"> <p>{{ cartes[carte].valeur}}</p></div>
+                                    {% else %}
+                                        <div class="r5"> <p>Extra</p></div>
+                                    {% endif %}
+                                {% endfor %}
+                            </td>
+                        {% endif %}
+                    </tr>
+
+                    <tr>
+                        <td>Poser Défausse</td>
+                        {% if tour==user.id %}
+                            {% if tour==partie.joueur1.id and nbcartesj1>7  %}
+                                <td><button  type="button" class="btn btn-default" value="6" name="categorieecheck" onclick="return OnButton3();"> Poser dans la défausse </button></td>
+                                <td><button  type="button" class="btn btn-default" value="7" name="categorieecheck" onclick="return OnButton3();"> Poser dans la défausse </button></td>
+                                <td><button  type="button" class="btn btn-default" value="8" name="categorieecheck" onclick="return OnButton3();"> Poser dans la défausse </button></td>
+                                <td><button  type="button" class="btn btn-default" value="9" name="categorieecheck" onclick="return OnButton3();"> Poser dans la défausse </button></td>
+                                <td><button  type="button" class="btn btn-default" value="10" name="categorieecheck" onclick="return OnButton3();"> Poser dans la défausse </button></td>
+                            {% elseif tour==partie.joueur2.id and nbcartesj2>7 %}
+                                <td><button  type="button" class="btn btn-default" value="6" name="categorieecheck" onclick="return OnButton3();"> Poser dans la défausse </button></td>
+                                <td><button  type="button" class="btn btn-default" value="7" name="categorieecheck" onclick="return OnButton3();"> Poser dans la défausse </button></td>
+                                <td><button  type="button" class="btn btn-default" value="8" name="categorieecheck" onclick="return OnButton3();"> Poser dans la défausse </button></td>
+                                <td><button  type="button" class="btn btn-default" value="9" name="categorieecheck" onclick="return OnButton3();"> Poser dans la défausse </button></td>
+                                <td><button  type="button" class="btn btn-default" value="10" name="categorieecheck" onclick="return OnButton3();"> Poser dans la défausse </button></td>
+                            {% endif %}
+                        {% else %}
+                            <td> </td>
+                            <td> </td>
+                            <td> </td>
+                            <td> </td>
+                            <td> </td>
+                        {% endif %}
+                    </tr>
+                </table>
+                <table border="0" cellspacing="0" cellpadding="0">
+                    <tr>
+                        <td>Récupérer Défausse</td>
+                        {% if tour==user.id and (nbcartesj1<8 or nbcartesj2<8) %}
+                            {% if nbcartespioche>0 %}
+                                <td><button  type="button" class="btn btn-default" value="1" name="defausse" class="piocher-btn" onclick="return OnButton6();"> Defausser une carte </button></td>
+                                <td><button  type="button" class="btn btn-default" value="2" name="defausse" class="piocher-btn" onclick="return OnButton7();"> Defausser une carte </button></td>
+                                <td><button  type="button" class="btn btn-default" value="3" name="defausse" class="piocher-btn" onclick="return OnButton8();"> Defausser une carte </button></td>
+                                <td><button  type="button" class="btn btn-default" value="4" name="defausse" class="piocher-btn" onclick="return OnButton9();"> Defausser une carte </button></td>
+                                <td><button  type="button" class="btn btn-default" value="5" name="defausse" class="piocher-btn" onclick="return OnButton10();"> Defausser une carte </button></td>
+                            {% endif %}
+                        {% elseif tour==user.id and (nbcartesj1>7 or nbcartesj2>7) %}
+                            <td></td><td></td><td></td><td></td><td></td>
+                        {% else %}
+                            <p></p>
+                        {% endif %}
+
+                    </tr>
+                </table>
+
+                <div>
+                    <table class="cartesbas">
+                        {% if user.id==partie.joueur2.id %}
+
+                            <tr>
+                                {% for carte in plateau.mainJ2 %}
+                                    {% if user.id==partie.joueur2.id %}
+                                        <td class="cb"> <img src="{{asset('assets/img/cartes/'~cartes[carte].id~'.png') }}" alt="cartes" width="100">
+                                        </td>
+                                    {% endif %}
+                                {% endfor %}
+                            </tr>
+                            <tr>
+                                {% if user.id==partie.joueur2.id %}
+                                    {% for carte in plateau.mainJ2 %}
+                                        <td class="cb">  <input name="cartecheck" value="{{ cartes[carte].id }}" required type="radio"></td>
+                                    {% endfor %}
+                                {% endif %}
+                            </tr>
+                        {% endif %}
+                        {% if user.id==partie.joueur1.id %}
+                            <tr>
+                                {% for carte in plateau.mainJ1 %}
+                                    {% if user.id==partie.joueur1.id %}
+                                        <td class="cb"> <img src="{{asset('assets/img/cartes/'~cartes[carte].id~'.png') }}" alt="cartes" width="100">
+                                        </td>
+                                    {% endif %}
+                                {% endfor %}
+                            </tr>
+                            <tr>
+                                {% if user.id==partie.joueur1.id %}
+                                    {% for carte in plateau.mainJ1 %}
+                                        <td class="cb">  <input name="cartecheck" value="{{ cartes[carte].id }}" required type="radio"></td>
+                                    {% endfor %}
+                                {% endif %}
+                            </tr>
+                            {% endif %}
+
+                    </table>
+                </div>
+            </form>
+
+
+          <script type="text/javascript">
+                if ( {{ tour }} != {{ user.id }} ) {
+                    setInterval(
+                        function ()
+                        {
+                            window.location.href = "{{ path('afficher_partie', {'id': id }  ) }}";
+                            console.log('test.');
+                        },7000); // refresh every 70000 milliseconds
+                }
+
+
+
+            </script>
+            <script>
+
+                function OnButton0()
+                {
+                    document.form1.action = "{{ path('poser_partie', {id:partie.id}) }}";
+                    document.form1.submit();
+                }
+
+                function OnButton3()
+                {
+                    document.form1.action = "{{ path('poser_def_partie', {id:partie.id}) }}";
+                    document.form1.submit();
+                }
+                function OnButton6()
+                {
+                    document.form1.action = "{{ path('defausser1_partie', {id:partie.id}) }}";
+                    document.form1.submit();
+                }
+                function OnButton7()
+                {
+                    document.form1.action = "{{ path('defausser2_partie', {id:partie.id}) }}";
+                    document.form1.submit();
+                }
+                function OnButton8()
+                {
+                    document.form1.action = "{{ path('defausser3_partie', {id:partie.id}) }}";
+                    document.form1.submit();
+                }
+                function OnButton9()
+                {
+                    document.form1.action = "{{ path('defausser4_partie', {id:partie.id}) }}";
+                    document.form1.submit();
+                }
+                function OnButton10()
+                {
+                    document.form1.action = "{{ path('defausser5_partie', {id:partie.id}) }}";
+                    document.form1.submit();
+                }
+            </script>
         </div>
-
-        <script type="text/javascript">
-            if ( {{ tour }} != {{ user.id }} ) {
-                setInterval(
-                    function ()
-                    {
-                        window.location.href = "{{ path('afficher_partie', {'id': id }  ) }}";
-                        console.log('test.');
-                    },7000); // refresh every 70000 milliseconds
-            }
-
-
-
-        </script>
-        <script>
-
-            function OnButton0()
-            {
-                document.form1.action = "{{ path('poser_partie', {id:partie.id}) }}";
-                document.form1.submit();
-            }
-
-            function OnButton3()
-            {
-                document.form1.action = "{{ path('poser_def_partie', {id:partie.id}) }}";
-                document.form1.submit();
-            }
-            function OnButton6()
-            {
-                document.form1.action = "{{ path('defausser1_partie', {id:partie.id}) }}";
-                document.form1.submit();
-            }
-            function OnButton7()
-            {
-                document.form1.action = "{{ path('defausser2_partie', {id:partie.id}) }}";
-                document.form1.submit();
-            }
-            function OnButton8()
-            {
-                document.form1.action = "{{ path('defausser3_partie', {id:partie.id}) }}";
-                document.form1.submit();
-            }
-            function OnButton9()
-            {
-                document.form1.action = "{{ path('defausser4_partie', {id:partie.id}) }}";
-                document.form1.submit();
-            }
-            function OnButton10()
-            {
-                document.form1.action = "{{ path('defausser5_partie', {id:partie.id}) }}";
-                document.form1.submit();
-            }
-        </script>
     </div>
-    </div>
-
-
 
 {% endblock %}

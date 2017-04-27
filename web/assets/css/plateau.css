@@ -5,3 +5,229 @@
 .mesparties{
    margin-top: 150px;
 }
+.containerr {
+    margin: 0 auto;
+    max-width: 100%;
+    max-height: 100%;
+    padding: 0 5% 0 5%;
+}
+
+.carteshaut{
+    text-align: center;
+    margin-top: 2%;
+    margin-left: 20%;
+    width: 60%;
+    display: inline-block;
+}
+
+img.imtb{
+    height: 100px!important;
+}
+
+.inff{
+    height: 120px;
+    width: 20%;
+    display: inline-block;
+}
+
+.def1{
+    background-image: url("../img/dos2.png");
+    background-repeat: no-repeat;
+    background-size: contain;
+    height: 100px;
+    background-position: center;
+}
+
+.def2{
+    background-image: url("../img/dos5.png");
+    background-size: contain;
+    background-repeat: no-repeat;
+    height: 100px;
+    background-position: center;
+    background-repeat: repeat-y;
+}
+
+.def3{
+    background-image: url("../img/dos1.png");
+    background-repeat: no-repeat;
+    background-size: contain;
+    height: 100px;
+    background-position: center;
+    background-repeat: repeat-y;
+}
+
+.def4{
+    background-image: url("../img/dos4.png");
+    background-size: contain;
+    height: 100px;
+    background-repeat: no-repeat;
+    background-position: center;
+    background-repeat: repeat-y;
+}
+
+.def5{
+    background-image: url("../img/dos3.png");
+    background-size: contain;
+    height: 100px;
+    background-repeat: no-repeat;
+    background-position: center;
+    background-repeat: repeat-y;
+}
+
+.r1{
+    background-color: #5bbb9e;
+    color: white;
+    width: 30px;
+    height: 30px;
+    border-radius: 60px;
+    padding-top: 7px;
+
+    display: inline-block;
+}
+
+.r2{
+    background-color: #e2bb82;
+    color: white;
+    width: 30px;
+    height: 30px;
+    border-radius: 60px;
+    padding-top: 7px;
+
+    display: inline-block;
+}
+
+.r3{
+
+    background-color: #ef8373;
+    color: white;
+    width: 30px;
+    height: 30px;
+    border-radius: 60px;
+    padding-top: 7px;
+
+    display: inline-block;
+
+}
+
+.r4{
+
+    background-color: #e94d2e;
+    color: white;
+    width: 30px;
+    height: 30px;
+    border-radius: 60px;
+    padding-top: 7px;
+
+    display: inline-block;
+
+}
+
+.r5{
+
+    background-color: #c395c4;
+    color: white;
+    width: 30px;
+    height: 30px;
+    border-radius: 60px;
+    padding-top: 7px;
+    display: inline-block;
+
+}
+
+.pioche{
+    height: 120px;
+    width: 19%;
+    display: inline-block;
+}
+.carteshaut img{
+    margin-right: 1%;
+}
+
+.cartesbas{
+    border:none;
+}
+
+.cb{
+    width: 5%!important;
+}
+.fix{
+    margin-top: -12%;
+}
+
+.inff{
+    position: absolute;
+    right: 5%
+}
+
+.rest{
+    margin-top: 2%;
+}
+
+.pio{
+    margin:20px 0 0 0!important;
+}
+
+.info {
+    text-align: center;
+}
+
+.haut{
+    font-size:12px;
+    text-align: left;
+}
+
+h1, .top{
+    text-align: center;
+    font-size: 15px;
+    line-height: 5px;
+}
+
+
+img {
+    text-align: center;
+}
+
+
+table {
+    color: #333;
+    font-family: Helvetica, Arial, sans-serif;
+    width: 100%;
+    /* Table reset stuff */
+    border-collapse: collapse; border-spacing: 0;
+}
+
+td, th { height: 30px; }
+
+th {
+    /* Gradient Background */
+    background: linear-gradient(#333 0%,#444 100%);
+    color: #FFF; font-weight: bold;
+    height: 40px;
+}
+
+td { background: #FAFAFA; text-align: center; width: 18.85%}
+
+/* Zebra Stripe Rows */
+
+tr:nth-child(even) td { background: #EEE; }
+tr:nth-child(odd) td { background: #FDFDFD; }
+
+/* First-child blank cells! */
+tr td:first-child, tr th:first-child {
+    background: none;
+    font-style: italic;
+    font-weight: bold;
+    font-size: 14px;
+    text-align: center;
+    padding-right: 10px;
+    width: 80px;
+}
+
+/* Add border-radius to specific cells! */
+tr:first-child th:nth-child(2) {
+    border-radius: 5px 0 0 0;
+}
+
+tr:first-child th:last-child {
+    border-radius: 0 5px 0 0;
+}
