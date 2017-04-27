@@ -1,20 +1,30 @@
 {% extends 'base.html.twig' %}
 
 {% block body %}
-    <h1>Partie entre {{ partie.joueur1.username }} et {{ partie.joueur2.username }}</h1>
-    <h2>La Pioche est vide, c'est la fin du jeu !</h2>
+    <div id="findepartie">
+        <div class="container text-center">
+            <h1>Partie entre {{ partie.joueur1.username }} et {{ partie.joueur2.username }}</h1>
+            <h2>La Pioche est vide, c'est la fin du jeu !</h2>
 
-    <h3>Le Gagnant : {% if plateau.pointj1 >= plateau.pointj2 %} {{ partie.joueur1.username }} {% else %} {{ partie.joueur2.username }} {%  endif %} </h3>
+            <h3>Le Gagnant :<strong>{% if plateau.pointj1 >= plateau.pointj2 %} {{ partie.joueur1.username }} {% else %} {{ partie.joueur2.username }} {%  endif %} </strong>  </h3>
 
-    <h4>Points du joueur 1 : {{ plateau.pointj1 }}</h4>
-    <h4>Cumul des points du joueur 1 : {{ dump(cumulj1) }}</h4>
-    {{ dump(cumulpartiesgagneesj1) }}
-    <h4>Points du joueur 2 : {{ plateau.pointj2 }}</h4>
+            <hr>
 
-    <h4>Cumul des points du joueur 2 : {{ dump (cumulj2) }}</h4>
-    {{ dump(cumulpartiesgagneesj2) }}
+            <h4>Points de {{ partie.joueur1.username }} : {{ plateau.pointj1 }}</h4>
+            <h4>Cumul des points de {{ partie.joueur1.username }} : {{ cumulj1 }}</h4>
 
-    <p><a href="{{ path('joueur_parties_add') }}">Défier un autre joueur</a></p>
+            <hr>
+
+            <h4>Points de {{ partie.joueur2.username }} : {{ plateau.pointj2 }}</h4>
+
+            <h4>Cumul des points de  {{ partie.joueur2.username }} : {{ cumulj2 }}</h4>
+            <hr>
+
+            <p><a href="{{ path('joueur_parties_add') }}">Défier un autre joueur</a></p>
+        </div>
+
+    </div>
+
 
 
 

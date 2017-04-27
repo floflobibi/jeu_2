@@ -3,6 +3,8 @@
 <html lang="{{ app.request.locale }}">
   <head>
     <meta charset="utf-8" />
+      <title>Take 5 !</title>
+      <link rel="icon" type="image/x-icon" href="{{ asset('favicon.ico') }}" />
     <!--[if lt IE 9]>
       <script src="https://cdnjs.cloudflare.com/ajax/libs/html5shiv/3.7.3/html5shiv.min.js"></script>
     <![endif]-->
@@ -20,7 +22,8 @@
     </style>
     {% block stylesheets %}{% endblock %}
     <!-- Mon css et js-->
-    <link rel="stylesheet" type="text/css" href="{{ asset('assets/css/menu.css') }}">
+      <link rel="stylesheet" type="text/css" href="{{ asset('assets/css/menu.css') }}">
+      <link rel="stylesheet" type="text/css" href="{{ asset('assets/css/forum.css') }}">
     <script src=" {{asset('assets/js/main.js') }}"></script>
     <script src="{{ asset('assets/js/jquery-3.1.1.js') }}"></script>
 

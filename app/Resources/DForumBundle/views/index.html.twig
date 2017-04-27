@@ -5,9 +5,9 @@
 {% block stylesheets %}
 <style>
 .category {
-    padding-top:30px;
-    height:250px;
+    padding-top:10px;
     margin-top:20px;
+    padding-left: 30px;
 }
 </style>
 {% endblock %}
@@ -20,12 +20,12 @@
       <hr />
       <div class="row forum-category-bloc">
           {% for forum in category.forums %}
-            <div class="col-xs-12 col-sm-6 col-md-4">
-              <div class="category thumbnail text-center forum-box color-dark">
+            <div class="col-xs-12 col-sm-12 col-md-112">
+              <div class="category thumbnail forum-box color-dark">
                 <h3><a href="{{ path('discutea_forum_topic', {'slug': forum.slug}) }}" title="{{ forum.name }}">{{ forum.name }}</a></h3>
                 <p>{{ forum.description }}</p>
                 <hr />
-                <div class="text-center">
+                <div class="text-left">
                 {% set lastTopic = dfLastTopicInForum(forum) %}
                 {% if lastTopic is not null %}
                     {% if lastTopic.posts.last.poster is not null %}
