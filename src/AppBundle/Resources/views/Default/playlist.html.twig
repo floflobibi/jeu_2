@@ -40,6 +40,12 @@
         {% endif %}
         <a href="{{ path('classement') }}">Classement</a>
         <a href="{{ path('playlist') }}">Playlist</a>
+        {% if is_granted('ROLE_USER') %}
+            <a href="{{ path('discutea_forum_homepage') }}">Forum</a>
+        {% endif %}
+        {% if is_granted('ROLE_ADMIN') %}
+            <a href="{{ path('discutea_forum_admin_dashboard') }}">Admin du forum</a>
+        {% endif %}
     </nav>
 
 </div>
