@@ -1,8 +1,13 @@
 {% extends 'base.html.twig' %}
 
 {% block body %}
-    <div class="container">
-    <h1>Espace joueur: {{ user.nom }}</h1>
+    <div class="container mesparties">
+        <div class="row">
+            <h1>Espace joueur toto : {{ user.username }}</h1>
+            <h2>Mes parties en cours</h2>
+        </div>
+
+        <h1>Espace joueur: {{ user.nom }}</h1>
 
     <h2>Créer une nouvelle partie</h2>
 
@@ -21,7 +26,13 @@
         <table class="table">
             {% for partie in user.parties %}
                 {% for partie in partie %}
-                  <tr>  <td><a href="{{ path('afficher_partie', {'id':partie.id}) }}">#{{ partie.id }}</a></td></tr>
+                  <tr>  <td>
+                          {% if partie.fin == null %}
+                              #{{ partie.id }} : {{partie.joueur1.username }} vs {{ partie.joueur2.username }} : Partie finie
+                          {% else %}
+                              <a href="{{ path('afficher_partie', {'id':partie.id}) }}">#{{ partie.id }} : {{partie.joueur1.username }} vs {{ partie.joueur2.username }} - Jeu en cours</a>
+                          {% endif %}
+                      </td></tr>
                 {% endfor %}
             {% else %}
                <td> Aucune partie en cours. <a href="{{ path('joueur_parties_add') }}">Créer une partie</a></td>
