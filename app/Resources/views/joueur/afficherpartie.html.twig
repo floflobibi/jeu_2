@@ -129,7 +129,7 @@
                     </tr>
                     <tr>
 
-                        <td>Cartes posées par J1</td>
+                        <td>Cartes posées par adversaire</td>
                         <td>
                             {% for carte in plateau.poseesj1_cat1 %}
                                 {% if cartes[carte].valeur!=0 %}
@@ -187,7 +187,7 @@
                     </tr>
                         {% else %}
 
-                    <tr><td>Points du joueur 2 : <strong>{{ plateau.pointj2 }}</strong></td>
+                    <tr><td>Points adversaires : <strong>{{ plateau.pointj2 }}</strong></td>
                         <td>{{ plateau.pointj2_cat1 }}</td>
                         <td>{{ plateau.pointj2_cat2 }}</td>
                         <td>{{ plateau.pointj2_cat3 }}</td>
@@ -197,7 +197,7 @@
                             <tr>
 
 
-                            <td>Cartes posées par J2</td>
+                            <td>Cartes posées par adversaire</td>
                             <td>
                                 {% for carte in plateau.poseesj2_cat1 %}
                                     {% if cartes[carte].valeur!=0 %}
@@ -292,7 +292,7 @@
                         </td>
                     </tr>
                     <tr>{% if partie.joueur2.id==user.id %}
-                        <td>Points du joueur 2 : <strong>{{ plateau.pointj2 }}</strong></td>
+                        <td>Vos points : <strong>{{ plateau.pointj2 }}</strong></td>
                         <td>{{ plateau.pointj2_cat1 }}</td>
                         <td>{{ plateau.pointj2_cat2 }}</td>
                         <td>{{ plateau.pointj2_cat3 }}</td>
@@ -301,7 +301,7 @@
                     </tr>
                     <tr>
 
-                        <td>Cartes posées par J2</td>
+                        <td>Vos Cartes posées</td>
                         <td>
                             {% for carte in plateau.poseesj2_cat1 %}
                                 {% if cartes[carte].valeur!=0 %}
@@ -354,7 +354,7 @@
                         </td>
                         {% else %}
 
-                        <td>Points du joueur 1 : <strong>{{ plateau.pointj1 }}</strong> </td>
+                        <td>Vos points : <strong>{{ plateau.pointj1 }}</strong> </td>
                         <td>{{ plateau.pointj1_cat1 }}</td>
                         <td>{{ plateau.pointj1_cat2 }}</td>
                         <td>{{ plateau.pointj1_cat3 }}</td>
@@ -362,7 +362,7 @@
                         <td>{{ plateau.pointj1_cat5 }}</td>
                     </tr>
                     <tr>
-                            <td>Cartes posées par J1</td>
+                            <td>Vos Cartes posées</td>
                             <td>
                                 {% for carte in plateau.poseesj1_cat1 %}
                                     {% if cartes[carte].valeur!=0 %}
