@@ -1,12 +1,15 @@
-*{
-  margin: 0;
-}
-
 @font-face {
 	font-family: "Police";
 	src: url('../font/Thinking_of_Betty.ttf');
 }
+@font-face {
+  font-family: "Avenir";
+  src: url('../font/AvenirNextLTPro-MediumCn.otf');
+}
+*{
+   margin: 0;
 
+ }
 .header {
     display: table;
     width: 100%;
@@ -29,6 +32,7 @@
 
 .news{
   margin-top: 20%;
+  font-family: "Avenir";
 }
 
 .news h2{
@@ -46,6 +50,7 @@
 
 .moment p{
   text-align: center;
+  font-family: "Avenir";
 }
 
 .col-md-4{
